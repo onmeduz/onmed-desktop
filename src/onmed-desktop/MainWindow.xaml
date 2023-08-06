@@ -5,8 +5,94 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:onmed_desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="MainWindow" Height="700" Width="700">
     <Grid>
+        <TabControl >
+            <TabItem Header="Log In"
+                     Visibility="Collapsed">
+                <Grid Background="#C8C4E8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0"
+                                x:Name="borderDragable"
+                                MouseDown="borderDragable_MouseDown" 
+                                Cursor="ScrollAll" >
+
+                        </Border>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+
+                            <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
+                            <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
+                            <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
+
+                        </StackPanel>
+
+
+                    </Grid>
+
+
+
+                    <Border
+                        Grid.Row="1"
+                        Height="350"
+                        Width="300"
+                        CornerRadius="20"
+                        BorderThickness="1"
+                        BorderBrush="Gray">
+                        <Border.Effect>
+                            <DropShadowEffect Color="#064585" Direction="270" ShadowDepth="10" BlurRadius="20"/>
+                        </Border.Effect>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#636EB1" Offset="0.0" />
+                                <GradientStop Color="#6ED9FC" Offset="0.45" />
+                                <GradientStop Color="#6ED9FC" Offset="0.75" />
+                                <GradientStop Color="#636EB1" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Width="100"
+                        Height="100"
+                        Background="WhiteSmoke"
+                        Margin="0 10 0 330"
+                        CornerRadius="80"
+                        BorderThickness="2"
+                        BorderBrush="Gray">
+                        <Image Source="/Assets/Icons/free-icon-user-747545.png" 
+                               Height="72"/>
+
+
+                    </Border>
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Dashboard"
+                     Visibility="Collapsed">
+                <Button Height="50"
+                        Width="50">
+
+                </Button>
+
+            </TabItem>
+            
+        </TabControl>
+
 
     </Grid>
 </Window>

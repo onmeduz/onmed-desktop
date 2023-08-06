@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:onmed_desktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
