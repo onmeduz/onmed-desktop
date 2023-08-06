@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D420AA89-9C16-4E4C-906D-DF331ADAD991}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onmed-desktop", "src\onmed-desktop\onmed-desktop.csproj", "{444095E8-BDF4-4DF8-99B3-4F44E2403E15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onmed-Desktop", "src\onmed-desktop\onmed-Desktop.csproj", "{444095E8-BDF4-4DF8-99B3-4F44E2403E15}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "onmed-Integrated", "src\Integrated\onmed-Integrated.csproj", "{1CEDF099-43A2-4ADE-AFCE-E887A1786DC2}"
 EndProject
