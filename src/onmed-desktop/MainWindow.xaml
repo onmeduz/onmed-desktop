@@ -11,7 +11,8 @@
         Background="Transparent"
         Title="MainWindow" Height="700" Width="700">
     <Grid>
-        <TabControl >
+        <TabControl 
+            x:Name="mainControl">
             <TabItem Header="Log In"
                      Visibility="Collapsed">
                 <Grid Background="#C8C4E8">
@@ -42,7 +43,14 @@
 
                     </Grid>
 
-
+                    <Label 
+                        Grid.Row="1"
+                        Content="Admin Login"
+                        HorizontalContentAlignment="Center"
+                        FontSize="35"
+                        FontWeight="SemiBold"
+                        Margin="0 20"
+                        Foreground="{DynamicResource PrimaryTextColor}"/>
 
                     <Border
                         Grid.Row="1"
@@ -63,18 +71,104 @@
                             </LinearGradientBrush>
                         </Border.Background>
 
+                        <StackPanel 
+                            Orientation="Vertical"
+                            Margin="0 80 0 0">
+                            <Label Content="Phone number"
+                                   Margin="50 0"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                            <Border
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                Height="35"
+                                Width="200"
+                                Margin="0 0 0 10"
+                                CornerRadius="10">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="45"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Column="0"
+                                        Width="50"
+                                        Margin="5 0 0 0"
+                                        Content="+998"
+                                        FontSize="14"
+                                        FontWeight="SemiBold"
+                                        VerticalContentAlignment="Center"/>
+
+                                    <TextBox 
+                                        Grid.Column="1"
+                                        Foreground="{DynamicResource PrimaryTextColor}"
+                                        Margin="3 5 5 5"
+                                        FontSize="14"
+                                        FontWeight="SemiBold"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        VerticalAlignment="Center">
+                                    </TextBox>
+                                </Grid>
+
+                            </Border>
+                            <Label Content="Password"
+                                   Margin="50 0"
+                                   FontSize="13"
+                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                            <Border 
+                                BorderBrush="Gray"
+                                BorderThickness="1"
+                                Height="35"
+                                Width="200"
+                                Margin="0 0 0 50"
+                                CornerRadius="10">
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="40"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <PasswordBox
+                                        Grid.Column="0"
+                                        Margin="10 5"
+                                        FontSize="14"
+                                        Foreground="{DynamicResource PrimaryTextColor}"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        VerticalAlignment="Center">
+                                    </PasswordBox>
+
+                                </Grid>
+
+                            </Border>
+
+                            <Button 
+                                Style="{DynamicResource SaveButton}"
+                                Content="Login"
+                                FontSize="17"
+                                Width="100"
+                                Height="35"
+                                Margin="0"
+                                Click="btnLogin"/>
+                        </StackPanel>
+                        
+
                     </Border>
                     <Border
                         Grid.Row="1"
                         Width="100"
                         Height="100"
                         Background="WhiteSmoke"
-                        Margin="0 10 0 330"
+                        Margin="0 10 0 350"
                         CornerRadius="80"
                         BorderThickness="2"
                         BorderBrush="Gray">
                         <Image Source="/Assets/Icons/free-icon-user-747545.png" 
-                               Height="72"/>
+                               Height="50"/>
 
 
                     </Border>
@@ -82,11 +176,11 @@
 
             </TabItem>
 
-            <TabItem Header="Dashboard"
-                     Visibility="Collapsed">
+            <TabItem 
+                Header="Dashboard"
+                Visibility="Collapsed">
                 <Button Height="50"
                         Width="50">
-
                 </Button>
 
             </TabItem>

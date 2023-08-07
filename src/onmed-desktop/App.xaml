@@ -11,6 +11,7 @@
 
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
+                <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
             

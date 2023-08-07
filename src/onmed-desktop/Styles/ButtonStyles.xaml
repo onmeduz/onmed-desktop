@@ -42,6 +42,7 @@
 
 
     </Style>
+    
     <Style x:Key="MinimizedButton" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="24"/>
         <Setter Property="Width" Value="24"/>
@@ -112,5 +113,69 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="SaveButton" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border 
+                        x:Name="B"
+                        CornerRadius="10"
+                        BorderThickness="1"
+                        BorderBrush="Gray"
+                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        >
+                        <Label
+                            FontFamily="Jetbrains Mono"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource PrimaryTextColor}"
+                            FontSize="{TemplateBinding FontSize}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Content="{TemplateBinding Content}"/>
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#B6B1D8"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="#C8C4E8"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="#8C86B8"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+     <Style x:Key="PasswordHidden" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border 
+                        x:Name="B"
+                        CornerRadius="5"
+                        >
+                        <Path Fill="Black" 
+                              Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                              Height="15"
+                              Width="15"
+                              Stretch="Uniform"/>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>
