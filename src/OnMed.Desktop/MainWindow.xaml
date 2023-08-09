@@ -1,15 +1,15 @@
-﻿<Window x:Class="onmed_desktop.MainWindow"
+﻿<Window x:Class="OnMed.Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:onmed_desktop"
+        xmlns:local="clr-namespace:OnMed.Desktop"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="MainWindow" Height="700" Width="700">
+        Height="700" Width="800">
     <Grid>
         <TabControl 
             x:Name="mainControl">
@@ -50,7 +50,7 @@
                         FontSize="35"
                         FontWeight="SemiBold"
                         Margin="0 20"
-                        Foreground="{DynamicResource PrimaryTextColor}"/>
+                        Foreground="{DynamicResource FirstColor}"/>
 
                     <Border
                         Grid.Row="1"
@@ -77,7 +77,7 @@
                             <Label Content="Phone number"
                                    Margin="50 0"
                                    FontSize="13"
-                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                   Foreground="{DynamicResource FirstColor}"/>
                             <Border
                                 BorderBrush="Gray"
                                 BorderThickness="1"
@@ -103,7 +103,7 @@
 
                                     <TextBox 
                                         Grid.Column="1"
-                                        Foreground="{DynamicResource PrimaryTextColor}"
+                                        Foreground="{DynamicResource FirstColor}"
                                         Margin="3 5 5 5"
                                         FontSize="14"
                                         FontWeight="SemiBold"
@@ -117,7 +117,7 @@
                             <Label Content="Password"
                                    Margin="50 0"
                                    FontSize="13"
-                                   Foreground="{DynamicResource PrimaryTextColor}"/>
+                                   Foreground="{DynamicResource FirstColor}"/>
                             <Border 
                                 BorderBrush="Gray"
                                 BorderThickness="1"
@@ -136,7 +136,7 @@
                                         Grid.Column="0"
                                         Margin="10 5"
                                         FontSize="14"
-                                        Foreground="{DynamicResource PrimaryTextColor}"
+                                        Foreground="{DynamicResource FirstColor}"
                                         Background="Transparent"
                                         BorderThickness="0"
                                         VerticalAlignment="Center">
@@ -155,7 +155,7 @@
                                 Margin="0"
                                 Click="btnLogin"/>
                         </StackPanel>
-                        
+
 
                     </Border>
                     <Border
@@ -167,7 +167,7 @@
                         CornerRadius="80"
                         BorderThickness="2"
                         BorderBrush="Gray">
-                        <Image Source="/Assets/Icons/free-icon-user-747545.png" 
+                        <Image Source="/Assets/Icons/free-icon-user-747376.png" 
                                Height="50"/>
 
 
@@ -176,15 +176,67 @@
 
             </TabItem>
 
-            <TabItem 
+            <TabItem
                 Header="Dashboard"
-                Visibility="Collapsed">
-                <Button Height="50"
-                        Width="50">
-                </Button>
+                Visibility="Collapsed"
+                >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Background="{DynamicResource SixthColor}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="140"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border
+                            Grid.Column="0"
+                            x:Name="borderDragabl"
+                            MouseDown="borderDragabl_MouseDown" 
+                            Cursor="ScrollAll">
+                        </Border>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+
+                            <Button x:Name="Minimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
+                            <Button x:Name="Maximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
+                            <Button x:Name="Close"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                CornerRadius="0 10 0 0"
+                                Background="{DynamicResource FifthColor}">
+
+
+
+
+
+                        </Border>
+
+                    </Grid>
+
+                </Grid>
 
             </TabItem>
-            
+
         </TabControl>
 
 

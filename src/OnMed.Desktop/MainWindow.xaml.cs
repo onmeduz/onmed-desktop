@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace onmed_desktop;
+namespace OnMed.Desktop;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
@@ -31,6 +31,11 @@ public partial class MainWindow : Window
     }
 
     private void borderDragable_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        this.DragMove();
+    }
+
+    private void borderDragabl_MouseDown(object sender, MouseButtonEventArgs e)
     {
         this.DragMove();
     }

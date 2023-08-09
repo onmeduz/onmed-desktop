@@ -1,7 +1,7 @@
-﻿<Application x:Class="onmed_desktop.App"
+﻿<Application x:Class="OnMed.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:onmed_desktop"
+             xmlns:local="clr-namespace:OnMed.Desktop"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
@@ -14,8 +14,8 @@
                 <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
-            
+
         </ResourceDictionary>
-        
+
     </Application.Resources>
 </Application>
