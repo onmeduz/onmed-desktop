@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace onmed_desktop
+namespace OnMed.Desktop
 {
     /// <summary>
     /// Interaction logic for App.xaml

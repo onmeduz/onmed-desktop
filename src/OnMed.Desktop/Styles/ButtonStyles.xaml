@@ -100,7 +100,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#6D9604"/>
+                            <Setter TargetName="B" Property="Background" Value="#14D82E"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
                             <Setter TargetName="B" Property="Background" Value="#18FF37"/>
@@ -127,12 +127,12 @@
                         CornerRadius="10"
                         BorderThickness="1"
                         BorderBrush="Gray"
-                        Background="{DynamicResource PrimaryBackgroundColor}"
+                        Background="{DynamicResource FifthColor}"
                         >
                         <Label
                             FontFamily="Jetbrains Mono"
                             FontWeight="SemiBold"
-                            Foreground="{DynamicResource PrimaryTextColor}"
+                            Foreground="{DynamicResource FirstColor}"
                             FontSize="{TemplateBinding FontSize}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
@@ -155,7 +155,7 @@
         </Setter>
     </Style>
     
-     <Style x:Key="PasswordHidden" TargetType="{x:Type Button}">
+    <Style x:Key="PasswordHidden" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="25"/>
         <Setter Property="Width" Value="30"/>
         <Setter Property="Template">
@@ -172,6 +172,64 @@
                               Stretch="Uniform"/>
 
                     </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MenuButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="0 3 0 3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border x:Name="B" CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="Indicator" Grid.Column="0"
+                                    Height="45"
+                                    CornerRadius="5"
+                                    Visibility="Collapsed"
+                                    Background="{DynamicResource FifthColor}"/>
+
+                            <Path 
+                                    x:Name="Icon" Grid.Column="1"
+                                    Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
+                                    Fill="{DynamicResource FourthColor}"
+                                    Height="20"
+                                    Stretch="Uniform"/>
+
+
+                            <Label Grid.Column="2"
+                                   FontSize="{TemplateBinding FontSize}"
+                                   Content="{TemplateBinding Content}"
+                                   FontFamily="Arial"
+                                   FontWeight="DemiBold"
+                                   VerticalAlignment="Center"/>
+
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="B" Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource }"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource ThreedColor}"/>
+                            <Setter TargetName="Indicator" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
