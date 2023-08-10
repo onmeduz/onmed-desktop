@@ -56,11 +56,23 @@
             <Grid
                 Grid.Column="0"
                 Background="{DynamicResource FirstColor}">
-                <Border>
+                <Border
+                    Height="100"
+                    Width="180"
+                    VerticalAlignment="Top">
+                    <Image Source="/Assets/Images/images__4_-removebg-preview.png" />
 
                 </Border>
 
-                <StackPanel>
+                <StackPanel
+                    Margin="5 100 5 0"
+                    Orientation="Vertical">
+
+                    <RadioButton 
+                            x:Name="rbBosh_stollar"
+                            Content="Bo'sh stollar"
+                            Style="{DynamicResource MenuButton}" 
+                            />
 
                 </StackPanel>
             </Grid>

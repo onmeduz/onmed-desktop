@@ -210,7 +210,7 @@
                                    FontSize="{TemplateBinding FontSize}"
                                    Content="{TemplateBinding Content}"
                                    FontFamily="Arial"
-                                   Foreground="{DynamicResource FirstColor}"
+                                   Foreground="{DynamicResource BorderColor}"
                                    FontWeight="DemiBold"
                                    VerticalAlignment="Center"/>
 
