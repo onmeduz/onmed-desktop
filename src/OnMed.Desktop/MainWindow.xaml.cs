@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace OnMed.Desktop;
@@ -43,5 +45,19 @@ public partial class MainWindow : Window
     private void btnLogin(object sender, RoutedEventArgs e)
     {
         mainControl.SelectedIndex = 1;
+    }
+
+    private void tbPhoneNumber_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+    {
+        TextBox textBox = (TextBox)sender;
+        string text = textBox.Text;
+        string filteredText = Regex.Replace(text, "[^0-9]+", "");
+
+        if (text != filteredText)
+        {     
+            int caretIndex = textBox.CaretIndex;
+            textBox.Text = filteredText;
+            textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;       
+        }
     }
 }

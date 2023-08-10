@@ -114,7 +114,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="SaveButton" TargetType="{x:Type Button}">
+    <Style x:Key="LoginButton" TargetType="{x:Type Button}">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="140"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -125,9 +125,7 @@
                     <Border 
                         x:Name="B"
                         CornerRadius="10"
-                        BorderThickness="1"
-                        BorderBrush="Gray"
-                        Background="{DynamicResource FifthColor}"
+                        Background="#1F2440"
                         >
                         <Label
                             FontFamily="Jetbrains Mono"
@@ -141,13 +139,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#B6B1D8"/>
+                            <Setter TargetName="B" Property="Background" Value="#364760"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#C8C4E8"/>
+                            <Setter TargetName="B" Property="Background" Value="#1F2440"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#8C86B8"/>
+                            <Setter TargetName="B" Property="Background" Value="#253142"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -203,7 +201,7 @@
                             <Path 
                                     x:Name="Icon" Grid.Column="1"
                                     Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
-                                    Fill="{DynamicResource FourthColor}"
+                                    Fill="{DynamicResource BorderColor}"
                                     Height="20"
                                     Stretch="Uniform"/>
 
