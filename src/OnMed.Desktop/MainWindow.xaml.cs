@@ -41,23 +41,4 @@ public partial class MainWindow : Window
     {
         this.DragMove();
     }
-
-    private void btnLogin(object sender, RoutedEventArgs e)
-    {
-        mainControl.SelectedIndex = 1;
-    }
-
-    private void tbPhoneNumber_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-    {
-        TextBox textBox = (TextBox)sender;
-        string text = textBox.Text;
-        string filteredText = Regex.Replace(text, "[^0-9]+", "");
-
-        if (text != filteredText)
-        {     
-            int caretIndex = textBox.CaretIndex;
-            textBox.Text = filteredText;
-            textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;       
-        }
-    }
 }

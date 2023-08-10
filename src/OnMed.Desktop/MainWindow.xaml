@@ -9,239 +9,91 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Height="700" Width="800">
+        Height="700" Width="900">
     <Grid>
-        <TabControl 
-            x:Name="mainControl">
-            <TabItem Header="Log In"
-                     Visibility="Collapsed">
-                <Grid Background="{DynamicResource SecondColor}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="150"/>
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0"
-                                x:Name="borderDragable"
-                                MouseDown="borderDragable_MouseDown" 
-                                Cursor="ScrollAll" >
 
-                        </Border>
-                        <StackPanel Grid.Column="1"
-                                    Orientation="Horizontal">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
 
-                            <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
-                            <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
-                            <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
+        <Border 
+            Grid.Row="0"
+            CornerRadius="15 15 0 0"
+            Background="{DynamicResource FirstColor}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
 
-                        </StackPanel>
+                <Border
+                    Grid.Column="0"
+                    x:Name="borderDragable"
+                    MouseDown="borderDragable_MouseDown" 
+                    Cursor="ScrollAll">
+                </Border>
 
+                <StackPanel
+                     Grid.Column="1"
+                     Orientation="Horizontal">
 
-                    </Grid>
+                    <Button x:Name="Minimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
+                    <Button x:Name="Maximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
+                    <Button x:Name="Close"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
 
-                    <Label 
-                        Grid.Row="1"
-                        Content="Admin Login"
-                        HorizontalContentAlignment="Center"
-                        FontSize="35"
-                        FontWeight="SemiBold"
-                        Margin="0 20"
-                        Foreground="{DynamicResource BorderColor}"/>
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                    <Border
-                        Grid.Row="1"
-                        Height="350"
-                        Width="300"
-                        CornerRadius="20"
-                        Background="{DynamicResource FirstColor}">
-                        <Border.Effect>
-                            <DropShadowEffect Color="#EBEEF0" Direction="270" ShadowDepth="10" BlurRadius="30"/>
-                        </Border.Effect>
-                        <!--<Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Color="#CEE6F3" Offset="0.0" />
-                                <GradientStop Color="#FFFFFF" Offset="0.45" />
-                                <GradientStop Color="#FFFFFF" Offset="0.75" />
-                                <GradientStop Color="#CEE6F3" Offset="1.0" />
-                            </LinearGradientBrush>
-                        </Border.Background>-->
+            <Grid
+                Grid.Column="0"
+                Background="{DynamicResource FirstColor}">
+                <Border
+                    Height="100"
+                    Width="180"
+                    VerticalAlignment="Top">
+                    <Image Source="/Assets/Images/images__4_-removebg-preview.png" />
 
-                        <StackPanel 
-                            Orientation="Vertical"
-                            Margin="0 100 0 0">
-                            <Label Content="Phone number"
-                                   Margin="50 0"
-                                   FontSize="13"
-                                   Foreground="{DynamicResource BorderColor}"/>
-                            <Border
-                                Background="{DynamicResource ThreedColor}"
-                                BorderThickness="1"
-                                Height="35"
-                                Width="200"
-                                Margin="0 0 0 10"
-                                CornerRadius="10">
-                                
-                                <Border.Effect>
-                                    <DropShadowEffect Color="#EBEEF0" Direction="90" ShadowDepth="1" BlurRadius="20"/>
-                                </Border.Effect>
+                </Border>
 
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="45"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                <StackPanel
+                    Margin="5 100 5 0"
+                    Orientation="Vertical">
 
-                                    <Label
-                                        Grid.Column="0"
-                                        Width="50"
-                                        Margin="5 0 0 0"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Content="+998"
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        VerticalContentAlignment="Center"/>
+                    <RadioButton 
+                            x:Name="rbBosh_stollar"
+                            Content="Bo'sh stollar"
+                            Style="{DynamicResource MenuButton}" 
+                            />
 
-                                    <TextBox
-                                        TextChanged="tbPhoneNumber_TextChanged"
-                                        x:Name="tbPhoneNumber"
-                                        Grid.Column="1"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Margin="3 5 5 5"
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        VerticalAlignment="Center">
-                                    </TextBox>
-                                </Grid>
+                </StackPanel>
+            </Grid>
 
-                            </Border>
-                            <Label Content="Password"
-                                   Margin="50 0"
-                                   FontSize="13"
-                                   Foreground="{DynamicResource BorderColor}"/>
-                            <Border 
-                                Background="{DynamicResource ThreedColor}"
-                                Height="35"
-                                Width="200"
-                                Margin="0 0 0 50"
-                                CornerRadius="10">
+            <Grid
+                Grid.Column="1"
+                Background="{DynamicResource SecondColor}">
 
-                                <Border.Effect>
-                                    <DropShadowEffect Color="#EBEEF0" Direction="270" ShadowDepth="1" BlurRadius="20"/>
-                                </Border.Effect>
+            </Grid>
 
-                                <Border>
-                                    <PasswordBox
-                                        Margin="10 5"
-                                        FontSize="14"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        VerticalAlignment="Center">
-                                    </PasswordBox>
-                                </Border>
+        </Grid>
 
-                            </Border>
-
-                            <Button 
-                                Style="{DynamicResource LoginButton}"
-                                Content="Login"
-                                Margin="0 10"
-                                FontSize="17"
-                                Width="100"
-                                Height="30"
-                                Click="btnLogin"/>
-                        </StackPanel>
-
-
-                    </Border>
-                    <Border
-                        Grid.Row="1"
-                        Width="100"
-                        Height="100"
-                        Background="WhiteSmoke"
-                        Margin="0 10 0 350"
-                        CornerRadius="80">
-                        <Image Source="/Assets/Icons/free-icon-user-747376.png" 
-                               Height="50"/>
-
-                        <Border.Effect>
-                            <DropShadowEffect Color="#EBEEF0" Direction="90" ShadowDepth="1" BlurRadius="20"/>
-                        </Border.Effect>
-
-                    </Border>
-                </Grid>
-
-            </TabItem>
-
-            <TabItem
-                Header="Dashboard"
-                Visibility="Collapsed">
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid
-                        Grid.Row="0"
-                        Background="{DynamicResource SixthColor}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="140"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Border
-                            Grid.Column="0"
-                            x:Name="borderDragabl"
-                            MouseDown="borderDragabl_MouseDown" 
-                            Cursor="ScrollAll">
-                        </Border>
-
-                        <StackPanel
-                            Grid.Column="2"
-                            Orientation="Horizontal">
-
-                            <Button x:Name="Minimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
-                            <Button x:Name="Maximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
-                            <Button x:Name="Close"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
-
-                        </StackPanel>
-
-                    </Grid>
-
-                    <Grid Grid.Row="1">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Border Grid.Column="0"
-                                CornerRadius="0 10 0 0"
-                                Background="{DynamicResource FifthColor}">
-
-
-
-
-
-                        </Border>
-
-                    </Grid>
-
-                </Grid>
-
-            </TabItem>
-
-        </TabControl>
-
+        <Grid
+            Grid.Row="2"
+            Background="{DynamicResource FirstColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+        </Grid>
 
     </Grid>
 </Window>
