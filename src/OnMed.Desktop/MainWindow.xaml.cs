@@ -54,13 +54,10 @@ public partial class MainWindow : Window
         string filteredText = Regex.Replace(text, "[^0-9]+", "");
 
         if (text != filteredText)
-        {
-            if (text.Length <= 9)
-            {
-                int caretIndex = textBox.CaretIndex;
-                textBox.Text = filteredText;
-                textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
-            }
+        {     
+            int caretIndex = textBox.CaretIndex;
+            textBox.Text = filteredText;
+            textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;       
         }
     }
 }
