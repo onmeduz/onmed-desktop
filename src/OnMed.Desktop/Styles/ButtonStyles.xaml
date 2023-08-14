@@ -200,7 +200,6 @@
                             <Border 
                                 Grid.Column="1"
                                 Background="Transparent">
-                                
                             </Border>
 
                             <Border
@@ -251,6 +250,84 @@
                             <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource FirstColor}"/>
                         </Trigger>
 
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SwitchButton" TargetType="{x:Type CheckBox}">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <StackPanel>
+                        <Grid>
+                            <Border x:Name="backgr"
+                                    Width="30"
+                                    Height="20"
+                                    Background="#edf6f9"
+                                    CornerRadius="10" 
+                                    Margin="0"/>
+                            <Border x:Name="button"
+                                    Height="20"
+                                    Width="20"
+                                    CornerRadius="12.5"
+                                    HorizontalAlignment="Left"/>
+                        </Grid>
+                        <ContentPresenter x:Name="content"
+                                          Margin="10 0 0 0"
+                                          Content="{TemplateBinding Content}"
+                                          VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="right">
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="button"
+                                                Duration="0:0:0:0.5"
+                                                From="0,0,0,0"
+                                                To="10,0,0,0">
+                                <ThicknessAnimation.EasingFunction>
+                                    <CircleEase EasingMode="EaseInOut">
+                                    </CircleEase>
+                                </ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                        </Storyboard>
+                        <Storyboard x:Key="left">
+                            <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                Storyboard.TargetName="button"
+                                                Duration="0:0:0:0.5"
+                                                From="10,0,0,0"
+                                                To="0,0,0,0">
+                                <ThicknessAnimation.EasingFunction>
+                                    <CircleEase EasingMode="EaseInOut">
+                                    </CircleEase>
+                                </ThicknessAnimation.EasingFunction>
+                            </ThicknessAnimation>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="leftt"/>
+                                <BeginStoryboard Storyboard="{StaticResource right}" x:Name="rightt"/>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="button"
+                                    Property="Background"
+                                    Value="#fff9f4f4"/>
+                            <Setter TargetName="backgr"
+                                    Property="Background"
+                                    Value="#343a40"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="rightt"/>
+                                <BeginStoryboard Storyboard="{StaticResource left}" x:Name="leftt"/>
+                            </Trigger.ExitActions>
+                            <Setter TargetName="button" Property="Background" Value="#ff060600"/>
+                                <Setter TargetName="backgr" Property="Background" Value="#edf6f9"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

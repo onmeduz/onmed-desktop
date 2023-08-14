@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Height="700" Width="900">
+        Height="800" Width="1200">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -57,7 +57,7 @@
                 Grid.Column="0"
                 Background="{DynamicResource FirstColor}">
                 <Border
-                    Height="100"
+                    Height="90"
                     Width="180"
                     VerticalAlignment="Top">
                     <Image Source="/Assets/Images/images__4_-removebg-preview.png" />
@@ -65,7 +65,7 @@
                 </Border>
 
                 <StackPanel
-                    Margin="5 100 30 0"
+                    Margin="5 100 30 100"
                     Orientation="Vertical">
                     
                     <RadioButton 
@@ -83,12 +83,12 @@
                             x:Name="rbShifokor"
                             Content="Shifokorlar"
                             Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource dashboard}"/>
+                            Tag="{DynamicResource shifokor}"/>
                     <RadioButton 
                             x:Name="rbMutahassis"
                             Content="Mutahassis"
                             Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource dashboard}"/>
+                            Tag="{DynamicResource mutaxassis}"/>
                     <RadioButton 
                             x:Name="rbUchrashuv"
                             Content="Uchrashuvlar"
@@ -99,8 +99,29 @@
                             Content="To'lov"
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource tolov}"/>
+                    <Border 
+                        Height="0.5"
+                        Margin="30 20 0 20"
+                        Background="Gray">
+                    </Border>
+                    <RadioButton 
+                            x:Name="rbeslatma"
+                            Content="Eslatma"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource eslatma}"/>
+                    
 
                 </StackPanel>
+
+                <Border
+                    Height="40"
+                    Width="100"
+                    Margin="20 600 200 0">
+
+                    <CheckBox x:Name="chkbox" Style="{DynamicResource SwitchButton}" Click="IsChecked"/>
+
+                </Border>
+                
             </Grid>
 
             <Grid
@@ -109,29 +130,173 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid
                     Grid.Row="0">
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="260"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid
+                        Grid.Column="0">
+                        <Border
+                            Margin="15 15 15 10"
+                            CornerRadius="10"
+                            Background="{DynamicResource FirstColor}">
+                            <Image Source="/Assets/Images/onmed.jpg" />
+
+                        </Border>
+
+                    </Grid>
+
+                    <Grid
+                        Margin="0 10 10 0"
+                        Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            Margin="10 5 10 7"
+                            CornerRadius="10"
+                            Background="{DynamicResource FirstColor}">
+                            <Grid
+                                Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Grid.Column="0"
+                                    Height="60"
+                                    Width="60"
+                                    CornerRadius="50"
+                                    Background="#D1F5F6">
+                                    <Image Source="/Assets/Images/feverr.png"
+                                           Height="45"
+                                           Width="45"/>
+                                </Border>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="300"
+                                    Margin="5 5"
+                                    FontWeight="Bold"
+                                    FontSize="30"/>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="Bemorlar"
+                                    Margin="5 55 0 0"
+                                    FontWeight="SemiBold"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource BorderColor}"/>
+
+                            </Grid>
+
+                        </Border>
+
+                        <Border
+                            Grid.Row="1"
+                            Margin="10 7"
+                            CornerRadius="10"
+                            Background="{DynamicResource FirstColor}">
+                            <Grid
+                                Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Grid.Column="0"
+                                    Height="60"
+                                    Width="60"
+                                    CornerRadius="50"
+                                    Background="#F9E6D4">
+                                    <Image Source="/Assets/Images/doctor.png"
+                                           Height="45"
+                                           Width="45"/>
+                                </Border>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="50"
+                                    Margin="5 5"
+                                    FontWeight="Bold"
+                                    FontSize="30"/>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="Shifokorlar"
+                                    Margin="5 55 0 0"
+                                    FontWeight="SemiBold"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource BorderColor}"/>
+
+                            </Grid>
+
+                        </Border>
+
+                        <Border
+                            Grid.Row="2"
+                            Margin="10 7 10 10"
+                            CornerRadius="10"
+                            Background="{DynamicResource FirstColor}">
+                            <Grid
+                                Margin="10 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    Grid.Column="0"
+                                    Height="60"
+                                    Width="60"
+                                    CornerRadius="50"
+                                    Background="#FDE5EA">
+                                    <Image Source="/Assets/Images/user.png"
+                                           Height="50"
+                                           Width="50"/>
+                                </Border>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="30K"
+                                    FontWeight="Bold"
+                                    Margin="0 10"
+                                    FontSize="30"/>
+
+                                <Label
+                                    Grid.Column="1"
+                                    Content="Barcha foydalanuvchilar"
+                                    Margin="0 55 0 0"
+                                    FontWeight="SemiBold"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource BorderColor}"/>
+
+                            </Grid>
+
+                        </Border>
+
+                    </Grid>
+  
                 </Grid>
 
                 <Grid
                     Grid.Row="1">
-
-                </Grid>
-
-                <Grid
-                    Grid.Row="2">
                     <Border
                         CornerRadius="10"
                         Margin="15 10"
                         Background="{DynamicResource FirstColor}">
-                        <!--<Border.Effect>
-                            <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="6" BlurRadius="30"/>
-                        </Border.Effect>-->
 
                         <Grid>
                             <Grid.RowDefinitions>
@@ -155,9 +320,10 @@
                                 </Grid.RowDefinitions>
                                 
                                 <Grid
+                                    Margin="0 0 25 0"
                                     Grid.Row="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="0.35*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="0.5*"/>
@@ -166,41 +332,44 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Label 
-                                    Grid.Column="0"
-                                    Margin="10 0 0 0"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="No."/>
+                                        Grid.Column="0"
+                                        Margin="10 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="No."/>
 
                                     <Label 
-                                    Grid.Column="1"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="Ism va fameliya"/>
+                                        Grid.Column="1"
+                                        Margin="10 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="Ism va fameliya    "/>
 
                                     <Label 
-                                    Grid.Column="2"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="Uchrashuv vaqti"/>
+                                        Grid.Column="2"
+                                        Margin="5 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="Uchrashuv vaqti"/>
 
                                     <Label 
-                                    Grid.Column="3"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="Yoshi"/>
+                                        Grid.Column="3"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="Yoshi"/>
 
                                     <Label 
-                                    Grid.Column="4"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="Jinsi"/>
+                                        Grid.Column="4"
+                                        Margin="5 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="Jinsi"/>
 
                                     <Label 
-                                    Grid.Column="5"
-                                    HorizontalAlignment="Left"
-                                    Style="{DynamicResource TitleLabel}"
-                                    Content="Shifokori"/>
+                                        Grid.Column="5"
+                                        HorizontalAlignment="Left"
+                                        Style="{DynamicResource TitleLabel}"
+                                        Content="Shifokori"/>
 
 
                                 </Grid>
@@ -237,31 +406,29 @@
 
         </Grid>
 
-        <Grid
-            Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Border
+            Grid.Row="2"
+            CornerRadius="0 0 15 15"
+            Background="{DynamicResource FirstColor}">
+            <Grid
+                >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Border 
-                CornerRadius="0 0 0 15"
-                Grid.Column="0"
-                Background="{DynamicResource FirstColor}">
-                
-            </Border>
+                <Border 
+                    Grid.Column="0">
+                    
+                </Border>
 
-            <Border 
-                CornerRadius="0 0 15 0"
-                Grid.Column="1"
-                Background="{DynamicResource FirstColor}">
+                <Border 
+                    Grid.Column="1">
 
-            </Border>
+                </Border>
 
-
-
-
-        </Grid>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

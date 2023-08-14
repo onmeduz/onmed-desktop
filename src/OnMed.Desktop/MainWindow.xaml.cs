@@ -1,8 +1,10 @@
 ﻿using OnMed.Desktop.Component;
+using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace OnMed.Desktop;
 
@@ -47,5 +49,20 @@ public partial class MainWindow : Window
     {
         UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
         wrpUsers.Children.Add(userControlForDashboard);
+    }
+
+    private void IsChecked(object sender, RoutedEventArgs e)
+    {
+        //if (chkbox.IsChecked == true)
+        //{
+        //    AppTheme.ChangeTheme(new Uri("Themes/DarkTheme.xaml", UriKind.Relative));
+        //    ProfileImg.ImageSource = new BitmapImage(new Uri("C:\\Users\\99891\\Desktop\\profex-desktop\\src\\Profex-Desktop\\Assets\\Profile images\\default image.jpg", UriKind.Relative));
+
+        //}
+        //else
+        //{
+        //    AppTheme.ChangeTheme(new Uri("Themes/LightTheme.xaml", UriKind.Relative));
+        //    ProfileImg.ImageSource = new BitmapImage(new Uri("C:\\Users\\99891\\Desktop\\profex-desktop\\src\\Profex-Desktop\\Assets\\Profile images\\default imageLight.jpg", UriKind.Relative));
+        //}
     }
 }
