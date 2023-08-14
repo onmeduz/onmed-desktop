@@ -176,11 +176,10 @@
     </Style>
 
     <Style x:Key="MenuButton" TargetType="{x:Type RadioButton}">
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="45"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="Margin" Value="0 3 0 3"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -188,9 +187,9 @@
                     <Border x:Name="B" CornerRadius="5">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5"/>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="180"/>
                             </Grid.ColumnDefinitions>
                             <Border x:Name="Indicator" Grid.Column="0"
                                     Height="45"
@@ -198,21 +197,43 @@
                                     Visibility="Collapsed"
                                     Background="{DynamicResource FifthColor}"/>
 
-                            <Path 
-                                    x:Name="Icon" Grid.Column="1"
-                                    Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
-                                    Fill="{DynamicResource BorderColor}"
-                                    Height="20"
-                                    Stretch="Uniform"/>
+                            <Border 
+                                Grid.Column="1"
+                                Background="Transparent">
+                                
+                            </Border>
 
+                            <Border
+                                Grid.Column="2"
+                                CornerRadius="5"
+                                x:Name="IconPath">
+                                <Grid >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="2"
-                                   FontSize="{TemplateBinding FontSize}"
-                                   Content="{TemplateBinding Content}"
-                                   FontFamily="Arial"
-                                   Foreground="{DynamicResource BorderColor}"
-                                   FontWeight="DemiBold"
-                                   VerticalAlignment="Center"/>
+                                    <Path 
+                                        Grid.Column="0"
+                                        x:Name="Icon" 
+                                        Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}"
+                                        Fill="{DynamicResource BorderColor}"
+                                        Height="20"
+                                        Stretch="Uniform"/>
+
+                                    <Label 
+                                       Grid.Column="1"
+                                       x:Name="Label"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       Content="{TemplateBinding Content}"
+                                       FontFamily="Arial"
+                                       Foreground="{DynamicResource BorderColor}"
+                                       FontWeight="DemiBold"
+                                       VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+
+                            
 
                         </Grid>
                     </Border>
@@ -221,11 +242,13 @@
                             <Setter TargetName="B" Property="Background" Value="Transparent"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="{DynamicResource }"/>
+                            <Setter TargetName="IconPath" Property="Background" Value="{DynamicResource SixthColor}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="{DynamicResource ThreedColor}"/>
+                            <Setter TargetName="IconPath" Property="Background" Value="{DynamicResource FifthColor}"/>
                             <Setter TargetName="Indicator" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="Label" Property="Foreground" Value="{DynamicResource FirstColor}"/>
+                            <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource FirstColor}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>

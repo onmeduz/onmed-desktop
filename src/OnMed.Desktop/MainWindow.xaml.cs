@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using OnMed.Desktop.Component;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -40,5 +41,11 @@ public partial class MainWindow : Window
     private void borderDragabl_MouseDown(object sender, MouseButtonEventArgs e)
     {
         this.DragMove();
+    }
+
+    private void rbDashboard_Click(object sender, RoutedEventArgs e)
+    {
+        UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
+        wrpUsers.Children.Add(userControlForDashboard);
     }
 }
