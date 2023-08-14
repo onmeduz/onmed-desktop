@@ -67,7 +67,7 @@
                 <StackPanel
                     Margin="5 100 30 100"
                     Orientation="Vertical">
-                    
+
                     <RadioButton 
                             x:Name="rbDashboard"
                             Content="Dashboard"
@@ -85,10 +85,10 @@
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource shifokor}"/>
                     <RadioButton 
-                            x:Name="rbMutahassis"
-                            Content="Mutahassis"
+                            x:Name="rbToifalar"
+                            Content="Toifalar"
                             Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource mutaxassis}"/>
+                            Tag="{DynamicResource toifa}"/>
                     <RadioButton 
                             x:Name="rbUchrashuv"
                             Content="Uchrashuvlar"
@@ -109,19 +109,19 @@
                             Content="Eslatma"
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource eslatma}"/>
-                    
+
 
                 </StackPanel>
 
-                <Border
-                    Height="40"
+                <Grid
+                    Height="60"
                     Width="100"
                     Margin="20 600 200 0">
 
                     <CheckBox x:Name="chkbox" Style="{DynamicResource SwitchButton}" Click="IsChecked"/>
 
-                </Border>
-                
+                </Grid>
+
             </Grid>
 
             <Grid
@@ -178,7 +178,7 @@
                                     Height="60"
                                     Width="60"
                                     CornerRadius="50"
-                                    Background="#D1F5F6">
+                                    Background="{DynamicResource FifthColor}">
                                     <Image Source="/Assets/Images/feverr.png"
                                            Height="45"
                                            Width="45"/>
@@ -188,6 +188,7 @@
                                     Grid.Column="1"
                                     Content="300"
                                     Margin="5 5"
+                                    Foreground="{DynamicResource color}"
                                     FontWeight="Bold"
                                     FontSize="30"/>
 
@@ -211,8 +212,8 @@
                             <Grid
                                 Margin="10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
                                 <Border
@@ -220,7 +221,7 @@
                                     Height="60"
                                     Width="60"
                                     CornerRadius="50"
-                                    Background="#F9E6D4">
+                                    Background="{DynamicResource FourthColor}">
                                     <Image Source="/Assets/Images/doctor.png"
                                            Height="45"
                                            Width="45"/>
@@ -231,6 +232,7 @@
                                     Content="50"
                                     Margin="5 5"
                                     FontWeight="Bold"
+                                    Foreground="{DynamicResource color}"
                                     FontSize="30"/>
 
                                 <Label
@@ -262,7 +264,7 @@
                                     Height="60"
                                     Width="60"
                                     CornerRadius="50"
-                                    Background="#FDE5EA">
+                                    Background="{DynamicResource ThreedColor}">
                                     <Image Source="/Assets/Images/user.png"
                                            Height="50"
                                            Width="50"/>
@@ -272,6 +274,7 @@
                                     Grid.Column="1"
                                     Content="30K"
                                     FontWeight="Bold"
+                                    Foreground="{DynamicResource color}"
                                     Margin="0 10"
                                     FontSize="30"/>
 
@@ -288,7 +291,7 @@
                         </Border>
 
                     </Grid>
-  
+
                 </Grid>
 
                 <Grid
@@ -307,7 +310,7 @@
                             <Label
                                 Margin="10 5 0 0"
                                 Content="Belgilangan uchrashuvlar"
-                                Foreground="Black"
+                                Foreground="{DynamicResource color}"
                                 FontWeight="SemiBold"
                                 FontSize="14"/>
 
@@ -318,7 +321,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="0.3"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <Grid
                                     Margin="0 0 25 0"
                                     Grid.Row="0">
@@ -335,12 +338,14 @@
                                         Grid.Column="0"
                                         Margin="10 0 0 0"
                                         HorizontalAlignment="Left"
+                                        Foreground="{DynamicResource BorderColor}"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="No."/>
 
                                     <Label 
                                         Grid.Column="1"
                                         Margin="10 0 0 0"
+                                        Foreground="{DynamicResource BorderColor}"
                                         HorizontalAlignment="Left"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="Ism va fameliya    "/>
@@ -348,6 +353,7 @@
                                     <Label 
                                         Grid.Column="2"
                                         Margin="5 0 0 0"
+                                        Foreground="{DynamicResource BorderColor}"
                                         HorizontalAlignment="Left"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="Uchrashuv vaqti"/>
@@ -355,6 +361,7 @@
                                     <Label 
                                         Grid.Column="3"
                                         HorizontalAlignment="Left"
+                                        Foreground="{DynamicResource BorderColor}"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="Yoshi"/>
 
@@ -362,12 +369,14 @@
                                         Grid.Column="4"
                                         Margin="5 0 0 0"
                                         HorizontalAlignment="Left"
+                                        Foreground="{DynamicResource BorderColor}"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="Jinsi"/>
 
                                     <Label 
                                         Grid.Column="5"
                                         HorizontalAlignment="Left"
+                                        Foreground="{DynamicResource BorderColor}"
                                         Style="{DynamicResource TitleLabel}"
                                         Content="Shifokori"/>
 
@@ -378,7 +387,7 @@
                                     Grid.Row="1"
                                     Margin="10 0 25 0"
                                     Background="#898989">
-                                    
+
                                 </Border>
                             </Grid>
 
@@ -390,12 +399,12 @@
                                         x:Name="wrpUsers"
                                         Margin="10 0 10 0"
                                         Orientation="Vertical">
-                                        
+
                                     </StackPanel>
                                 </ScrollViewer>
-                                
+
                             </Grid>
-                            
+
                         </Grid>
 
                     </Border>
@@ -419,7 +428,7 @@
 
                 <Border 
                     Grid.Column="0">
-                    
+
                 </Border>
 
                 <Border 

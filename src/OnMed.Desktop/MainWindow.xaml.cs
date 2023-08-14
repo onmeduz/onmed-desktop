@@ -1,4 +1,5 @@
 ﻿using OnMed.Desktop.Component;
+using OnMed.Desktop.Themes;
 using System;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -53,16 +54,14 @@ public partial class MainWindow : Window
 
     private void IsChecked(object sender, RoutedEventArgs e)
     {
-        //if (chkbox.IsChecked == true)
-        //{
-        //    AppTheme.ChangeTheme(new Uri("Themes/DarkTheme.xaml", UriKind.Relative));
-        //    ProfileImg.ImageSource = new BitmapImage(new Uri("C:\\Users\\99891\\Desktop\\profex-desktop\\src\\Profex-Desktop\\Assets\\Profile images\\default image.jpg", UriKind.Relative));
+        if (chkbox.IsChecked == true)
+        {
+            AppTheme.ChangeTheme(new Uri("Themes/DarkTheme.xaml", UriKind.Relative));
 
-        //}
-        //else
-        //{
-        //    AppTheme.ChangeTheme(new Uri("Themes/LightTheme.xaml", UriKind.Relative));
-        //    ProfileImg.ImageSource = new BitmapImage(new Uri("C:\\Users\\99891\\Desktop\\profex-desktop\\src\\Profex-Desktop\\Assets\\Profile images\\default imageLight.jpg", UriKind.Relative));
-        //}
+        }
+        else
+        {
+            AppTheme.ChangeTheme(new Uri("Themes/LightTheme.xaml", UriKind.Relative));
+        }
     }
 }

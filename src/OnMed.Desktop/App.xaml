@@ -13,7 +13,6 @@
                 <ResourceDictionary Source="/Styles/TitleStyle.xaml"/>
                 <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
                 <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
-                <ResourceDictionary Source="/Themes/DarkTheme.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
 
