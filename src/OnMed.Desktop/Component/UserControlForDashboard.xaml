@@ -15,12 +15,12 @@
         <Grid
             Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"/>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="1.4*"/>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.6*"/>
-                <ColumnDefinition Width="1.4*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="lblNo"
                    Grid.Column="0"
@@ -37,15 +37,14 @@
                    FontSize="12"
                    HorizontalAlignment="Left"
                    Foreground="Black"
-                   Margin="5 0"/>
+                   />
             <Label x:Name="lblDateTime"
                    Grid.Column="2"
                    Content="16 May 8:30"
                    FontWeight="SemiBold"
                    FontSize="12"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
-                   Margin="5 0"/>
+                   Foreground="Black"/>
             <Label x:Name="lblAge"
                    Grid.Column="3"
                    FontWeight="SemiBold"
@@ -53,29 +52,27 @@
                    FontSize="12"
                    HorizontalAlignment="Left"
                    Foreground="Black"
-                   Margin=" 0"/>
+                   />
             <Label x:Name="lblGender"
                    Grid.Column="4"
                    Content="Erkak"
                    FontWeight="SemiBold"
                    FontSize="12"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
-                   Margin="5 0"/>
+                   Foreground="Black"/>
             <Label x:Name="lblDoctor"
                    Grid.Column="5"
                    Content="Ali Valiyev"
                    FontWeight="SemiBold"
                    FontSize="12"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
-                   Margin="5 0"/>
+                   Foreground="Black"/>
             
         </Grid>
 
         <Border
             Grid.Row="1"
-            Background="Black">
+            Background="#898989">
             
         </Border>
             
