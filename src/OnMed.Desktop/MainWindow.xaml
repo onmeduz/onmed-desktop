@@ -113,14 +113,14 @@
 
                 </StackPanel>
 
-                <Grid
+                <!--<Grid
                     Height="60"
                     Width="100"
                     Margin="20 600 200 0">
 
                     <CheckBox x:Name="chkbox" Style="{DynamicResource SwitchButton}" Click="IsChecked"/>
 
-                </Grid>
+                </Grid>-->
 
             </Grid>
 
