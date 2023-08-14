@@ -15,7 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
 
         <Border 
@@ -65,14 +65,40 @@
                 </Border>
 
                 <StackPanel
-                    Margin="5 100 5 0"
+                    Margin="5 100 30 0"
                     Orientation="Vertical">
-
+                    
                     <RadioButton 
-                            x:Name="rbBosh_stollar"
-                            Content="Bo'sh stollar"
+                            x:Name="rbDashboard"
+                            Content="Dashboard"
+                            Click="rbDashboard_Click"
                             Style="{DynamicResource MenuButton}" 
-                            />
+                            Tag="{DynamicResource dashboard}"/>
+                    <RadioButton 
+                            x:Name="rbBemor"
+                            Content="Bemorlar"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource bemor}"/>
+                    <RadioButton 
+                            x:Name="rbShifokor"
+                            Content="Shifokorlar"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource dashboard}"/>
+                    <RadioButton 
+                            x:Name="rbMutahassis"
+                            Content="Mutahassis"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource dashboard}"/>
+                    <RadioButton 
+                            x:Name="rbUchrashuv"
+                            Content="Uchrashuvlar"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource uchrashuv}"/>
+                    <RadioButton 
+                            x:Name="rbTolov"
+                            Content="To'lov"
+                            Style="{DynamicResource MenuButton}" 
+                            Tag="{DynamicResource tolov}"/>
 
                 </StackPanel>
             </Grid>
@@ -81,18 +107,160 @@
                 Grid.Column="1"
                 Background="{DynamicResource SecondColor}">
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Grid.Row="0">
+                    
+                </Grid>
+
+                <Grid
+                    Grid.Row="1">
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="2">
+                    <Border
+                        CornerRadius="10"
+                        Margin="15 10"
+                        Background="{DynamicResource FirstColor}">
+                        <!--<Border.Effect>
+                            <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="6" BlurRadius="30"/>
+                        </Border.Effect>-->
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35"/>
+                                <RowDefinition Height="21"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label
+                                Margin="10 5 0 0"
+                                Content="Belgilangan uchrashuvlar"
+                                Foreground="Black"
+                                FontWeight="SemiBold"
+                                FontSize="14"/>
+
+                            <Grid
+                                Grid.Row="1">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.3"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Grid
+                                    Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label 
+                                    Grid.Column="0"
+                                    Margin="10 0 0 0"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="No."/>
+
+                                    <Label 
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="Ism va fameliya"/>
+
+                                    <Label 
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="Uchrashuv vaqti"/>
+
+                                    <Label 
+                                    Grid.Column="3"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="Yoshi"/>
+
+                                    <Label 
+                                    Grid.Column="4"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="Jinsi"/>
+
+                                    <Label 
+                                    Grid.Column="5"
+                                    HorizontalAlignment="Left"
+                                    Style="{DynamicResource TitleLabel}"
+                                    Content="Shifokori"/>
+
+
+                                </Grid>
+
+                                <Border
+                                    Grid.Row="1"
+                                    Margin="10 0 25 0"
+                                    Background="#898989">
+                                    
+                                </Border>
+                            </Grid>
+
+                            <Grid
+                                Grid.Row="2"
+                                Margin="0 5 0 6">
+                                <ScrollViewer>
+                                    <StackPanel
+                                        x:Name="wrpUsers"
+                                        Margin="10 0 10 0"
+                                        Orientation="Vertical">
+                                        
+                                    </StackPanel>
+                                </ScrollViewer>
+                                
+                            </Grid>
+                            
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
+
             </Grid>
 
         </Grid>
 
         <Grid
-            Grid.Row="2"
-            Background="{DynamicResource FirstColor}">
+            Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
+            <Border 
+                CornerRadius="0 0 0 15"
+                Grid.Column="0"
+                Background="{DynamicResource FirstColor}">
+                
+            </Border>
+
+            <Border 
+                CornerRadius="0 0 15 0"
+                Grid.Column="1"
+                Background="{DynamicResource FirstColor}">
+
+            </Border>
+
+
+
+
         </Grid>
 
     </Grid>

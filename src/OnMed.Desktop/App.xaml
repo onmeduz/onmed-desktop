@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
 
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/TitleStyle.xaml"/>
                 <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
                 <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
 

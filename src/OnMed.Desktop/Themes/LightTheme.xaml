@@ -4,9 +4,9 @@
     <SolidColorBrush x:Key="BorderColor" Color="#4D4D4D"/>
     
     <SolidColorBrush x:Key="FirstColor" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="SecondColor" Color="#EEEEEE"/>
+    <SolidColorBrush x:Key="SecondColor" Color="#F2F2F2"/>
     <SolidColorBrush x:Key="ThreedColor" Color="#F5F8FA"/>
-    <SolidColorBrush x:Key="FifthColor" Color="#1D5D9B"/>
-    <SolidColorBrush x:Key="SixthColor" Color="#FBFBFB"/>
+    <SolidColorBrush x:Key="FifthColor" Color="#329DFF"/>
+    <SolidColorBrush x:Key="SixthColor" Color="#D3EBFF"/>
 
 </ResourceDictionary>
