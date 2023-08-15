@@ -13,7 +13,7 @@
     <None Remove="Assets\Images\doctor.png" />
     <None Remove="Assets\Images\feverr.png" />
     <None Remove="Assets\Images\images__4_-removebg-preview.png" />
-    <None Remove="Assets\Images\onmed.jpg" />
+    <None Remove="Assets\Images\login.jpg" />
     <None Remove="Assets\Images\user.png" />
   </ItemGroup>
 
@@ -29,8 +29,8 @@
     <Resource Include="Assets\Images\doctor.png" />
     <Resource Include="Assets\Images\feverr.png" />
     <Resource Include="Assets\Images\images__4_-removebg-preview.png" />
+    <Resource Include="Assets\Images\login.jpg" />
     <Resource Include="Assets\Images\user.png" />
-    <Content Include="Assets\Images\onmed.jpg" />
   </ItemGroup>
 
   <ItemGroup>
