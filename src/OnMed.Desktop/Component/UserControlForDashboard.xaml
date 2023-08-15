@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnMed.Desktop.Component"
              mc:Ignorable="d" 
-             Height="30">
+             Height="37">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -13,7 +13,9 @@
         </Grid.RowDefinitions>
 
         <Grid
-            Grid.Row="0">
+            Grid.Row="0"
+            Margin="0 0 20 0">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.35*"/>
                 <ColumnDefinition Width="*"/>
@@ -28,50 +30,57 @@
                    FontWeight="SemiBold"
                    FontSize="12"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
+                   VerticalAlignment="Bottom"
+                   Foreground="{DynamicResource color}"
                    Margin="5 0"/>
             <Label x:Name="lblName"
                    Grid.Column="1"
                    Content="Erqo'ziyev Shodiyor"
                    FontWeight="SemiBold"
                    FontSize="12"
+                   VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
+                   Foreground="{DynamicResource color}"
                    />
             <Label x:Name="lblDateTime"
                    Grid.Column="2"
                    Content="16 May 8:30"
                    FontWeight="SemiBold"
                    FontSize="12"
+                   VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
-                   Foreground="Black"/>
+                   Foreground="{DynamicResource color}"/>
             <Label x:Name="lblAge"
                    Grid.Column="3"
                    FontWeight="SemiBold"
                    Content="30"
                    FontSize="12"
+                   VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
-                   Foreground="Black"
+                   Foreground="{DynamicResource color}"
                    />
             <Label x:Name="lblGender"
                    Grid.Column="4"
                    Content="Erkak"
                    FontWeight="SemiBold"
                    FontSize="12"
+                   VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
-                   Foreground="Black"/>
+                   Foreground="{DynamicResource color}"/>
             <Label x:Name="lblDoctor"
                    Grid.Column="5"
                    Content="Ali Valiyev"
                    FontWeight="SemiBold"
                    FontSize="12"
+                   VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
-                   Foreground="Black"/>
+                   Foreground="{DynamicResource color}"/>
             
         </Grid>
 
         <Border
             Grid.Row="1"
+            Margin="5 0 15 0"
             Background="#898989">
             
         </Border>

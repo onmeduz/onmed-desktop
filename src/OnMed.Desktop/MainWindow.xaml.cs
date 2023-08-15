@@ -50,6 +50,9 @@ public partial class MainWindow : Window
     {
         UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
         wrpUsers.Children.Add(userControlForDashboard);
+
+        DoctorControlForDashboard doctorControlForDashboard = new DoctorControlForDashboard();
+        wrpDoctors.Children.Add(doctorControlForDashboard);
     }
 
     private void IsChecked(object sender, RoutedEventArgs e)
