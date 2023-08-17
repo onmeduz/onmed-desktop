@@ -18,7 +18,7 @@
             MouseEnter="Border_MouseEnter"
             MouseDown="Border_MouseDown"
             Grid.Column="0"
-            Height="35"
+            Height="40"
             Width="40"
             CornerRadius="40"
             BorderBrush="#78B0E7"

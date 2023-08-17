@@ -1,11 +1,8 @@
-﻿using OnMed.Desktop.Component;
+﻿using OnMed.Desktop.Pages;
 using OnMed.Desktop.Themes;
 using System;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace OnMed.Desktop;
 
@@ -14,6 +11,7 @@ namespace OnMed.Desktop;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private bool _disposed = true;
     public MainWindow()
     {
         InitializeComponent();
@@ -46,15 +44,6 @@ public partial class MainWindow : Window
         this.DragMove();
     }
 
-    private void rbDashboard_Click(object sender, RoutedEventArgs e)
-    {
-        UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
-        wrpUsers.Children.Add(userControlForDashboard);
-
-        DoctorControlForDashboard doctorControlForDashboard = new DoctorControlForDashboard();
-        wrpDoctors.Children.Add(doctorControlForDashboard);
-    }
-
     private void IsChecked(object sender, RoutedEventArgs e)
     {
         if (chkbox.IsChecked == true)
@@ -66,5 +55,53 @@ public partial class MainWindow : Window
         {
             AppTheme.ChangeTheme(new Uri("Themes/LightTheme.xaml", UriKind.Relative));
         }
+    }
+
+    private void rbDashboard_Click(object sender, RoutedEventArgs e)
+    {
+        DashboardPage dashboardPage = new DashboardPage();
+        PageNavigator.Content = dashboardPage;
+    }
+
+    private void rbBemor_Click(object sender, RoutedEventArgs e)
+    {
+        PatientPage patientPage = new PatientPage();
+        PageNavigator.Content = patientPage;
+    }
+
+    private void rbShifokor_Click(object sender, RoutedEventArgs e)
+    {
+        DoctorPage  doctorPage = new DoctorPage();
+        PageNavigator.Content = doctorPage;
+    }
+
+    private void rbToifalar_Click(object sender, RoutedEventArgs e)
+    {
+        CategoryPage categoryPage = new CategoryPage();
+        PageNavigator.Content = categoryPage;
+    }
+
+    private void rbUchrashuv_Click(object sender, RoutedEventArgs e)
+    {
+        AppointmentPage appointmentPage = new AppointmentPage();
+        PageNavigator.Content = appointmentPage;
+    }
+
+    private void rbTolov_Click(object sender, RoutedEventArgs e)
+    {
+        PaymentPage paymentPage = new PaymentPage();
+        PageNavigator.Content = paymentPage;
+    }
+
+    private void rbShifoxona_Click(object sender, RoutedEventArgs e)
+    {
+        HospitalPage hospitalPage = new HospitalPage();
+        PageNavigator.Content = hospitalPage;
+    }
+
+    private void rbeslatma_Click(object sender, RoutedEventArgs e)
+    {
+        NotePage notePage = new NotePage();
+        PageNavigator.Content = notePage;
     }
 }

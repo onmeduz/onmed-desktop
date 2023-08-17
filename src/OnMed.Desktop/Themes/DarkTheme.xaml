@@ -14,4 +14,6 @@
     <SolidColorBrush x:Key="SixthColor" Color="#F0F0F0"/>
     <SolidColorBrush x:Key="SeventhColor" Color="#585858"/>
 
+    <SolidColorBrush x:Key="logocolor" Color="White"/>
+
 </ResourceDictionary>
