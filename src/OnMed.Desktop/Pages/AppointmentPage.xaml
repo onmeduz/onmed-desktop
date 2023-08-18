@@ -9,10 +9,51 @@
       Title="AppointmentPage">
 
     <Grid>
-        <ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/> 
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Content="No."
+                Style="{DynamicResource TitleLabel}"/>
+            <Label
+                Grid.Column="1"
+                Content="Shifokor"
+                Style="{DynamicResource TitleLabel}"/>
+            <Label
+                Grid.Column="2"
+                Content="Bemor"
+                Style="{DynamicResource TitleLabel}"/>
+            <Label
+                Grid.Column="3"
+                Content="Uchrashuv kuni"
+                Style="{DynamicResource TitleLabel}"/>
+            <Label
+                Grid.Column="4"
+                Content="Vaqti"
+                Style="{DynamicResource TitleLabel}"/>
+            <Label
+                Grid.Column="5"
+                Content=""
+                Style="{DynamicResource TitleLabel}"/>
+        </Grid>
+        
+        <ScrollViewer
+            Grid.Row="1">
             <WrapPanel x:Name="wrpProduct"
                    Margin="10">
-
             </WrapPanel>
         </ScrollViewer>
     </Grid>

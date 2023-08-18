@@ -5,16 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnMed.Desktop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="400"
-      Title="DoctorPage">
-
+      Title="DoctorPage"
+      Loaded="Page_Loaded">
     <Grid>
         <ScrollViewer>
-            <WrapPanel x:Name="wrpDoctors"
-                   Margin="10">
-
+            <WrapPanel 
+                x:Name="wrpDoctors"
+                Margin="5 10"       
+                >
             </WrapPanel>
         </ScrollViewer>
-
     </Grid>
 </Page>

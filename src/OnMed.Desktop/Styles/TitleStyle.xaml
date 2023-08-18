@@ -2,10 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="TitleLabel"  TargetType="{x:Type Label}">
-        <Setter Property="Foreground" Value="#898989"/>
+        <Setter Property="Foreground" Value="{DynamicResource BorderColor}"/>
         <Setter Property="FontFamily" Value="Jetbrain Mono"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="SemiBold"/> 
+    </Style>
+
+    <Style x:Key="NameLabel"  TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{DynamicResource color}"/>
+        <Setter Property="FontFamily" Value="Jetbrain Mono"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
 
 </ResourceDictionary>

@@ -5,8 +5,75 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnMed.Desktop.Component"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="300" d:DesignWidth="220">
+    <Grid
+        Margin="15">
+        <Border
+            Margin="0 90 0 0"
+            CornerRadius="10"
+            Background="{DynamicResource FirstColor}">
+            <StackPanel
+                Orientation="Vertical"
+                Margin="15 70 15 0">
+                <Label
+                    Content="Erqo'ziyev Shodiyor"
+                    Style="{DynamicResource NameLabel}"/>
+                <Label
+                    Content="Stamatolog"
+                    Style="{DynamicResource TitleLabel}"/>
+                <StackPanel
+                    Margin="5 15"
+                    Orientation="Horizontal"
+                    Height="20">
+                    <Path 
+                        x:Name="Star1" 
+                        Data="{DynamicResource yulduz}"
+                        Fill="Yellow"
+                        Height="14"
+                        Stretch="Uniform"/>
+                    <Path 
+                        x:Name="Star2" 
+                        Margin="5 0 0 0"
+                        Data="{DynamicResource yulduz}"
+                        Fill="Yellow"
+                        Height="14"
+                        Stretch="Uniform"/>
+                    <Path 
+                        x:Name="Star3" 
+                        Margin="5 0 0 0"
+                        Data="{DynamicResource yulduz}"
+                        Fill="Yellow"
+                        Height="14"
+                        Stretch="Uniform"/>
+                    <Path 
+                        x:Name="Star4" 
+                        Margin="5 0 0 0"
+                        Data="{DynamicResource yulduz}"
+                        Fill="{DynamicResource SecondColor}"
+                        Height="14"
+                        Stretch="Uniform"/>
+                    <Path 
+                        x:Name="Star5" 
+                        Margin="5 0 0 0"
+                        Data="{DynamicResource yulduz}"
+                        Fill="{DynamicResource SecondColor}"
+                        Height="14"
+                        Stretch="Uniform"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border
+            x:Name="DoctorImage"
+            MouseDown="DoctorImage_MouseDown"
+            MouseEnter="DoctorImage_MouseEnter"
+            MouseLeave="DoctorImage_MouseLeave"
+            CornerRadius="10"
+            Margin="10 0 10 140"
+            BorderBrush="{DynamicResource FifthColor}"
+            Background="{DynamicResource FifthColor}"
+            BorderThickness="4">
+            <Image Source="/Assets/Images/doctor.png" Height="120"/>
+        </Border>
+
     </Grid>
 </UserControl>

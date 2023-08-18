@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace OnMed.Desktop.Component
+namespace OnMed.Desktop.Component;
+
+/// <summary>
+/// Interaction logic for DoctorComponent.xaml
+/// </summary>
+public partial class DoctorComponent : UserControl
 {
-    /// <summary>
-    /// Interaction logic for DoctorComponent.xaml
-    /// </summary>
-    public partial class DoctorComponent : UserControl
+    public DoctorComponent()
     {
-        public DoctorComponent()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
+
+    private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+
+    }
+
+    private void DoctorImage_MouseEnter(object sender, MouseEventArgs e)
+    {
+        DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C80707"));
+    }
+
+    private void DoctorImage_MouseLeave(object sender, MouseEventArgs e)
+    {
+        DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D5F3F6"));
     }
 }

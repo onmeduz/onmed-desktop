@@ -1,4 +1,5 @@
-﻿using OnMed.Desktop.Pages;
+﻿using OnMed.Desktop.Component;
+using OnMed.Desktop.Pages;
 using OnMed.Desktop.Themes;
 using System;
 using System.Windows;
