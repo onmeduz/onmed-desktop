@@ -4,11 +4,91 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnMed.Desktop.Component"
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="600">
-    <Grid
-        Margin="30"
-        Background="{DynamicResource color}">
+             mc:Ignorable="d"
+             Height="200"
+             Width="800">
+    
+    <Border
+        Margin="10 10"
+        CornerRadius="10"
+        Background="{DynamicResource FirstColor}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-    </Grid>
+            <Border
+                CornerRadius="10"
+                Grid.Column="0"
+                Margin="15">
+                <Border.Background>
+                    <ImageBrush 
+                        ImageSource="/Assets/Images/Plt_Image.jpg"
+                        Stretch="Fill"/>
+                </Border.Background>
+            </Border>
+
+            <StackPanel
+                Margin="10"
+                Grid.Column="1">
+
+                <Label Content="Ismi va familiyasi :"
+                       FontSize="17"
+                       Margin="0 2"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Telefon raqami :"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Shifokori :"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Yoshi :"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Jinsi :"
+                       FontSize="17"                       
+                       Margin="0 2"
+                       Style="{DynamicResource TitleLabel}"/>
+
+            </StackPanel>
+
+            <StackPanel
+                Margin="10"
+                Grid.Column="2">
+
+                <Label Content="Po'lat Alemdar"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="+90 212 772 7005"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Elif Eylul"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="52"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+                <Label Content="Erkak"
+                       Margin="0 2"
+                       FontSize="17"
+                       Style="{DynamicResource TitleLabel}"/>
+            </StackPanel>
+        </Grid>
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="10"
+                ShadowDepth="-1"
+                Color="Gray">
+            </DropShadowEffect>
+        </Border.Effect>
+    </Border>   
 </UserControl>

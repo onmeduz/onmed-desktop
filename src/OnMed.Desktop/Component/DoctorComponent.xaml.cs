@@ -26,6 +26,6 @@ public partial class DoctorComponent : UserControl
 
     private void DoctorImage_MouseLeave(object sender, MouseEventArgs e)
     {
-        DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D5F3F6"));
+        DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Transparent"));
     }
 }
