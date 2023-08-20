@@ -7,12 +7,11 @@
       mc:Ignorable="d" 
       Title="DoctorPage"
       Loaded="Page_Loaded">
-    <Grid>
+    <Grid
+        Margin="10">
         <ScrollViewer>
             <WrapPanel 
-                x:Name="wrpDoctors"
-                Margin="5 10"       
-                >
+                x:Name="wrpDoctors">
             </WrapPanel>
         </ScrollViewer>
     </Grid>

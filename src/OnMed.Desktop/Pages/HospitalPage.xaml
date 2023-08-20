@@ -8,10 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HospitalPage">
 
-    <Grid>
+    <Grid
+        Margin="10">
         <ScrollViewer>
-            <WrapPanel x:Name="wrpProduct"
-                   Margin="10">
+            <WrapPanel 
+                x:Name="wrpProduct">
 
             </WrapPanel>
         </ScrollViewer>

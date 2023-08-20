@@ -7,13 +7,12 @@
       mc:Ignorable="d" 
       Loaded="Page_Loaded">
 
-    <Grid>
-        <Label
-            Content="sdfghhg"/>
+    <Grid
+        Margin="10">
         <ScrollViewer>
             <WrapPanel 
-                x:Name="wrpPatient"
-                Margin="10">
+                Orientation="Vertical"
+                x:Name="wrpPatient">
             </WrapPanel>
         </ScrollViewer>
     </Grid>

@@ -22,10 +22,14 @@
             Width="40"
             CornerRadius="40"
             BorderBrush="#78B0E7"
-            BorderThickness="2"
-            Background="Transparent">
-            <Image Source="/Assets/Images/doctor.png" 
-                   Height="25"/>
+            BorderThickness="2">
+
+            <Border.Background>
+                <ImageBrush 
+                    x:Name="doctorImageDashboard"
+                    Stretch="UniformToFill"
+                    ImageSource="/Assets/Images/images.jpg" />
+            </Border.Background>
 
         </Border>
 

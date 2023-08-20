@@ -125,7 +125,7 @@
                     <Border 
                         x:Name="B"
                         CornerRadius="10"
-                        Background="#1F2440"
+                        Background="{DynamicResource btncolor}"
                         >
                         <Label
                             FontFamily="Jetbrains Mono"
@@ -139,13 +139,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#364760"/>
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource btnMouseEnter}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="#1F2440"/>
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource btncolor}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="B" Property="Background" Value="#253142"/>
+                            <Setter TargetName="B" Property="Background" Value="{DynamicResource btnMouseClick}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

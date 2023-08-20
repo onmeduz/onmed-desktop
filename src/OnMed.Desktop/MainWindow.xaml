@@ -79,21 +79,21 @@
                 Grid.Column="0"
                 Background="{DynamicResource FirstColor}">
                 <Border
-                    Margin="30 35 165 558"
+                    Margin="20,0,170,0"
                     VerticalAlignment="Top">
                     <Path
                         x:Name="Icon" 
                         Data="{DynamicResource logo}"
-                        Fill="{DynamicResource logocolor}"
+                        Fill="{DynamicResource SixthColor}"
                         Height="80"
                         Stretch="UniformToFill"/>
                 </Border>
                 <Label
                     Content="Onmed"
-                    Margin="90 25 0 575"
+                    Margin="90,-10,0,610"
                     FontSize="35"
                     FontWeight="Bold"
-                    Foreground="{DynamicResource logocolor}"/>
+                    Foreground="{DynamicResource SixthColor}"/>
                 <StackPanel
                     Margin="5 100 30 100"
                     Orientation="Vertical">
@@ -197,7 +197,10 @@
                     Width="50"
                     CornerRadius="50">
                     <Border.Background>
-                        <ImageBrush x:Name="AdminImage" ImageSource="/Assets/Images/doctor.png" />
+                        <ImageBrush
+                            x:Name="AdminImage" 
+                            Stretch="UniformToFill"
+                            ImageSource="/Assets/Images/images.jpg" />
                     </Border.Background>
                 </Border>
             </Grid>

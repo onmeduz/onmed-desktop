@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnMed.Dtos\OnMed.Dtos.csproj" />
+    <ProjectReference Include="..\OnMed.ViewModel\OnMed.ViewModel.csproj" />
+  </ItemGroup>
+
 </Project>
