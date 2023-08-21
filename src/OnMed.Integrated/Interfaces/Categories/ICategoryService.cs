@@ -4,5 +4,5 @@ namespace OnMed.Integrated.Interfaces.Categories;
 
 public interface ICategoryService
 {
-    public Task<IList<CategoryViewModel>> GetAllAsync();
+    public Task<List<CategoryViewModel>> GetAllAsync();
 }

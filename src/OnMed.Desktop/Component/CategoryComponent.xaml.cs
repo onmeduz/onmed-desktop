@@ -14,7 +14,6 @@ public partial class CategoryComponent : UserControl
     {
         InitializeComponent();
     }
-
     public void SetData(CategoryViewModel categoryViewModel)
     {
         categoryImage.ImageSource = new BitmapImage(new System.Uri(categoryViewModel.ImagePath, UriKind.Relative));
