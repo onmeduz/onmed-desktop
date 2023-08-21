@@ -55,11 +55,11 @@ CREATE TABLE administrators
 
 CREATE TABLE doctors
 (
-    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
+    	id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
 	first_name character varying(20) NOT NULL,
 	last_name character varying(20) NOT NULL,
 	middle_name character varying(20) NOT NULL,
-	birth_day date NOT NULL,
+	birth_day date NOT NULL,prop		
 	phone_number character varying(13) NOT NULL,
 	degree text NOT NULL,
 	is_male boolean NOT NULL DEFAULT true,
@@ -74,7 +74,7 @@ CREATE TABLE doctors
 
 CREATE TABLE hospitals
 (
-    id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
+    	id bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY NOT NULL,
 	name character varying(50) NOT NULL,
 	legal_name character varying(50) NOT NULL,
 	brand_image_path text NOT NULL,

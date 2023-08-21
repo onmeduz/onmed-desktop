@@ -1,6 +1,6 @@
-﻿namespace OnMed.ViewModel.Doctors;
+﻿namespace OnMed.ViewModel.Patients;
 
-public class DoctorViewModel
+public class PatientViewModel
 {
     public long Id { get; set; }
     public string FirstName { get; set; } = string.Empty;
@@ -10,10 +10,7 @@ public class DoctorViewModel
     public DateOnly BirthDay { get; set; }
     public string PhoneNumber { get; set; } = string.Empty;
     public bool IsMale { get; set; }
-    public string Degree { get; set; } = string.Empty;
     public string Region { get; set; } = string.Empty;
-    public double AppointmentMoney { get; set; }
-    public int StarCount { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
