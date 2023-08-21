@@ -1,4 +1,6 @@
 ﻿using OnMed.Desktop.Component;
+using OnMed.Integrated.Interfaces.Categories;
+using OnMed.Integrated.Services;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,16 +11,21 @@ namespace OnMed.Desktop.Pages;
 /// </summary>
 public partial class CategoryPage : Page
 {
+    private readonly ICategoryService _service;
+
     public CategoryPage()
     {
         InitializeComponent();
+        this._service = new CategoryService();
     }
 
-    private void Page_Loaded(object sender, RoutedEventArgs e)
+    private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
-        for (int i = 0; i < 20; i++)
+        var category = await _service.GetAllAsync();
+        foreach (var item in category)
         {
             CategoryComponent categoryComponent = new CategoryComponent();
+            categoryComponent.SetData(item);
             wrpCategory.Children.Add(categoryComponent);
         }
     }
