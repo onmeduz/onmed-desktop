@@ -93,12 +93,6 @@ public partial class MainWindow : Window
         PageNavigator.Content = paymentPage;
     }
 
-    private void rbShifoxona_Click(object sender, RoutedEventArgs e)
-    {
-        HospitalPage hospitalPage = new HospitalPage();
-        PageNavigator.Content = hospitalPage;
-    }
-
     private void rbeslatma_Click(object sender, RoutedEventArgs e)
     {
         NotePage notePage = new NotePage();

@@ -1,5 +1,7 @@
 ﻿using OnMed.ViewModel.Doctors;
 using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -24,11 +26,6 @@ public partial class DoctorComponent : UserControl
         DoctorLastName.Content = doctorViewModel.LastName;
     }
 
-    private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-
-    }
-
     private void DoctorImage_MouseEnter(object sender, MouseEventArgs e)
     {
         DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
@@ -40,6 +37,11 @@ public partial class DoctorComponent : UserControl
     }
 
     private void btnManege_Click(object sender, System.Windows.RoutedEventArgs e)
+    {
+
+    }
+
+    private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
     {
 
     }

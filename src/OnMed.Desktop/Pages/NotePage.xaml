@@ -12,6 +12,7 @@
         <Label Content="Yaxshimisiz. To'y qachon?"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
+               Foreground="{DynamicResource color}"
                FontSize="40"/>
     </Grid>
 </Page>
