@@ -11,12 +11,10 @@
     <None Remove="Assets\Icons\free-icon-user-747376.png" />
     <None Remove="Assets\Icons\free-icon-user-747545.png" />
     <None Remove="Assets\Images\Doctor.jpg" />
-    <None Remove="Assets\Images\feverr.png" />
     <None Remove="Assets\Images\images.jpg" />
-    <None Remove="Assets\Images\login.jpg" />
-    <None Remove="Assets\Images\LogoLightTheme.png" />
+    <None Remove="Assets\Images\loginbanner.png" />
+    <None Remove="Assets\Images\OnmedLight.png" />
     <None Remove="Assets\Images\Plt_Image.jpg" />
-    <None Remove="Assets\Images\user.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,16 +31,14 @@
     </Resource>
     <Resource Include="Assets\Icons\Icons.xaml" />
     <Resource Include="Assets\Images\Doctor.jpg" />
-    <Resource Include="Assets\Images\feverr.png" />
     <Resource Include="Assets\Images\images.jpg" />
-    <Resource Include="Assets\Images\login.jpg" />
-    <Resource Include="Assets\Images\LogoLightTheme.png">
-      <CopyToOutputDirectory></CopyToOutputDirectory>
+    <Resource Include="Assets\Images\loginbanner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\OnmedLight.png" />
     <Resource Include="Assets\Images\Plt_Image.jpg">
       <CopyToOutputDirectory></CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Images\user.png" />
   </ItemGroup>
 
 </Project>

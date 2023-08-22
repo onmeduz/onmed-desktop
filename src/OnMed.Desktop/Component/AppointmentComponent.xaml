@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="OnMed.Desktop.Component.AppointmentComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnMed.Desktop.Component"
+             mc:Ignorable="d" 
+             Height="50">
+    <Border
+        x:Name="border"
+        MouseEnter="BorderLine_MouseEnter"
+        MouseLeave="BorderLine_MouseLeave">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.7"/>
+        </Grid.RowDefinitions>
+            
+            <Grid
+                Grid.Row="0"
+                Margin="0 0 20 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="lblNo"
+                           Grid.Column="0"
+                           Content="1"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblName"
+                           Grid.Column="1"
+                           Content="Erqo'ziyev Shodiyor"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblGender"
+                           Grid.Column="2"
+                           Content="Erkak"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblAge"
+                           Grid.Column="3"
+                           Content="20"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblDate"
+                           Grid.Column="4"
+                           Content="1-sentabr"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblTime"
+                           Grid.Column="5"
+                           Content="9:30"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Label x:Name="lblDoctorName"
+                           Grid.Column="6"
+                           Content="Erqo'ziyev Shodiyor"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Left"
+                           Foreground="{DynamicResource color}"
+                           Margin="5 0"/>
+                <Border
+                    Margin="0 15 0 5"
+                    Grid.Column="7">
+                    <Path 
+                        x:Name="patients"
+                        Height="16"
+                        Stretch="Uniform"
+                        VerticalAlignment="Bottom"
+                        Fill="{DynamicResource color}"
+                        Data="{DynamicResource payment}"/>
+                    
+                </Border>
+            </Grid>
+            <Border
+                x:Name="BorderLine"
+                Grid.Row="1"
+                Margin="5 0 25 0"
+                Background="#898989">
+            </Border>
+
+        </Grid>
+    </Border>
+    
+</UserControl>

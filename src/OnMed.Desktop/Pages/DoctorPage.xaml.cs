@@ -1,4 +1,5 @@
 ﻿using OnMed.Desktop.Component;
+using OnMed.Desktop.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,5 +22,11 @@ public partial class DoctorPage : Page
             DoctorComponent doctorComponent = new DoctorComponent();
             wrpDoctors.Children.Add(doctorComponent);
         }
+    }
+
+    private void btnCreateDoctor_Click(object sender, RoutedEventArgs e)
+    {
+        DoctorCreateWindow  window = new DoctorCreateWindow();
+        window.ShowDialog();
     }
 }

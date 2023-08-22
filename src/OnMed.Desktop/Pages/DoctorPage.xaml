@@ -9,7 +9,79 @@
       Loaded="Page_Loaded">
     <Grid
         Margin="10">
-        <ScrollViewer>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            HorizontalAlignment="Center"
+            Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Column="0"
+                Content="Qidirish"
+                VerticalAlignment="Center"
+                Margin="10"
+                FontSize="14"
+                Style="{DynamicResource TitleLabel}"/>
+
+            <Border
+                Grid.Column="1"
+                Height="38"
+                Width="500"
+                CornerRadius="10"
+                BorderThickness="0.5"
+                BorderBrush="{DynamicResource BorderColor}"
+                Background="{DynamicResource FirstColor}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox
+                        Margin="15 5 0 5"
+                        Background="Transparent"
+                        Text=""
+                        VerticalAlignment="Center"
+                        FontSize="15"
+                        BorderThickness="0"
+                        Foreground="{DynamicResource color}">
+                    </TextBox>
+                    <Path 
+                        x:Name="search" 
+                        Grid.Column="1"
+                        Data="{DynamicResource qidirish}"
+                        Fill="{DynamicResource color}"
+                        Height="20"
+                        Stretch="Uniform"/>
+                </Grid>
+            </Border>
+
+            <Button
+                x:Name="btnCreateDoctor"
+                Click="btnCreateDoctor_Click"
+                Height="35"
+                Width="150"
+                Margin="20 0 0 0"
+                Grid.Column="2"
+                Content="Qo'shish"
+                FontSize="18"
+                HorizontalAlignment="Center"
+                Foreground="{DynamicResource color}"
+                Style="{DynamicResource LoginButton}">
+            </Button>
+            
+        </Grid>
+
+        <ScrollViewer
+            Grid.Row="1">
             <WrapPanel 
                 x:Name="wrpDoctors">
             </WrapPanel>

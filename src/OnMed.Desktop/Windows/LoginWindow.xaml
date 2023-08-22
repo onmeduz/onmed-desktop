@@ -12,170 +12,199 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent">
+    <Grid
+        Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Border 
+                Grid.Column="0"
+                x:Name="borderDragable"
+                MouseDown="borderDragable_MouseDown" 
+                Cursor="Hand" 
+                Background="White">
+            </Border>
+            <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+                <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
+                <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
+                <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
 
-    <Grid>
-        <Border>
+            </StackPanel>
+        </Grid>
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450"/>
+            </Grid.ColumnDefinitions>
+            <Border>
+            <Border.Background
+                >
+                <ImageBrush
+                    ImageSource="/Assets/Images/loginbanner.png" >
+                </ImageBrush>
+            </Border.Background>
+        </Border>
 
-            <Grid>
+            <Border
+                Grid.Column="0"
+                Height="40"
+                Width="40"
+                Margin="30 570 560 20">
+                <Image Source="/Assets/Images/OnmedLight.png"
+                       Stretch="UniformToFill"/>
+            </Border>
+
+            <Grid
+                Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="200"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="150"/>
-                    </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0"
-                                x:Name="borderDragable"
-                                MouseDown="borderDragable_MouseDown" 
-                                Cursor="ScrollAll" >
-
-                    </Border>
-                    <StackPanel Grid.Column="1"
-                            Orientation="Horizontal">
-
-                        <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
-                        <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
-                        <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
-
-                    </StackPanel>
-
-
-                </Grid>
-
-                
 
                 <Border
-                    Grid.Row="1"
-                    Height="350"
-                    Width="300"
-                    CornerRadius="20"
-                    Background="{DynamicResource FirstColor}" Margin="706,174,94,126">
-                    <Border.Effect>
-                        <DropShadowEffect Color="#EBEEF0" Direction="270" ShadowDepth="10" BlurRadius="30"/>
-                    </Border.Effect>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="8*"/>
-                            <ColumnDefinition Width="17*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="35"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <Border
-                        CornerRadius="10 10 0 0"
-                        Background="{DynamicResource FifthColor}" Grid.ColumnSpan="2">
-                        </Border>
-
-                        <StackPanel 
-                            Grid.Row="1"
-                            Orientation="Vertical" Grid.ColumnSpan="2"
-                            >
-
-                            <Label Content="Phone number"
-                           Margin="50 50 50 0"
-                           FontSize="13"
-                           Foreground="{DynamicResource BorderColor}"/>
-                            <Border
-                                Background="{DynamicResource ThreedColor}"
-                                BorderThickness="1"
-                                Height="35"
-                                Width="200"
-                                Margin="0 0 0 10"
-                                CornerRadius="10">
-
-                                <Border.Effect>
-                                    <DropShadowEffect Color="#EBEEF0" Direction="90" ShadowDepth="1" BlurRadius="20"/>
-                                </Border.Effect>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="45"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label
-                                        Grid.Column="0"
-                                        Width="50"
-                                        Margin="5 0 0 0"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Content="+998"
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        VerticalContentAlignment="Center"/>
-
-                                    <TextBox
-                                        TextChanged="tbPhoneNumber_TextChanged"
-                                        x:Name="tbPhoneNumber"
-                                        Grid.Column="1"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Margin="3 5 5 5"
-                                        FontSize="14"
-                                        FontWeight="SemiBold"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        VerticalAlignment="Center">
-                                    </TextBox>
-                                </Grid>
-
-                            </Border>
-                            <Label Content="Password"
-                                   Margin="50 0"
-                                   FontSize="13"
-                                   Foreground="{DynamicResource BorderColor}"/>
-                            <Border 
-                                Background="{DynamicResource ThreedColor}"
-                                Height="35"
-                                Width="200"
-                                Margin="0 0 0 50"
-                                CornerRadius="10">
-
-                                <Border.Effect>
-                                    <DropShadowEffect Color="#EBEEF0" Direction="270" ShadowDepth="1" BlurRadius="20"/>
-                                </Border.Effect>
-
-                                <Border>
-                                    <PasswordBox
-                                        Margin="10 5"
-                                        FontSize="14"
-                                        Foreground="{DynamicResource BorderColor}"
-                                        Background="Transparent"
-                                        BorderThickness="0"
-                                        VerticalAlignment="Center">
-                                    </PasswordBox>
-                                </Border>
-
-                            </Border>
-
-                            <Button 
-                                Style="{DynamicResource LoginButton}"
-                                Content="Login"
-                                Margin="0 10"
-                                FontSize="17"
-                                Width="100"
-                                Height="30"
-                                Click="btnLogin"/>
-                        </StackPanel>
-
-                    </Grid>
-
-
-
-
+                    Margin="0 80 370 0"
+                    Grid.Row="0"
+                    VerticalAlignment="Top">
+                    <Path
+                        x:Name="Icon" 
+                        Data="{DynamicResource logo}"
+                        Fill="#329DFF"
+                        Height="70"
+                        Stretch="UniformToFill"/>
                 </Border>
+                <Label
+                    Grid.Row="0"
+                    Margin="90 70 0 0"
+                    Content="Onmed"
+                    FontSize="50"
+                    FontWeight="Bold"
+                    Foreground="#329DFF"/>
 
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="0 0 150 100"
+                    Orientation="Vertical">
+
+                    <Label
+                        FontSize="20"
+                        Content="Telefon raqami"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource NameLabel}"/>
+
+                    <Border
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave"
+                        CornerRadius="5"
+                        Background="#F2F2F2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="0.5"/>
+                            </Grid.RowDefinitions>
+                            <Grid
+                                Grid.Row="0"
+                                Margin="5 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Content="+998"
+                                    FontSize="18"
+                                    Margin="0 5 0 0"
+                                    Foreground="Black"
+                                    VerticalAlignment="Center"
+                                    Style="{DynamicResource NameLabel}"/>
+                                <TextBox
+                                    x:Name="textboxPhone"
+                                    TextChanged="textboxPhone_TextChanged"
+                                    Grid.Column="1"
+                                    FontSize="18"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Background="Transparent">
+                                </TextBox>
+                            </Grid>
+                            <Border
+                                Grid.Row="1"
+                                x:Name="Phoneborder"
+                                Margin="5 0"
+                                Background="{DynamicResource color}">
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Label
+                        FontSize="20"
+                        Content="Parol"
+                        Margin="0 20 0 0"
+                        VerticalAlignment="Center"
+                        Foreground="Black"
+                        Style="{DynamicResource NameLabel}"/>
+
+                    <Border
+                        MouseEnter="Border_MouseEnter_1"
+                        MouseLeave="Border_MouseLeave_1"
+                        CornerRadius="5"
+                        Background="#F2F2F2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="0.5"/>
+                            </Grid.RowDefinitions>
+                            <Grid
+                                Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox
+                                    x:Name="textboxParol"
+                                    Grid.Column="0"
+                                    Margin="10 0"
+                                    FontSize="18"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Background="Transparent">
+                                    </TextBox>
+                            </Grid>
+                            <Border
+                                Grid.Row="1"
+                                Margin="5 0"
+                                x:Name="Parolborder"
+                                Background="{DynamicResource color}">
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <Button
+                        x:Name="LoginBtn"
+                        Margin="0 70 0 0"
+                        Height="35"
+                        Width="300"
+                        FontSize="18"
+                        Content="Kabinetga kirish"
+                        Click="LoginBtn_Click"
+                        Style="{DynamicResource LoginButton}">
+
+                    </Button>
+
+                </StackPanel>
             </Grid>
-
-            <Border.Background>
-                <ImageBrush ImageSource="/Assets/Images/login.jpg" />
-            </Border.Background>
-
-        </Border>
+        </Grid>
     </Grid>
 
 </Window>

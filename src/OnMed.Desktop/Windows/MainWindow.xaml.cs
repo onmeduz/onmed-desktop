@@ -12,7 +12,6 @@ namespace OnMed.Desktop;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private bool _disposed = true;
     public MainWindow()
     {
         InitializeComponent();
@@ -104,5 +103,12 @@ public partial class MainWindow : Window
     {
         NotePage notePage = new NotePage();
         PageNavigator.Content = notePage;
+    }
+
+    private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        LoginWindow loginWindow = new LoginWindow();
+        this.Close();
+        loginWindow.Show();
     }
 }

@@ -124,7 +124,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border 
                         x:Name="B"
-                        CornerRadius="10"
+                        CornerRadius="5"
                         Background="{DynamicResource btncolor}"
                         >
                         <Label
@@ -371,10 +371,10 @@
 
                         <Border Padding="0 4">
                             <Track x:Name="PART_Track"
-                        IsDirectionReversed="true"
-                        IsEnabled="{TemplateBinding IsMouseOver}"
-                        Width="8"
-                        HorizontalAlignment="Center"
+                                IsDirectionReversed="true"
+                                IsEnabled="{TemplateBinding IsMouseOver}"
+                                Width="8"
+                                HorizontalAlignment="Center"
                            >
                                 <Track.DecreaseRepeatButton>
                                     <RepeatButton Opacity="0" Command="{x:Static ScrollBar.PageUpCommand}" />
