@@ -16,6 +16,6 @@ public class CategoryService : ICategoryService
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync(); 
         var category =  JsonConvert.DeserializeObject<List<CategoryViewModel>>(response);
-        return category;
+        return category!;
     }
 }

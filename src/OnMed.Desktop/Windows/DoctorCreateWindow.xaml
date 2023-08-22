@@ -1,0 +1,126 @@
+﻿<Window x:Class="OnMed.Desktop.Windows.DoctorCreateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnMed.Desktop.Windows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="DoctorCreateWindow" 
+        Height="700" 
+        Width="700">
+    <Border
+        Margin="10"
+        CornerRadius="20"
+        Background="{DynamicResource FirstColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <Button 
+                Grid.Row="0"
+                x:Name="Close"     
+                Click="btnClose_Click" 
+                HorizontalAlignment="Right"
+                Style="{DynamicResource ClosedButton}"/>
+
+            <Grid
+                Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border
+                    Grid.Column="0"
+                    Margin="15"
+                    MouseDown="Border_MouseDown"
+                    CornerRadius="10"
+                    BorderThickness="2"
+                    BorderBrush="{DynamicResource BorderColor}">
+                    <Border.Background>
+                        <ImageBrush x:Name="ImageBrushDoctor"
+                                    Stretch="UniformToFill"/>
+                    </Border.Background>
+                    <Path 
+                        x:Name="galary" 
+                        Margin="5 0 0 0"
+                        Data="{DynamicResource galery}"
+                        Fill="Black"
+                        Height="40"
+                        Stretch="Uniform"/>
+
+                </Border>
+                <StackPanel
+                    Margin="15"
+                    Orientation="Vertical"
+                    Grid.Column="1">
+                    <Label
+                        Margin="0 5"
+                        Content="Ismi :"
+                        FontSize="20"
+                        Style="{DynamicResource TitleLabel}"/>
+                    <Label
+                        Margin="0 5"
+                        Content="Familiyasi :"
+                        FontSize="20"
+                        Style="{DynamicResource TitleLabel}"/>
+                    <Label
+                        Margin="0 5"
+                        Content="Sharifi :"
+                        FontSize="20"
+                        Style="{DynamicResource TitleLabel}"/>
+                    <Label
+                        Margin="0 5"
+                        Content="Telefon raqami :"
+                        FontSize="20"
+                        Style="{DynamicResource TitleLabel}"/>
+                    <Label
+                        Margin="0 5"
+                        Content="Jinsi :"
+                        FontSize="20"
+                        Style="{DynamicResource TitleLabel}"/>
+                </StackPanel>
+                <StackPanel
+                    Margin="15"
+                    Orientation="Vertical"
+                    Grid.Column="2">
+                    <TextBox
+                        x:Name="tbFirstName"
+                        Style="{StaticResource TextBox}"/>
+                    <TextBox
+                        x:Name="tbLastName"
+                        Style="{DynamicResource TextBox}"/>
+                    <TextBox
+                        x:Name="tbMiddleName"
+                        Style="{DynamicResource TextBox}"/>
+                    <TextBox
+                        x:Name="tbPhoneNumber"
+                        TextChanged="tbPhoneNumber_TextChanged"
+                        Style="{DynamicResource TextBox}"/>
+
+                    <TextBox
+                        x:Name="tbGender"
+                        Style="{DynamicResource TextBox}"/>
+                </StackPanel>
+            </Grid>
+            
+             
+
+        </Grid>
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="10"
+                Opacity="1"
+                ShadowDepth="-40"
+                Color="Gray">
+            </DropShadowEffect>
+        </Border.Effect>
+    </Border>
+</Window>

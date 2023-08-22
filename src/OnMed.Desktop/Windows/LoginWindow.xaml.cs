@@ -47,12 +47,24 @@ namespace OnMed.Desktop
             this.DragMove();
         }
 
-        private void btnLogin(object sender, RoutedEventArgs e)
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.ShowDialog();
         }
 
-        private void tbPhoneNumber_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Phoneborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Phoneborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#979797"));
+        }
+
+        private void textboxPhone_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             string text = textBox.Text;
@@ -64,6 +76,16 @@ namespace OnMed.Desktop
                 textBox.Text = filteredText;
                 textBox.CaretIndex = caretIndex > 0 ? caretIndex - 1 : 0;
             }
+        }
+
+        private void Border_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            Parolborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+        }
+
+        private void Border_MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            Parolborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#979797"));
         }
     }
 }

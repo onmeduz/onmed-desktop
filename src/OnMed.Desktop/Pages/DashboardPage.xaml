@@ -65,7 +65,7 @@
                                         x:Name="patients"
                                         Height="30"
                                         Stretch="Uniform"
-                                        Fill="#5FE9F6"
+                                        Fill="#00D0E3"
                                         Data="{DynamicResource bemor}"/>
                                 </Border>
 
@@ -112,7 +112,7 @@
                                         x:Name="doctors"
                                         Height="30"
                                         Stretch="Uniform"
-                                        Fill="#FCC78A"
+                                        Fill="#FCA33C"
                                         Data="{DynamicResource hamshira}"/>
                                 </Border>
 
@@ -157,7 +157,7 @@
                                         x:Name="users"
                                         Height="30"
                                         Stretch="Uniform"
-                                        Fill="#FE9CA9"
+                                        Fill="#FE5E73"
                                         Data="{DynamicResource foydalanuvchi}"/>
                                 </Border>
 

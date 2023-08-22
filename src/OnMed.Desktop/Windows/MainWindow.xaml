@@ -29,7 +29,7 @@
                     Grid.Column="0"
                     x:Name="borderDragable"
                     MouseDown="borderDragable_MouseDown" 
-                    Cursor="ScrollAll"
+                    Cursor="Hand"
                     Background="{DynamicResource FirstColor}">
                 </Border>
                 <StackPanel
@@ -169,10 +169,22 @@
             <Grid
                 >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="80"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="120"/>
                 </Grid.ColumnDefinitions>
+
+                <Border
+                    MouseDown="Border_MouseDown"
+                    Grid.Column="0"
+                    Background="{DynamicResource FirstColor}">
+                    <Path 
+                        x:Name="Logout" 
+                        Data="{DynamicResource chiqish }"
+                        Fill="{DynamicResource BorderColor}"
+                        Height="30"
+                        Stretch="Uniform"/>
+                </Border>
 
                 <Label
                     Grid.Column="1"
