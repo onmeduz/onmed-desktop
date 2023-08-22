@@ -23,19 +23,32 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
-            <Border 
+            <Border
                 Grid.Column="0"
-                x:Name="borderDragable"
-                MouseDown="borderDragable_MouseDown" 
-                Cursor="Hand" 
-                Background="White">
+                Width="40"
+                HorizontalAlignment="Left">
+                <Path
+                    x:Name="Icon" 
+                    Margin="5 10 0 0"
+                    Data="{DynamicResource logo}"
+                    Fill="#329DFF"
+                    Stretch="UniformToFill"/>
             </Border>
-            <StackPanel Grid.Column="1"
-                            Orientation="Horizontal">
-                <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
-                <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
-                <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
 
+            <Label
+                Grid.Column="0"
+                Margin="40 0 0 0"
+                Content="Onmed"
+                FontSize="25"
+                FontWeight="Bold"
+                HorizontalAlignment="Left"
+                Foreground="#329DFF"/>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="btnClose"  
+                        Margin="0 10 20 0"
+                        Click="btnClose_Click" 
+                        HorizontalAlignment="Right"
+                        Style="{DynamicResource ClosedButton}"/>
             </StackPanel>
         </Grid>
         <Grid
@@ -61,6 +74,13 @@
                 <Image Source="/Assets/Images/OnmedLight.png"
                        Stretch="UniformToFill"/>
             </Border>
+            <Label
+                Grid.Column="0"
+                Margin="90 580 250 30"
+                FontSize="20"
+                FontFamily="jetbrains mono"
+                FontWeight="SemiBold"
+                Content="Onmed bilan qulay moalaja"/>
 
             <Grid
                 Grid.Column="1">
@@ -74,7 +94,7 @@
                     Grid.Row="0"
                     VerticalAlignment="Top">
                     <Path
-                        x:Name="Icon" 
+                        x:Name="LoginIcon" 
                         Data="{DynamicResource logo}"
                         Fill="#329DFF"
                         Height="70"

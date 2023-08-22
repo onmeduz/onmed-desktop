@@ -1,5 +1,7 @@
 ﻿using OnMed.Desktop.Component;
 using OnMed.Desktop.Windows;
+using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Services.Doctors;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,16 +12,21 @@ namespace OnMed.Desktop.Pages;
 /// </summary>
 public partial class DoctorPage : Page
 {
+    private readonly IDoctorService _service;
+    long id = 1;
     public DoctorPage()
     {
         InitializeComponent();
+        this._service = new DoctorService();
     }
 
-    private void Page_Loaded(object sender, RoutedEventArgs e)
+    private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
-        for (int i = 0; i < 20; i++)
+        var doctors = await _service.GetAllAsync(id);
+        foreach (var doctor in doctors)
         {
             DoctorComponent doctorComponent = new DoctorComponent();
+            doctorComponent.SetData(doctor);
             wrpDoctors.Children.Add(doctorComponent);
         }
     }

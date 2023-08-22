@@ -12,8 +12,15 @@
         Margin="10">
         <ScrollViewer>
             <WrapPanel x:Name="wrpProduct">
-
+                
             </WrapPanel>
         </ScrollViewer>
+        <Label
+                    Content="Bu sahifa keyingi versiyada tamomlanadi!"
+                    Foreground="{DynamicResource color}"
+                    FontSize="40"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    />
     </Grid>
 </Page>

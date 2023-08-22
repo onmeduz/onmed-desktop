@@ -7,7 +7,7 @@ namespace OnMed.Integrated.Services;
 
 public class CategoryService : ICategoryService
 {
-    private readonly string BASE_URL = "http://medsino.uz/api/";
+    private readonly string BASE_URL = "http://coursezone.uz/api/";
 
     public async Task<List<CategoryViewModel>> GetAllAsync()
     {

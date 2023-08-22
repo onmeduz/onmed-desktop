@@ -140,12 +140,6 @@
                         Background="Gray">
                     </Border>
                     <RadioButton 
-                            x:Name="rbShifoxona"
-                            Content="Shifoxonalar"
-                            Click="rbShifoxona_Click"
-                            Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource shifoxona}"/>
-                    <RadioButton 
                             x:Name="rbeslatma"
                             Content="Eslatma"
                             Click="rbeslatma_Click"

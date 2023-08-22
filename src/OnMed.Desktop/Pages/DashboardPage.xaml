@@ -24,12 +24,11 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid
-                            Grid.Column="0">
+                        Grid.Column="0">
                         <Border
-                                Margin="15 15 5 10"
-                                CornerRadius="10"
-                                Background="{DynamicResource FirstColor}">
-
+                            Margin="15 15 5 10"
+                            CornerRadius="10"
+                            Background="{DynamicResource FirstColor}">
                         </Border>
 
                     </Grid>
