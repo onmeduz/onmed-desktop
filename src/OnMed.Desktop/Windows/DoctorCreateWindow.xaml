@@ -10,8 +10,9 @@
         AllowsTransparency="True"
         Background="Transparent"
         Title="DoctorCreateWindow" 
-        Height="700" 
+        Height="800" 
         Width="700">
+    
     <Border
         Margin="10"
         CornerRadius="20"
@@ -21,6 +22,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="250"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
             
             <Button 
@@ -45,8 +47,9 @@
                     BorderThickness="2"
                     BorderBrush="{DynamicResource BorderColor}">
                     <Border.Background>
-                        <ImageBrush x:Name="ImageBrushDoctor"
-                                    Stretch="UniformToFill"/>
+                        <ImageBrush 
+                            x:Name="ImageBrushDoctor"
+                            Stretch="UniformToFill"/>
                     </Border.Background>
                     <Path 
                         x:Name="galary" 
@@ -65,27 +68,27 @@
                         Margin="0 5"
                         Content="Ismi :"
                         FontSize="20"
-                        Style="{DynamicResource TitleLabel}"/>
+                        Style="{DynamicResource NameLabel}"/>
                     <Label
                         Margin="0 5"
                         Content="Familiyasi :"
                         FontSize="20"
-                        Style="{DynamicResource TitleLabel}"/>
+                        Style="{DynamicResource NameLabel}"/>
                     <Label
                         Margin="0 5"
                         Content="Sharifi :"
                         FontSize="20"
-                        Style="{DynamicResource TitleLabel}"/>
+                        Style="{DynamicResource NameLabel }"/>
                     <Label
                         Margin="0 5"
                         Content="Telefon raqami :"
                         FontSize="20"
-                        Style="{DynamicResource TitleLabel}"/>
+                        Style="{DynamicResource NameLabel}"/>
                     <Label
                         Margin="0 5"
-                        Content="Jinsi :"
+                        Content="Parol :"
                         FontSize="20"
-                        Style="{DynamicResource TitleLabel}"/>
+                        Style="{DynamicResource NameLabel}"/>
                 </StackPanel>
                 <StackPanel
                     Margin="15"
@@ -100,19 +103,239 @@
                     <TextBox
                         x:Name="tbMiddleName"
                         Style="{DynamicResource TextBox}"/>
-                    <TextBox
-                        x:Name="tbPhoneNumber"
-                        TextChanged="tbPhoneNumber_TextChanged"
-                        Style="{DynamicResource TextBox}"/>
+                    <Border
+                        MouseEnter="Border_MouseEnter"
+                        MouseLeave="Border_MouseLeave"
+                        CornerRadius="5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="0.5"/>
+                            </Grid.RowDefinitions>
+                            <Grid
+                                Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="55"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Content="+998"
+                                    FontSize="18"
+                                    Margin="0 5 0 0"
+                                    Foreground="{DynamicResource color}"
+                                    VerticalAlignment="Center"
+                                    Style="{DynamicResource NameLabel}"/>
+                                <TextBox
+                                    x:Name="tbPhoneNumber"
+                                    MaxLength="9"
+                                    TextChanged="textboxPhone_TextChanged"
+                                    Grid.Column="1"
+                                    FontSize="18"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Background="Transparent">
+                                </TextBox>
+                            </Grid>
+                            <Border
+                                Grid.Row="1"
+                                x:Name="Phoneborder"
+                                Margin=" 0"
+                                Background="{DynamicResource color}">
+                            </Border>
+                        </Grid>
+                    </Border>
 
                     <TextBox
-                        x:Name="tbGender"
+                        x:Name="tbPassword"
+                        Margin="0 5 0 0"
                         Style="{DynamicResource TextBox}"/>
                 </StackPanel>
             </Grid>
-            
-             
 
+            <Grid
+                Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Margin="15 15 0 0">
+                    <Label
+                        FontSize="16"
+                        Content="Yashash joyi :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <TextBox
+                        Margin="5 0"
+                        x:Name="tbRegion"
+                        HorizontalAlignment="Left"
+                        Style="{DynamicResource TextBox}"/>
+                    
+                    <Label
+                        FontSize="16"
+                        Content="Tug'ilgan sanasi :"
+                        Foreground="{DynamicResource color}"/>
+                    <Border
+                        HorizontalAlignment="Left"
+                        Width="230">
+                        <DatePicker x:Name="tbBirthDay" Style="{DynamicResource FormDatePicker}"/>
+                    </Border>
+                    <Label
+                        Margin="0 10 0 0 "
+                        FontSize="16"
+                        Content="Jinsi :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <RadioButton
+                            x:Name="rbErkak"
+                            Click="rbErkak_Click"
+                            Margin="0 5"
+                            Foreground="{DynamicResource color}"
+                            Content="Erkak"/>
+                        <RadioButton
+                            x:Name="rbAyol"
+                            Click="rbErkak_Click"
+                            Margin="50 5"
+                            Foreground="{DynamicResource color}"
+                            Content="Ayol"/>
+                    </StackPanel>
+                    <Label
+                        FontSize="16"
+                        Content="Ish boshlanish vaqti:"
+                        Style="{DynamicResource NameLabel}"/>
+                    <TextBox
+                        x:Name="tbStartTime"
+                        HorizontalAlignment="Left"
+                        Style="{DynamicResource TextBox}"/>
+                    <Label
+                        FontSize="16"
+                        Content="Ish tugash vaqti:"
+                        Style="{DynamicResource NameLabel}"/>
+                    <TextBox
+                        x:Name="tbEndTime"
+                        HorizontalAlignment="Left"
+                        Style="{DynamicResource TextBox}"/>
+                    
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    Margin="15 15 0 0">
+                    <Label
+                        FontSize="16"
+                        Content="Ilmiy darajasi :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <TextBox
+                        Margin="5 0"
+                        x:Name="tbDegree"
+                        HorizontalAlignment="Left"
+                        Style="{DynamicResource TextBox}"/>
+                    <Label
+                        FontSize="16"
+                        Content="Uchrashuv narxi :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <Border
+                        MouseEnter="MoneyBorder_MouseEnter"
+                        MouseLeave="MoneyBorder_MouseLeave"
+                        CornerRadius="5"
+                        Width="230"
+                        HorizontalAlignment="Left">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="0.5"/>
+                            </Grid.RowDefinitions>
+                            <TextBox
+                                Grid.Row="0"
+                                x:Name="tbMoney"
+                                Margin="5 0"
+                                TextChanged="textboxPhone_TextChanged"
+                                FontSize="18"
+                                BorderThickness="0"
+                                VerticalAlignment="Center"
+                                FontWeight="SemiBold"
+                                Foreground="Black"
+                                Background="Transparent">
+                            </TextBox>
+                            <Border
+                                Grid.Row="1"
+                                x:Name="MoneyBorder"
+                                Margin=" 0"
+                                Background="{DynamicResource color}">
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Label
+                        FontSize="16"
+                        Content="Toifasi :"
+                        Margin="0 10 0 0"
+                        Style="{DynamicResource NameLabel}"/>
+                    <ComboBox
+                        Width="230"
+                        HorizontalAlignment="Left">
+
+                    </ComboBox>
+                    <Label
+                        FontSize="16"
+                        Margin="0 10 0 0"
+                        Content="Ish kunlari :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <ComboBox
+                        x:Name="cbWeekdays"
+                        Width="230"
+                        HorizontalAlignment="Left">
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Dushanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Seshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Chorshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Payshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Juma"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Shanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                Click="Dushanba_Click"
+                                 Content="Yakshanba"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Button
+                Grid.Row="3"
+                Width="250"
+                Click="Button_Click"
+                Content="Saqlash"
+                FontSize="20"
+                Style="{DynamicResource LoginButton}"/>
         </Grid>
         <Border.Effect>
             <DropShadowEffect

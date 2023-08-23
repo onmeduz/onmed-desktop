@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnMed.Desktop.Component"
              mc:Ignorable="d" 
-             d:DesignHeight="350" d:DesignWidth="300">
+             Height="350" 
+             Width="285">
     <Border
         CornerRadius="10"
         Margin="10"
@@ -18,8 +19,8 @@
 
             <Border
                 Grid.Row="0"
-                Margin="15"
-                CornerRadius="10">
+                Margin="2"
+                CornerRadius="10 10 0 0">
                 <Border.Background>
                     <ImageBrush 
                         x:Name="categoryImage" 

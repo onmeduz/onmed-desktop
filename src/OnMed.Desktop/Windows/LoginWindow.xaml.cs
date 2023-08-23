@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using OnMed.Dtos.Login;
+using OnMed.Integrated.Interfaces.Login;
+using OnMed.Integrated.Services.Login;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,9 +14,11 @@ namespace OnMed.Desktop
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private readonly ILoginService _service;
         public LoginWindow()
         {
             InitializeComponent();
+            this._service = new LoginService();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -21,11 +26,30 @@ namespace OnMed.Desktop
             Application.Current.Shutdown();
         }
         
-        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            this.Close();
-            mainWindow.ShowDialog();
+            int count = 0;
+            if (textboxPhone.Text.Length > 0 && textboxPhone.Text.Length <= 13) { count++; }
+            if (textboxParol.Password.ToString().Length >= 8 && textboxParol.Password.ToString().Length <= 32) { count++; }
+            if (count == 2)
+            {
+                LoginDto loginDto = new LoginDto()
+                {
+                    PhoneNumber = (lbCodePhone.Content.ToString() + textboxPhone.Text),
+                    Password = textboxParol.Password
+                };
+                bool response = await _service.Login(loginDto);
+                if (response)
+                {
+                    MainWindow mainWindow = new MainWindow();
+                    this.Close();
+                    mainWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bunday admin mavjud emas");
+                }
+            }
         }
 
         private void Border_MouseEnter(object sender, MouseEventArgs e)

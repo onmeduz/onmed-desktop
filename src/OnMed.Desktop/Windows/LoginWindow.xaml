@@ -137,6 +137,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label
+                                    x:Name="lbCodePhone"
                                     Grid.Column="0"
                                     Content="+998"
                                     FontSize="18"
@@ -146,6 +147,7 @@
                                     Style="{DynamicResource NameLabel}"/>
                                 <TextBox
                                     x:Name="textboxPhone"
+                                    MaxLength="9"
                                     TextChanged="textboxPhone_TextChanged"
                                     Grid.Column="1"
                                     FontSize="18"
@@ -189,7 +191,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="40"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox
+                                <PasswordBox
                                     x:Name="textboxParol"
                                     Grid.Column="0"
                                     Margin="10 0"
@@ -199,7 +201,7 @@
                                     FontWeight="SemiBold"
                                     Foreground="Black"
                                     Background="Transparent">
-                                    </TextBox>
+                                </PasswordBox>
                             </Grid>
                             <Border
                                 Grid.Row="1"
