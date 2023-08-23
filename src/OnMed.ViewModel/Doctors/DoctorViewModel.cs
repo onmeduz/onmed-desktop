@@ -14,6 +14,12 @@ public class DoctorViewModel
     public string Region { get; set; } = string.Empty;
     public double AppointmentMoney { get; set; }
     public int StarCount { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+    public TimeOnly StartTime { get; set; }
+    public TimeOnly EndTime { get; set; }
+    public string[] Weekday { get; set; } = new string[7];
+        
+    public override string ToString()
+    {
+        return FirstName + " " + LastName;
+    }
 }

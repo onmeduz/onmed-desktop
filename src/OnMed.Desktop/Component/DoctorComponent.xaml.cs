@@ -1,4 +1,5 @@
-﻿using OnMed.ViewModel.Doctors;
+﻿using OnMed.Desktop.Constans;
+using OnMed.ViewModel.Doctors;
 using System;
 using System.IO;
 using System.Windows;
@@ -21,9 +22,11 @@ public partial class DoctorComponent : UserControl
 
     public void SetData(DoctorViewModel doctorViewModel)
     {
-        DoctorsImage.ImageSource = new BitmapImage(new System.Uri(doctorViewModel.ImagePath, UriKind.Relative));
-        DoctorFirstName.Content = doctorViewModel.FirstName;
-        DoctorLastName.Content = doctorViewModel.LastName;
+        string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
+        Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
+
+        DoctorsImage.ImageSource = new BitmapImage(imageUri);
+        DoctorName.Content = doctorViewModel.ToString();
     }
 
     private void DoctorImage_MouseEnter(object sender, MouseEventArgs e)
