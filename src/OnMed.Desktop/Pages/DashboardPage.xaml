@@ -120,7 +120,8 @@
                                     Margin="10"
                                     Grid.Column="1">
                                     <Label
-                                        Content="50"
+                                        x:Name="doctorCount"
+                                        Content=""
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>

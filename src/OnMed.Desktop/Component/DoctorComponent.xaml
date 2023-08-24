@@ -35,7 +35,7 @@
                 <Label
                     x:Name="DoctorName"
                     Margin="10 0 10 0"
-                    Content="Erqo'ziyev"
+                    Content=""
                     Style="{DynamicResource NameLabel}"/>
                 <Label
                     x:Name="DoctorPersonality"
@@ -49,21 +49,21 @@
                     <Path 
                         x:Name="Star1" 
                         Data="{DynamicResource yulduz}"
-                        Fill="#F4CA16"
+                        Fill="{DynamicResource SecondColor}"
                         Height="14"
                         Stretch="Uniform"/>
                     <Path 
                         x:Name="Star2" 
                         Margin="5 0 0 0"
                         Data="{DynamicResource yulduz}"
-                        Fill="#F4CA16"
+                        Fill="{DynamicResource SecondColor}"
                         Height="14"
                         Stretch="Uniform"/>
                     <Path 
                         x:Name="Star3" 
                         Margin="5 0 0 0"
                         Data="{DynamicResource yulduz}"
-                        Fill="#F4CA16"
+                        Fill="{DynamicResource SecondColor}"
                         Height="14"
                         Stretch="Uniform"/>
                     <Path 
