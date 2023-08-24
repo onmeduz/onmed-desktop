@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using OnMed.Desktop.Constans;
+using OnMed.Desktop.Halpers;
+using OnMed.Dtos.Doctors;
+using OnMed.Integrated.Interfaces.Categories;
+using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Services;
+using OnMed.Integrated.Services.Doctors;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using Microsoft.Win32;
-using OnMed.Dtos.Doctors;
-using System.Runtime.Intrinsics.Arm;
-using System.IO;
-using OnMed.Desktop.Constans;
-using OnMed.Desktop.Halpers;
-using System.Collections.Generic;
+using System.Windows.Media.Imaging;
 
 namespace OnMed.Desktop.Windows;
 
@@ -19,10 +22,15 @@ namespace OnMed.Desktop.Windows;
 /// </summary>
 public partial class DoctorCreateWindow : Window
 {
+    private readonly ICategoryService _service;
+    private readonly IDoctorService _doctorservice;
+
     string path = string.Empty;
     public DoctorCreateWindow()
     {
         InitializeComponent();
+        this._service = new CategoryService();
+        this._doctorservice = new DoctorService();
     }
 
     private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -106,7 +114,7 @@ public partial class DoctorCreateWindow : Window
     }
 
     public bool isMail;
-    private void rbErkak_Click(object sender, RoutedEventArgs e)
+    private async void rbErkak_Click(object sender, RoutedEventArgs e)
     {
         RadioButton radioButton = (RadioButton)sender;
         string? btnName = radioButton.Content.ToString();
@@ -114,46 +122,89 @@ public partial class DoctorCreateWindow : Window
             isMail = true;
         isMail = false;
     }
+
+    List<int> WeekDays = new List<int>();
+
+    Dictionary<string, long> Category = new Dictionary<string, long>();
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-         string imagepath = ImageBrushDoctor.ImageSource.ToString();
+        DoctorCreateDto doctorCreateDto = new DoctorCreateDto();
 
-         if (!Directory.Exists(ContentConstans.IMAGE_CONTENTS_PATH))
-             Directory.CreateDirectory(ContentConstans.IMAGE_CONTENTS_PATH);
+        doctorCreateDto.FirstName = tbFirstName.Text;
+        doctorCreateDto.LastName = tbLastName.Text;
+        doctorCreateDto.MiddleName = tbMiddleName.Text;
+        doctorCreateDto.PhoneNumber = (lbPhoneCode.Content.ToString() + tbPhoneNumber.Text);
+        doctorCreateDto.Password = tbPassword.Text;
+        doctorCreateDto.Degree = tbDegree.Text;
+        doctorCreateDto.Region = tbRegion.Text;
+        doctorCreateDto.StartTime = tbStartTime.Text;
+        doctorCreateDto.EndTime = tbEndTime.Text;
+        doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)));
+        doctorCreateDto.IsMale = isMail;
+        doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
+        WeekDays.Clear();
+        if(D.IsChecked == true)
+            WeekDays.Add(1);
+        if (S.IsChecked == true)
+            WeekDays.Add(2);
+        if (CH.IsChecked == true)
+            WeekDays.Add(3);
+        if (P.IsChecked == true)
+            WeekDays.Add(4);
+        if (J.IsChecked == true)
+            WeekDays.Add(5);
+        if (Sh.IsChecked == true)
+            WeekDays.Add(6);
+        if (Y.IsChecked == true)
+            WeekDays.Add(7);
 
 
-         var imageName = ImageNameMarker.GetImageName(imagepath);
+        string imagepath = ImageBrushDoctor.ImageSource.ToString();
 
-         path = System.IO.Path.Combine(ContentConstans.IMAGE_CONTENTS_PATH, imageName);
+        if (!Directory.Exists(ContentConstans.IMAGE_CONTENTS_PATH))
+            Directory.CreateDirectory(ContentConstans.IMAGE_CONTENTS_PATH);
 
-         byte[] image = await File.ReadAllBytesAsync(imagepath);
 
-        DoctorCreateDto doctorCreateDto = new DoctorCreateDto()
+        var imageName = ImageNameMarker.GetImageName(imagepath);
+
+        path = System.IO.Path.Combine(ContentConstans.IMAGE_CONTENTS_PATH, imageName);
+
+        byte[] image = await File.ReadAllBytesAsync(imagepath);
+
+        List<long> categories = new List<long>();
+        string str = cbCategory.Text;
+        foreach (var item in Category)
         {
-            FirstName = tbFirstName.Text,
-            LastName = tbLastName.Text,
-            MiddleName = tbMiddleName.Text,
-            PhoneNumber = tbPhoneNumber.Text,
-            Password = tbPassword.Text,
-            Degree = tbDegree.Text,
-            Region = tbRegion.Text,
-            StartTime = TimeOnly.Parse(tbStartTime.Text),
-            EndTime = TimeOnly.Parse(tbEndTime.Text),
-            BirthDay = DateOnly.Parse(tbBirthDay.Text),
-            IsMale = isMail,
-            AppointmentMoney = double.Parse(tbMoney.Text),
-            Image = image
-        };
-        
+            if (item.Key == str)
+            {
+                categories.Add(item.Value);
+            }
+        }
+
+        doctorCreateDto.Image = image;
+        doctorCreateDto.WeekDay = WeekDays;
+        doctorCreateDto.CategoryIds = categories;
+        doctorCreateDto.HospitalBranchId = 4;
+
+        bool response = await _doctorservice.CreateAsync(doctorCreateDto);
+        if (response)
+        {
+            MessageBox.Show("Ma'lumotlar saqlandi");
+            this.Close();
+        }
+        else
+            MessageBox.Show("Ma'lumotlar saqlanmadi. Tekshirib qayta urinib ko'ring");
     }
 
-    List<string> lstWeekDays = new List<string>();
-    private void Dushanba_Click(object sender, RoutedEventArgs e)
+    private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        CheckBox checkBox = new CheckBox();
-        if(checkBox.IsChecked == true)
+        var categories = await _service.GetAllAsync();
+        foreach (var category in categories)
         {
-            lstWeekDays.Add(checkBox.Content.ToString());
+            ComboBoxItem item = new ComboBoxItem();
+            item.Content = category.Professionality.ToString();
+            cbCategory.Items.Add(item);
+            Category.Add(category.Professionality, category.Id);
         }
     }
 }

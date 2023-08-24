@@ -12,7 +12,7 @@ public class CategoryService : ICategoryService
     public async Task<List<CategoryViewModel>> GetAllAsync()
     {
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + "common/categories");
+        client.BaseAddress = new Uri(BASE_URL + "common/categories?page=1&PerPage=50");
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync(); 
         var category =  JsonConvert.DeserializeObject<List<CategoryViewModel>>(response);
