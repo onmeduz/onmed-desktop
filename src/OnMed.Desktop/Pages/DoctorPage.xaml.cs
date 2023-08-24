@@ -13,7 +13,7 @@ namespace OnMed.Desktop.Pages;
 public partial class DoctorPage : Page
 {
     private readonly IDoctorService _service;
-    long id = 1;
+    long id = 2;
     public DoctorPage()
     {
         InitializeComponent();

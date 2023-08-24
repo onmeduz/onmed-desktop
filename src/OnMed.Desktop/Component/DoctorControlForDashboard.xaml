@@ -27,8 +27,7 @@
             <Border.Background>
                 <ImageBrush 
                     x:Name="doctorImageDashboard"
-                    Stretch="UniformToFill"
-                    ImageSource="/Assets/Images/images.jpg" />
+                    Stretch="UniformToFill"/>
             </Border.Background>
 
         </Border>
@@ -37,7 +36,7 @@
             Grid.Column="1">
             <Label
                 x:Name="lbFullName"
-                Content="Erqo'ziyev Shodiyor"
+                Content=""
                 Margin="0 8 0 0"
                 FontSize="10"
                 FontWeight="SemiBold"
@@ -45,7 +44,7 @@
 
             <Label
                 x:Name="lbCategory"
-                Content="Stomotolog"
+                Content="Stamotolog"
                 Margin="0 22 10 0"
                 FontSize="9"
                 FontWeight="SemiBold"

@@ -39,7 +39,7 @@ public class DoctorService : IDoctorService
     public async Task<List<DoctorViewModel>> GetAllAsync(long id)
     {
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + "common/hospital/branch/doctors?hospitalId=1&page=1");
+        client.BaseAddress = new Uri(BASE_URL + "common/hospital/branch/doctors/2?page=1");
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync();
         var doctor = JsonConvert.DeserializeObject<List<DoctorViewModel>>(response);
