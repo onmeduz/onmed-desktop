@@ -10,6 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         Title="DoctorCreateWindow" 
+        Loaded="Window_Loaded"
         Height="800" 
         Width="700">
     
@@ -96,11 +97,14 @@
                     Grid.Column="2">
                     <TextBox
                         x:Name="tbFirstName"
+                        Text="Shodiyor"
                         Style="{StaticResource TextBox}"/>
                     <TextBox
                         x:Name="tbLastName"
+                        Text="Erqo'ziyev"
                         Style="{DynamicResource TextBox}"/>
                     <TextBox
+                        Text="Ikromjonovich"
                         x:Name="tbMiddleName"
                         Style="{DynamicResource TextBox}"/>
                     <Border
@@ -119,6 +123,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label
+                                    x:Name="lbPhoneCode"
                                     Grid.Column="0"
                                     Content="+998"
                                     FontSize="18"
@@ -129,13 +134,14 @@
                                 <TextBox
                                     x:Name="tbPhoneNumber"
                                     MaxLength="9"
+                                    Text="907727005"
                                     TextChanged="textboxPhone_TextChanged"
                                     Grid.Column="1"
                                     FontSize="18"
                                     BorderThickness="0"
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"
-                                    Foreground="Black"
+                                    Foreground="{DynamicResource color}"
                                     Background="Transparent">
                                 </TextBox>
                             </Grid>
@@ -150,6 +156,7 @@
 
                     <TextBox
                         x:Name="tbPassword"
+                        Text="Shod!yor0809"
                         Margin="0 5 0 0"
                         Style="{DynamicResource TextBox}"/>
                 </StackPanel>
@@ -172,6 +179,7 @@
                     <TextBox
                         Margin="5 0"
                         x:Name="tbRegion"
+                        Text="Farg'ona"
                         HorizontalAlignment="Left"
                         Style="{DynamicResource TextBox}"/>
                     
@@ -211,6 +219,7 @@
                     <TextBox
                         x:Name="tbStartTime"
                         HorizontalAlignment="Left"
+                        Text="09:00"
                         Style="{DynamicResource TextBox}"/>
                     <Label
                         FontSize="16"
@@ -218,6 +227,7 @@
                         Style="{DynamicResource NameLabel}"/>
                     <TextBox
                         x:Name="tbEndTime"
+                        Text="18:00"
                         HorizontalAlignment="Left"
                         Style="{DynamicResource TextBox}"/>
                     
@@ -234,6 +244,7 @@
                     <TextBox
                         Margin="5 0"
                         x:Name="tbDegree"
+                        Text="Professor"
                         HorizontalAlignment="Left"
                         Style="{DynamicResource TextBox}"/>
                     <Label
@@ -255,12 +266,13 @@
                                 Grid.Row="0"
                                 x:Name="tbMoney"
                                 Margin="5 0"
+                                Text="50"
                                 TextChanged="textboxPhone_TextChanged"
                                 FontSize="18"
                                 BorderThickness="0"
                                 VerticalAlignment="Center"
                                 FontWeight="SemiBold"
-                                Foreground="Black"
+                                Foreground="{DynamicResource color}"
                                 Background="Transparent">
                             </TextBox>
                             <Border
@@ -277,9 +289,9 @@
                         Margin="0 10 0 0"
                         Style="{DynamicResource NameLabel}"/>
                     <ComboBox
+                        x:Name="cbCategory"
                         Width="230"
                         HorizontalAlignment="Left">
-
                     </ComboBox>
                     <Label
                         FontSize="16"
@@ -292,38 +304,38 @@
                         HorizontalAlignment="Left">
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Dushanba"/>
+                                Content="Dushanba"
+                                x:Name="D"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Seshanba"/>
+                                x:Name="S"
+                                Content="Seshanba"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Chorshanba"/>
+                                x:Name="CH"
+                                Content="Chorshanba"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Payshanba"/>
+                                x:Name="P"
+                                Content="Payshanba"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Juma"/>
+                                x:Name="J"
+                                Content="Juma"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Shanba"/>
+                                x:Name="Sh"
+                                Content="Shanba"/>
                         </ComboBoxItem>
                         <ComboBoxItem>
                             <CheckBox
-                                Click="Dushanba_Click"
-                                 Content="Yakshanba"/>
+                                x:Name="Y"
+                                Content="Yakshanba"/>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
