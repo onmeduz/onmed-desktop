@@ -7,8 +7,11 @@ public class IdentitySingelton
     public string Token { get; set; }
     public long AdminId { get; set; }
     public long HospitalBranchId { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Name { get; set; }
+    public string MiddleName { get; set; }
+    public string ImagePath { get; set; }
+    public string HospitalName { get; set; }
 
     private IdentitySingelton()
     {

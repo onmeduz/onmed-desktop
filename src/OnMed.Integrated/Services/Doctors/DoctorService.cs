@@ -7,6 +7,7 @@ using OnMed.ViewModel.Doctors;
 using System.ComponentModel;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 
 namespace OnMed.Integrated.Services.Doctors;
 
@@ -18,56 +19,44 @@ public class DoctorService : IDoctorService
     {
         using (var client = new HttpClient())
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "admin/doctor");
+            var request = new Uri(BASE_URL + "admin/doctor");
 
-            var content = new MultipartFormDataContent();
+            //var content = new MultipartFormDataContent();
 
-            content.Add(new StringContent(createDto.FirstName), "FirstName");
-            content.Add(new StringContent(createDto.LastName), "LastName");
-            content.Add(new StringContent(createDto.MiddleName), "MiddleName");
-            content.Add(new StringContent(createDto.PhoneNumber), "PhoneNumber");
-            content.Add(new StringContent(createDto.Password), "Password");
-            content.Add(new StringContent(createDto.Region), "Region");
-            content.Add(new StringContent(createDto.Degree), "Degree");
-            content.Add(new StringContent(createDto.StartTime), "StartTime");
-            content.Add(new StringContent(createDto.EndTime), "EndTime");
-            content.Add(new ByteArrayContent(createDto.Image), "Image");
-
-            var Birthday = JsonConvert.SerializeObject(createDto.BirthDay);
-            content.Add(new StringContent(Birthday), "BirthDay");
-
-            var Weekday = JsonConvert.SerializeObject(createDto.WeekDay);
-            content.Add(new StringContent(Weekday), "WeekDay");
-
-            var IsMale = JsonConvert.SerializeObject(createDto.IsMale);
-            content.Add(new StringContent(IsMale), "IsMale");
-
-            var Money = JsonConvert.SerializeObject(createDto.AppointmentMoney);
-            content.Add(new StringContent(Money), "AppointmentMoney");
-
-            var HospitalId = JsonConvert.SerializeObject(createDto.HospitalBranchId);
-            content.Add(new StringContent(HospitalId), "HospitalBranchId");
-
-            var CategoryId = JsonConvert.SerializeObject(createDto.CategoryIds);
-            content.Add(new StringContent(CategoryId), "CategoryIds");
+            var json = JsonConvert.SerializeObject(createDto);
+            StringContent cont = new StringContent(json, Encoding.UTF8, "application/json");
 
             var token = IdentitySingelton.GetInstance().Token;
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
 
-            request.Content = content;
-
-            var result = await client.SendAsync(request);
+            var result = await client.PostAsync(request, cont);
+            var response = await result.Content.ReadAsStringAsync();
 
             if (result.IsSuccessStatusCode)
                 return true;
             return false;
         }
     }
-    
-    public async Task<List<DoctorViewModel>> GetAllAsync(long id)
+
+    public async Task<bool> DeleteAsync(long id)
     {
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + "common/hospital/branch/doctors/4?page=1");
+        client.BaseAddress = new Uri(BASE_URL + $"admin/doctor/{id}");
+
+        var token = IdentitySingelton.GetInstance().Token;
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+        var result = await client.DeleteAsync(client.BaseAddress);
+        string response = await result.Content.ReadAsStringAsync();
+        return response == "true";
+    }
+
+    public async Task<List<DoctorViewModel>> GetAllAsync(long id)
+    {
+        var Id = IdentitySingelton.GetInstance().HospitalBranchId;
+
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(BASE_URL + $"common/hospital/branch/doctors/{Id}?page=1");
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync();
         var doctor = JsonConvert.DeserializeObject<List<DoctorViewModel>>(response);

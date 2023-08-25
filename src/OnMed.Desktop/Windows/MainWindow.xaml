@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Height="800" Width="1130">
+        Height="800" Width="1130"
+        Loaded="Window_Loaded">
     <Grid Background="{DynamicResource FirstColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -181,10 +182,11 @@
                 </Border>
 
                 <Label
+                    x:Name="lbAdminName"
                     Grid.Column="1"
                     Margin="0 10" 
                     HorizontalAlignment="Right"
-                    Content="Erqo'ziyev Shodiyor"
+                    Content=""
                     FontSize="18"
                     FontWeight="SemiBold"
                     Foreground="{DynamicResource color}"/>
@@ -197,6 +199,7 @@
                     FontWeight="SemiBold"
                     Foreground="{DynamicResource BorderColor}"/>
                 <Border
+                    MouseDown="Border_MouseDown_1"
                     Margin="0 0 30 10"
                     Grid.Column="2"
                     Height="50"
@@ -205,8 +208,7 @@
                     <Border.Background>
                         <ImageBrush
                             x:Name="AdminImage" 
-                            Stretch="UniformToFill"
-                            ImageSource="/Assets/Images/images.jpg" />
+                            Stretch="UniformToFill"/>
                     </Border.Background>
                 </Border>
             </Grid>

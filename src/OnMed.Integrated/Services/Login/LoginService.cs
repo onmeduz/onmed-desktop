@@ -22,7 +22,7 @@ public class LoginService : ILoginService
                 var token = IdentitySingelton.GetInstance();
 
                 string responseContent = await response.Content.ReadAsStringAsync();
-                dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent);
+                dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent)!;
                 token.Token = jsonResponse.token.ToString();
 
                 return true;

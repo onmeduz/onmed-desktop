@@ -1,4 +1,8 @@
 ﻿using OnMed.Desktop.Constans;
+using OnMed.Desktop.Pages;
+using OnMed.Desktop.Windows;
+using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Services.Doctors;
 using OnMed.ViewModel.Doctors;
 using System;
 using System.Collections.Generic;
@@ -16,10 +20,14 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class DoctorComponent : UserControl
 {
+    public long Id;
     private readonly List<string> stars = new List<string> {"Star1", "Star2", "Star3", "Star4", "Star5"};
+
+    private readonly IDoctorService _service;
     public DoctorComponent()
     {
         InitializeComponent();
+        this._service = new DoctorService();
     }
 
     public void SetData(DoctorViewModel doctorViewModel)
@@ -29,6 +37,7 @@ public partial class DoctorComponent : UserControl
 
         DoctorsImage.ImageSource = new BitmapImage(imageUri);
         DoctorName.Content = doctorViewModel.ToString();
+        Id = doctorViewModel.Id;
 
         int count = 3;
         for (int i = 0; i < count; i++)
@@ -59,11 +68,29 @@ public partial class DoctorComponent : UserControl
 
     private void btnManege_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-
+        DoctorUpdateWindow doctorUpdateWindow = new DoctorUpdateWindow();
+        doctorUpdateWindow.doctorName.Content = DoctorName.Content;
+        doctorUpdateWindow.ShowDialog();
     }
 
     private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
     {
+        MessageBox.Show("");
+    }
 
+    private async void deletebtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (MessageBox.Show($"{DoctorName.Content} ni o'chirmoqchimisiz?",
+                   "Shifokorni o'chirish",
+            MessageBoxButton.YesNo,
+                   MessageBoxImage.Question) == MessageBoxResult.Yes)
+        {
+            var response = await _service.DeleteAsync(Id);
+            if (response)
+                MessageBox.Show("Shifokor o'chirildi");
+            else
+                MessageBox.Show("Xatoliklar mavjud.");
+        }
+        
     }
 }
