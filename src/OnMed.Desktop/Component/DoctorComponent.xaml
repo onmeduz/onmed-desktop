@@ -31,6 +31,18 @@
                             x:Name="DoctorsImage"
                             Stretch="UniformToFill"/>
                     </Border.Background>
+
+                    <Button
+                        x:Name="deletebtn"
+                        Background="White"
+                        Margin="190 10 10 140"
+                        Height="30"
+                        Width="30"
+                        Click="deletebtn_Click"
+                        Style="{DynamicResource DeleteButton}">
+                        
+                    </Button>
+                        
                 </Border>
                 <Label
                     x:Name="DoctorName"

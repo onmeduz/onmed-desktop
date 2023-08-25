@@ -25,7 +25,7 @@
                 Margin="15">
                 <Border.Background>
                     <ImageBrush 
-                        ImageSource="/Assets/Images/Plt_Image.jpg"
+                        ImageSource="/Assets/Images/images.jpg"
                         Stretch="Fill"/>
                 </Border.Background>
             </Border>

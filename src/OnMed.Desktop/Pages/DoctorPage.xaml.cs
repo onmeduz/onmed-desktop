@@ -1,6 +1,7 @@
 ﻿using OnMed.Desktop.Component;
 using OnMed.Desktop.Windows;
 using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Security;
 using OnMed.Integrated.Services.Doctors;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +14,6 @@ namespace OnMed.Desktop.Pages;
 public partial class DoctorPage : Page
 {
     private readonly IDoctorService _service;
-    long id = 2;
     public DoctorPage()
     {
         InitializeComponent();
@@ -22,6 +22,7 @@ public partial class DoctorPage : Page
 
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
+        var id = IdentitySingelton.GetInstance().HospitalBranchId;
         var doctors = await _service.GetAllAsync(id);
         foreach (var doctor in doctors)
         {

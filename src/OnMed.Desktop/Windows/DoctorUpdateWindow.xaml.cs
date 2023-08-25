@@ -1,32 +1,38 @@
 ﻿using Microsoft.Win32;
-using OnMed.Desktop.Constans;
 using OnMed.Desktop.Halpers;
 using OnMed.Dtos.Doctors;
 using OnMed.Integrated.Interfaces.Categories;
 using OnMed.Integrated.Interfaces.Doctors;
-using OnMed.Integrated.Services;
 using OnMed.Integrated.Services.Doctors;
+using OnMed.Integrated.Services;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.IO;
 
 namespace OnMed.Desktop.Windows;
 
 /// <summary>
-/// Interaction logic for DoctorCreateWindow.xaml
+/// Interaction logic for DoctorUpdateWindow.xaml
 /// </summary>
-public partial class DoctorCreateWindow : Window
+public partial class DoctorUpdateWindow : Window
 {
     private readonly ICategoryService _service;
     private readonly IDoctorService _doctorservice;
 
     string path = string.Empty;
-    public DoctorCreateWindow()
+    public DoctorUpdateWindow()
     {
         InitializeComponent();
         this._service = new CategoryService();
@@ -143,7 +149,7 @@ public partial class DoctorCreateWindow : Window
         doctorCreateDto.IsMale = isMail;
         doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
         WeekDays.Clear();
-        if(D.IsChecked == true)
+        if (D.IsChecked == true)
             WeekDays.Add(1);
         if (S.IsChecked == true)
             WeekDays.Add(2);

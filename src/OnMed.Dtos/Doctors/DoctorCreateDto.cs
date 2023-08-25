@@ -8,7 +8,7 @@ public class DoctorCreateDto
     public DateOnly BirthDay { get; set; }
     public string PhoneNumber { get; set; } = String.Empty;
     public bool IsMale { get; set; }
-    public byte[] Image { get; set; } = default!;
+    public Byte[] Image { get; set; } = default!;
     public string Region { get; set; } = String.Empty;
     public string Password { get; set; } = String.Empty;
     public double AppointmentMoney { get; set; }
