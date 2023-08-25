@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using OnMed.Integrated.Security;
 
 namespace OnMed.Desktop.Windows;
 
@@ -136,18 +137,20 @@ public partial class DoctorUpdateWindow : Window
     {
         DoctorCreateDto doctorCreateDto = new DoctorCreateDto();
 
-        doctorCreateDto.FirstName = tbFirstName.Text;
-        doctorCreateDto.LastName = tbLastName.Text;
-        doctorCreateDto.MiddleName = tbMiddleName.Text;
+        doctorCreateDto.FirstName = FirstName.Text;
+        doctorCreateDto.LastName = LastName.Text;
+        doctorCreateDto.MiddleName = MiddleName.Text;
         doctorCreateDto.PhoneNumber = (lbPhoneCode.Content.ToString() + tbPhoneNumber.Text);
-        doctorCreateDto.Password = tbPassword.Text;
-        doctorCreateDto.Degree = tbDegree.Text;
-        doctorCreateDto.Region = tbRegion.Text;
-        doctorCreateDto.StartTime = tbStartTime.Text;
-        doctorCreateDto.EndTime = tbEndTime.Text;
+        doctorCreateDto.Password = Password.Text;
+        doctorCreateDto.Degree = Degree.Text;
+        doctorCreateDto.Region = Region.Text;
+        doctorCreateDto.StartTime = StarTime.Text;
+        doctorCreateDto.EndTime = EndTime.Text;
         doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)));
         doctorCreateDto.IsMale = isMail;
         doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
+        doctorCreateDto.HospitalBranchId = IdentitySingelton.GetInstance().HospitalBranchId;
+
         WeekDays.Clear();
         if (D.IsChecked == true)
             WeekDays.Add(1);
@@ -164,6 +167,7 @@ public partial class DoctorUpdateWindow : Window
         if (Y.IsChecked == true)
             WeekDays.Add(7);
 
+        doctorCreateDto.WeekDay = WeekDays;
 
         List<long> categories = new List<long>();
 
@@ -176,14 +180,13 @@ public partial class DoctorUpdateWindow : Window
                 categories.Add(item.Value);
             }
         }
+        doctorCreateDto.CategoryIds = categories;
+
         string imagepath = ImageBrushDoctor.ImageSource.ToString();
         var imageName = ImageNameMarker.GetImageName(imagepath);
         byte[] image = await File.ReadAllBytesAsync(imagepath);
 
         doctorCreateDto.Image = image;
-        doctorCreateDto.WeekDay = WeekDays;
-        doctorCreateDto.CategoryIds = categories;
-        doctorCreateDto.HospitalBranchId = 4;
 
         bool response = await _doctorservice.CreateAsync(doctorCreateDto);
         if (response)
@@ -205,5 +208,86 @@ public partial class DoctorUpdateWindow : Window
             cbCategory.Items.Add(item);
             Category.Add(category.Professionality, category.Id);
         }
+    }
+
+    private void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        bordername.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        bordername.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+
+    }
+
+    private void Grid_MouseEnter_1(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderLastName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_1(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderLastName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_2(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderMiddleName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_2(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderMiddleName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_3(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderPassword.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_3(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderPassword.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_4(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderRegion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_4(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderRegion.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_5(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderDegree.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_5(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderDegree.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_6(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderStartime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_6(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderStartime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+    }
+
+    private void Grid_MouseEnter_7(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderEndTime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+    }
+
+    private void Grid_MouseLeave_7(object sender, System.Windows.Input.MouseEventArgs e)
+    {
+        borderEndTime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
     }
 }
