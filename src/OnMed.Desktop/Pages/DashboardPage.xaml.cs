@@ -1,6 +1,9 @@
 ﻿using OnMed.Desktop.Component;
 using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Interfaces.Patients;
+using OnMed.Integrated.Security;
 using OnMed.Integrated.Services.Doctors;
+using OnMed.Integrated.Services.Patients;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,11 +15,12 @@ namespace OnMed.Desktop.Pages;
 public partial class DashboardPage : Page
 {
     private readonly IDoctorService _service;
-    long id = 1;
+    private readonly IPatientService _patientService;
     public DashboardPage()
     {
         InitializeComponent();
         this._service = new DoctorService();
+        this._patientService = new PatientService();
 
     }
 
@@ -27,13 +31,20 @@ public partial class DashboardPage : Page
             UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
             wrpUsers.Children.Add(userControlForDashboard);
         }
-        var doctors = await _service.GetAllAsync(id);
-        foreach (var doctor in doctors)
+
+        long Id = IdentitySingelton.GetInstance().HospitalBranchId;
+        var doctors = await _service.GetAllAsync(Id);
+        foreach (var doctor in doctors) 
         {
             DoctorControlForDashboard doctorControlForDashboard = new DoctorControlForDashboard();
             doctorControlForDashboard.SetData(doctor);
             wrpDoctors.Children.Add(doctorControlForDashboard);
         }
+        long count = await _patientService.GetCount(Id);
+
+        lblUserCount.Content = count.ToString();
+
         doctorCount.Content = doctors.Count;
+        
     }
 }

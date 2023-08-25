@@ -53,7 +53,6 @@ public partial class DoctorComponent : UserControl
             if (stars[i] == "Star5")
                 Star5.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F4CA16"));
         }
-
     }
 
     private void DoctorImage_MouseEnter(object sender, MouseEventArgs e)
@@ -70,12 +69,12 @@ public partial class DoctorComponent : UserControl
     {
         DoctorUpdateWindow doctorUpdateWindow = new DoctorUpdateWindow();
         doctorUpdateWindow.DoctorName.Content = DoctorName.Content;
+        doctorUpdateWindow.DoctorId = Id;
         doctorUpdateWindow.ShowDialog();
     }
 
     private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        MessageBox.Show("");
     }
 
     private async void deletebtn_Click(object sender, RoutedEventArgs e)
@@ -91,6 +90,5 @@ public partial class DoctorComponent : UserControl
             else
                 MessageBox.Show("Xatoliklar mavjud.");
         }
-        
     }
 }
