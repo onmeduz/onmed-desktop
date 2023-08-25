@@ -69,7 +69,7 @@ public partial class DoctorComponent : UserControl
     private void btnManege_Click(object sender, System.Windows.RoutedEventArgs e)
     {
         DoctorUpdateWindow doctorUpdateWindow = new DoctorUpdateWindow();
-        doctorUpdateWindow.doctorName.Content = DoctorName.Content;
+        doctorUpdateWindow.DoctorName.Content = DoctorName.Content;
         doctorUpdateWindow.ShowDialog();
     }
 

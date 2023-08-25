@@ -25,11 +25,7 @@
                 <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
             <Label
-                x:Name="doctorName"
-                VerticalAlignment="Center"
-                FontSize="20"
-                HorizontalAlignment="Center"
-                Style="{DynamicResource NameLabel}"/>
+                x:Name="DoctorName"/>
             <Button 
                 Grid.Row="0"
                 x:Name="Close"     
@@ -99,15 +95,84 @@
                     Margin="15"
                     Orientation="Vertical"
                     Grid.Column="2">
-                    <TextBox
-                        x:Name="tbFirstName"
-                        Style="{StaticResource TextBox}"/>
-                    <TextBox
-                        x:Name="tbLastName"
-                        Style="{DynamicResource TextBox}"/>
-                    <TextBox
-                        x:Name="tbMiddleName"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter"
+                        MouseLeave="Grid_MouseLeave"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="FirstName"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            x:Name="bordername"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_1"
+                        MouseLeave="Grid_MouseLeave_1"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="LastName"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            x:Name="borderLastName"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_2"
+                        MouseLeave="Grid_MouseLeave_2"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="MiddleName"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            x:Name="borderMiddleName"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                     <Border
                         MouseEnter="Border_MouseEnter"
                         MouseLeave="Border_MouseLeave"
@@ -154,10 +219,32 @@
                         </Grid>
                     </Border>
 
-                    <TextBox
-                        x:Name="tbPassword"
-                        Margin="0 5 0 0"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_3"
+                        MouseLeave="Grid_MouseLeave_3"
+                        Margin="0 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="Password"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            x:Name="borderPassword"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                 </StackPanel>
             </Grid>
 
@@ -175,11 +262,35 @@
                         FontSize="16"
                         Content="Yashash joyi :"
                         Style="{DynamicResource NameLabel}"/>
-                    <TextBox
-                        Margin="5 0"
-                        x:Name="tbRegion"
-                        HorizontalAlignment="Left"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_4"
+                        MouseLeave="Grid_MouseLeave_4"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="Region"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderRegion"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
 
                     <Label
                         FontSize="16"
@@ -214,18 +325,68 @@
                         FontSize="16"
                         Content="Ish boshlanish vaqti:"
                         Style="{DynamicResource NameLabel}"/>
-                    <TextBox
-                        x:Name="tbStartTime"
-                        HorizontalAlignment="Left"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_6"
+                        MouseLeave="Grid_MouseLeave_6"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="StarTime"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderStartime"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                     <Label
                         FontSize="16"
                         Content="Ish tugash vaqti:"
                         Style="{DynamicResource NameLabel}"/>
-                    <TextBox
-                        x:Name="tbEndTime"
-                        HorizontalAlignment="Left"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_7"
+                        MouseLeave="Grid_MouseLeave_7"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="EndTime"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent" >
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderEndTime"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
 
                 </StackPanel>
 
@@ -237,11 +398,35 @@
                         FontSize="16"
                         Content="Ilmiy darajasi :"
                         Style="{DynamicResource NameLabel}"/>
-                    <TextBox
-                        Margin="5 0"
-                        x:Name="tbDegree"
-                        HorizontalAlignment="Left"
-                        Style="{DynamicResource TextBox}"/>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_5"
+                        MouseLeave="Grid_MouseLeave_5"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="Degree"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderDegree"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                     <Label
                         FontSize="16"
                         Content="Uchrashuv narxi :"
