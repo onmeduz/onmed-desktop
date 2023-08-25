@@ -30,6 +30,7 @@
                             Margin="15 15 5 10"
                             CornerRadius="10"
                             Background="{DynamicResource FirstColor}">
+                            
                         </Border>
 
                     </Grid>
@@ -167,7 +168,7 @@
                                     Grid.Column="1"
                                     >
                                     <Label
-                                        Content="30K"
+                                        Name="lblUserCount"
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>

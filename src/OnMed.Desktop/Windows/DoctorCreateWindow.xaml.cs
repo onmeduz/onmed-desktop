@@ -121,7 +121,8 @@ public partial class DoctorCreateWindow : Window
         string? btnName = radioButton.Content.ToString();
         if (btnName == "Erkak")
             isMail = true;
-        isMail = false;
+        else
+            isMail = false;
     }
 
     List<int> WeekDays = new List<int>();
@@ -177,6 +178,7 @@ public partial class DoctorCreateWindow : Window
         doctorCreateDto.CategoryIds = categories;
 
         string imagepath = ImageBrushDoctor.ImageSource.ToString();
+        var imageName = ImageNameMarker.GetImageName(imagepath); 
         byte[] image = await File.ReadAllBytesAsync(imagepath);
 
         doctorCreateDto.Image = image;

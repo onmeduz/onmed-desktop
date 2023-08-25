@@ -3,24 +3,17 @@ using OnMed.Desktop.Halpers;
 using OnMed.Dtos.Doctors;
 using OnMed.Integrated.Interfaces.Categories;
 using OnMed.Integrated.Interfaces.Doctors;
-using OnMed.Integrated.Services.Doctors;
+using OnMed.Integrated.Security;
 using OnMed.Integrated.Services;
+using OnMed.Integrated.Services.Doctors;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using OnMed.Integrated.Security;
 
 namespace OnMed.Desktop.Windows;
 
@@ -32,6 +25,7 @@ public partial class DoctorUpdateWindow : Window
     private readonly ICategoryService _service;
     private readonly IDoctorService _doctorservice;
 
+    public long DoctorId;
     string path = string.Empty;
     public DoctorUpdateWindow()
     {
@@ -127,7 +121,8 @@ public partial class DoctorUpdateWindow : Window
         string? btnName = radioButton.Content.ToString();
         if (btnName == "Erkak")
             isMail = true;
-        isMail = false;
+        else
+            isMail = false;
     }
 
     List<int> WeekDays = new List<int>();
@@ -135,63 +130,23 @@ public partial class DoctorUpdateWindow : Window
     Dictionary<string, long> Category = new Dictionary<string, long>();
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        DoctorCreateDto doctorCreateDto = new DoctorCreateDto();
+        DoctorUpdateDto dto = new DoctorUpdateDto();
+        dto.FirstName = FirstName.Text;
+        dto.LastName = LastName.Text;
+        dto.MiddleName = MiddleName.Text;
+        dto.PhoneNumber = (lbPhoneCode.Content.ToString() + tbPhoneNumber.Text);
+        dto.Password = Password.Text;
+        dto.Degree = Degree.Text;
+        dto.Region = Region.Text;
+        dto.BirthDay = tbBirthDay.SelectedDate.ToString()!;
+        dto.IsMale = isMail;
+        dto.AppointmentMoney = double.Parse(tbMoney.Text);
+        dto.Image = ImageBrushDoctor.ImageSource.ToString();
 
-        doctorCreateDto.FirstName = FirstName.Text;
-        doctorCreateDto.LastName = LastName.Text;
-        doctorCreateDto.MiddleName = MiddleName.Text;
-        doctorCreateDto.PhoneNumber = (lbPhoneCode.Content.ToString() + tbPhoneNumber.Text);
-        doctorCreateDto.Password = Password.Text;
-        doctorCreateDto.Degree = Degree.Text;
-        doctorCreateDto.Region = Region.Text;
-        doctorCreateDto.StartTime = StarTime.Text;
-        doctorCreateDto.EndTime = EndTime.Text;
-        doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)));
-        doctorCreateDto.IsMale = isMail;
-        doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
-        doctorCreateDto.HospitalBranchId = IdentitySingelton.GetInstance().HospitalBranchId;
-
-        WeekDays.Clear();
-        if (D.IsChecked == true)
-            WeekDays.Add(1);
-        if (S.IsChecked == true)
-            WeekDays.Add(2);
-        if (CH.IsChecked == true)
-            WeekDays.Add(3);
-        if (P.IsChecked == true)
-            WeekDays.Add(4);
-        if (J.IsChecked == true)
-            WeekDays.Add(5);
-        if (Sh.IsChecked == true)
-            WeekDays.Add(6);
-        if (Y.IsChecked == true)
-            WeekDays.Add(7);
-
-        doctorCreateDto.WeekDay = WeekDays;
-
-        List<long> categories = new List<long>();
-
-        string str = cbCategory.Text;
-
-        foreach (var item in Category)
-        {
-            if (item.Key == str)
-            {
-                categories.Add(item.Value);
-            }
-        }
-        doctorCreateDto.CategoryIds = categories;
-
-        string imagepath = ImageBrushDoctor.ImageSource.ToString();
-        var imageName = ImageNameMarker.GetImageName(imagepath);
-        byte[] image = await File.ReadAllBytesAsync(imagepath);
-
-        doctorCreateDto.Image = image;
-
-        bool response = await _doctorservice.CreateAsync(doctorCreateDto);
+        bool response = await _doctorservice.UpdateAsync(DoctorId, dto);
         if (response)
         {
-            MessageBox.Show("Ma'lumotlar saqlandi");
+            MessageBox.Show("Ma'lumotlar o'gartirildi");
             this.Close();
         }
         else

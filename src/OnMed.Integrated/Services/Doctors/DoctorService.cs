@@ -53,18 +53,33 @@ public class DoctorService : IDoctorService
 
     public async Task<List<DoctorViewModel>> GetAllAsync(long id)
     {
-        var Id = IdentitySingelton.GetInstance().HospitalBranchId;
 
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + $"common/hospital/branch/doctors/{Id}?page=1");
+        client.BaseAddress = new Uri(BASE_URL + $"common/hospital/branch/doctors/{id}?page=1");
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync();
         var doctor = JsonConvert.DeserializeObject<List<DoctorViewModel>>(response);
         return doctor!;
     }
 
-    public Task<bool> UpdateAsync(long id, DoctorCreateDto createDto)
+    public async Task<bool> UpdateAsync(long id, DoctorUpdateDto dto)
     {
-        throw new NotImplementedException();
+        using (var client = new HttpClient())
+        {
+            var request = new Uri(BASE_URL + $"admin/doctor?doctorId={id}");
+
+            var json = JsonConvert.SerializeObject(dto);
+            StringContent cont = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var token = IdentitySingelton.GetInstance().Token;
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            var result = await client.PutAsync(request, cont);
+            var response = await result.Content.ReadAsStringAsync();
+
+            if (result.IsSuccessStatusCode)
+                return true;
+            return false;
+        }
     }
 }
