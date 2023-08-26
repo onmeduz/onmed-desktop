@@ -4,6 +4,7 @@ using OnMed.Integrated.Interfaces.Patients;
 using OnMed.Integrated.Security;
 using OnMed.Integrated.Services.Doctors;
 using OnMed.Integrated.Services.Patients;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -43,8 +44,17 @@ public partial class DashboardPage : Page
         long count = await _patientService.GetCount(Id);
 
         lblUserCount.Content = count.ToString();
-
+        lblPatient.Content = count.ToString();
         doctorCount.Content = doctors.Count;
         
+    }
+    public void SetDataChart(List<double> nums, List<string> strings)
+    {
+        SetChart.Values.Clear();
+        foreach (var item in nums)
+        {
+            SetChart.Values.Add(item);
+        }
+        DateLabel.Labels = strings.ToArray();
     }
 }

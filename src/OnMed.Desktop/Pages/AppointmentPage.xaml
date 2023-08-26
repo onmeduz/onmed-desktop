@@ -82,6 +82,7 @@
                 Content="Hammasi"
                 FontSize="16"
                 FontWeight="SemiBold"
+                Click="Button_Click"
                 Style="{DynamicResource LoginButton}"/>
             <Button
                 Grid.Column="1"
@@ -90,6 +91,7 @@
                 Content="Bugungi"
                 FontSize="16"
                 FontWeight="SemiBold"
+                Click="Button_Click_1"
                 Style="{DynamicResource LoginButton}"/>
             <Button
                 Grid.Column="2"
@@ -98,6 +100,7 @@
                 Content="Haftalik"
                 FontSize="16"
                 FontWeight="SemiBold"
+                Click="Button_Click_2"
                 Style="{DynamicResource LoginButton}"/>
             <Button
                 Grid.Column="3"
@@ -106,6 +109,7 @@
                 Content="Oylik"
                 FontSize="16"
                 FontWeight="SemiBold"
+                Click="Button_Click_3"
                 Style="{DynamicResource LoginButton}"/>
         </Grid>
 
@@ -116,7 +120,6 @@
                 <ColumnDefinition Width="0.45*"/>
                 <ColumnDefinition Width="1.3*"/>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.4*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="1.3*"/>
@@ -142,25 +145,20 @@
             <Label
                 Grid.Column="3"
                 VerticalAlignment="Center"
-                Content="Yoshi"
+                Content="Uchrashuv kuni"
                 Style="{DynamicResource TitleLabel}"/>
             <Label
                 Grid.Column="4"
                 VerticalAlignment="Center"
-                Content="Uchrashuv kuni"
+                Content="Vaqti"
                 Style="{DynamicResource TitleLabel}"/>
             <Label
                 Grid.Column="5"
                 VerticalAlignment="Center"
-                Content="Vaqti"
-                Style="{DynamicResource TitleLabel}"/>
-            <Label
-                Grid.Column="6"
-                VerticalAlignment="Center"
                 Content="Shifokor"
                 Style="{DynamicResource TitleLabel}"/>
             <Label
-                Grid.Column="7"
+                Grid.Column="6"
                 Content="To'lov"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"

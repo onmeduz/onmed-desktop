@@ -18,14 +18,17 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-
+            
             <Border
                 CornerRadius="10"
+                BorderBrush="{DynamicResource color}"
+                BorderThickness="0.5"
                 Grid.Column="0"
                 Margin="15">
                 <Border.Background>
-                    <ImageBrush 
-                        ImageSource="/Assets/Images/images.jpg"
+                    <ImageBrush
+                        ImageSource="/Assets/Images/default_image.png"
+                        x:Name="patientImage"
                         Stretch="Fill"/>
                 </Border.Background>
             </Border>
@@ -46,10 +49,6 @@
                        Margin="0 2"
                        FontSize="17"
                        Style="{DynamicResource TitleLabel}"/>
-                <Label Content="Yoshi :"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
                 <Label Content="Jinsi :"
                        FontSize="17"                       
                        Margin="0 2"
@@ -61,26 +60,26 @@
                 Margin="10"
                 Grid.Column="2">
 
-                <Label Content="Po'lat Alemdar"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
-                <Label Content="+90 212 772 7005"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
-                <Label Content="Elif Eylul"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
-                <Label Content="52"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
-                <Label Content="Erkak"
-                       Margin="0 2"
-                       FontSize="17"
-                       Style="{DynamicResource TitleLabel}"/>
+                <Label 
+                    Name="patientName"
+                    Margin="0 2"
+                    FontSize="17"
+                    Style="{DynamicResource TitleLabel}"/>
+                <Label 
+                    Name="patientPhone"
+                    Margin="0 2"
+                    FontSize="17"
+                    Style="{DynamicResource TitleLabel}"/>
+                <Label 
+                    Name="doctorName"
+                    Margin="0 2"
+                    FontSize="17"
+                    Style="{DynamicResource TitleLabel}"/>
+                <Label 
+                    Name="patientGender"
+                    Margin="0 2"
+                    FontSize="17"
+                    Style="{DynamicResource TitleLabel}"/>
             </StackPanel>
         </Grid>
         <Border.Effect>

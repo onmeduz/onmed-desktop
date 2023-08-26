@@ -7,6 +7,7 @@ public class DoctorViewModel
     public string LastName { get; set; } = string.Empty;
     public string MiddleName { get; set; } = string.Empty;
     public string ImagePath { get; set; } = string.Empty;
+    public List<string> CategoryNames { get; set; } = new List<string>();
     public DateOnly BirthDay { get; set; }
     public string PhoneNumber { get; set; } = string.Empty;
     public bool IsMale { get; set; }

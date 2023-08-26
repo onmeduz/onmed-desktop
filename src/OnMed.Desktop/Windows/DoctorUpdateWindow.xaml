@@ -25,6 +25,10 @@
                 <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
             <Label
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="20"
+                Style="{DynamicResource NameLabel}"
                 x:Name="DoctorName"/>
             <Button 
                 Grid.Row="0"

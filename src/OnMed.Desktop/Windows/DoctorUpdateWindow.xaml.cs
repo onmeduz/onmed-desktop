@@ -1,14 +1,11 @@
 ﻿using Microsoft.Win32;
-using OnMed.Desktop.Halpers;
 using OnMed.Dtos.Doctors;
 using OnMed.Integrated.Interfaces.Categories;
 using OnMed.Integrated.Interfaces.Doctors;
-using OnMed.Integrated.Security;
 using OnMed.Integrated.Services;
 using OnMed.Integrated.Services.Doctors;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -138,7 +135,7 @@ public partial class DoctorUpdateWindow : Window
         dto.Password = Password.Text;
         dto.Degree = Degree.Text;
         dto.Region = Region.Text;
-        dto.BirthDay = tbBirthDay.SelectedDate.ToString()!;
+        dto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)));
         dto.IsMale = isMail;
         dto.AppointmentMoney = double.Parse(tbMoney.Text);
         dto.Image = ImageBrushDoctor.ImageSource.ToString();

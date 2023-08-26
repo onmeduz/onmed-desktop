@@ -141,10 +141,11 @@ public partial class DoctorCreateWindow : Window
         doctorCreateDto.Region = Region.Text;
         doctorCreateDto.StartTime = StarTime.Text;
         doctorCreateDto.EndTime = EndTime.Text;
-        doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture)));
+        doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)));
         doctorCreateDto.IsMale = isMail;
         doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
         doctorCreateDto.HospitalBranchId = IdentitySingelton.GetInstance().HospitalBranchId;
+        doctorCreateDto.Image = ImageBrushDoctor.ImageSource.ToString();
 
         WeekDays.Clear();
         if(D.IsChecked == true)
@@ -176,12 +177,6 @@ public partial class DoctorCreateWindow : Window
             }
         }
         doctorCreateDto.CategoryIds = categories;
-
-        string imagepath = ImageBrushDoctor.ImageSource.ToString();
-        var imageName = ImageNameMarker.GetImageName(imagepath); 
-        byte[] image = await File.ReadAllBytesAsync(imagepath);
-
-        doctorCreateDto.Image = image;
 
         bool response = await _doctorservice.CreateAsync(doctorCreateDto);
         if (response)

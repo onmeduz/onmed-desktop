@@ -23,7 +23,6 @@
                     <ColumnDefinition Width="0.4*"/>
                     <ColumnDefinition Width="1.3*"/>
                     <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.4*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="1.3*"/>
@@ -56,17 +55,8 @@
                            HorizontalAlignment="Left"
                            Foreground="{DynamicResource color}"
                            Margin="5 0"/>
-                <Label x:Name="lblAge"
-                           Grid.Column="3"
-                           Content="20"
-                           FontWeight="SemiBold"
-                           FontSize="14"
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Left"
-                           Foreground="{DynamicResource color}"
-                           Margin="5 0"/>
                 <Label x:Name="lblDate"
-                           Grid.Column="4"
+                           Grid.Column="3"
                            Content="1-sentabr"
                            FontWeight="SemiBold"
                            FontSize="14"
@@ -75,7 +65,7 @@
                            Foreground="{DynamicResource color}"
                            Margin="5 0"/>
                 <Label x:Name="lblTime"
-                           Grid.Column="5"
+                           Grid.Column="4"
                            Content="9:30"
                            FontWeight="SemiBold"
                            FontSize="14"
@@ -84,7 +74,7 @@
                            Foreground="{DynamicResource color}"
                            Margin="5 0"/>
                 <Label x:Name="lblDoctorName"
-                           Grid.Column="6"
+                           Grid.Column="5"
                            Content="Erqo'ziyev Shodiyor"
                            FontWeight="SemiBold"
                            FontSize="14"
@@ -94,13 +84,13 @@
                            Margin="5 0"/>
                 <Border
                     Margin="0 15 0 5"
-                    Grid.Column="7">
+                    Grid.Column="6">
                     <Path 
-                        x:Name="patients"
+                        x:Name="IsPaid"
                         Height="16"
                         Stretch="Uniform"
                         VerticalAlignment="Bottom"
-                        Fill="{DynamicResource color}"
+                        Fill="Green"
                         Data="{DynamicResource payment}"/>
                     
                 </Border>
