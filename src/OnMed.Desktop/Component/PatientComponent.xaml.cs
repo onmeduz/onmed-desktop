@@ -2,9 +2,11 @@
 using OnMed.ViewModel.Appointments;
 using OnMed.ViewModel.Categories;
 using System;
+using System.Security.Policy;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OnMed.Desktop.Component;
 
@@ -19,10 +21,15 @@ public partial class PatientComponent : UserControl
     {
         InitializeComponent();
     }
-
     public void SetData(AppointmentViewModel viewModel)
     {
-        if (viewModel.UserImagePath != "")
+        if (viewModel.UserImagePath == "")
+        {
+            string imagePath = "C:\\Users\\Shodiyor\\OneDrive\\Desktop\\onmed-desktop\\src\\OnMed.Desktop\\Assets\\Images\\default_image.png";
+            Uri uri = new Uri(imagePath, UriKind.Absolute);
+            patientImage.ImageSource = new BitmapImage(uri);
+        }
+        else
         {
             string imageUrl = BASE_URL + viewModel.UserImagePath;
             Uri imageUri = new Uri(imageUrl, UriKind.Absolute);

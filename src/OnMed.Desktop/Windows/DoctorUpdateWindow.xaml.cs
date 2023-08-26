@@ -6,11 +6,14 @@ using OnMed.Integrated.Services;
 using OnMed.Integrated.Services.Doctors;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static OnMed.Desktop.Windows.BlurWindow.BlurEffect;
 
 namespace OnMed.Desktop.Windows;
 
@@ -70,11 +73,6 @@ public partial class DoctorUpdateWindow : Window
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
         return openFileDialog;
-    }
-
-    private void btnRasm_Click(object sender, RoutedEventArgs e)
-    {
-
     }
 
     private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -152,14 +150,7 @@ public partial class DoctorUpdateWindow : Window
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        var categories = await _service.GetAllAsync();
-        foreach (var category in categories)
-        {
-            ComboBoxItem item = new ComboBoxItem();
-            item.Content = category.Professionality.ToString();
-            cbCategory.Items.Add(item);
-            Category.Add(category.Professionality, category.Id);
-        }
+        EnableBlur();
     }
 
     private void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -223,23 +214,31 @@ public partial class DoctorUpdateWindow : Window
         borderDegree.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
     }
 
-    private void Grid_MouseEnter_6(object sender, System.Windows.Input.MouseEventArgs e)
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    [DllImport("user32.dll")]
+    internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+    internal void EnableBlur()
     {
-        borderStartime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+        var windowHelper = new WindowInteropHelper(this);
+
+        var accent = new AccentPolicy();
+        accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+        var accentStructSize = Marshal.SizeOf(accent);
+
+        var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+        Marshal.StructureToPtr(accent, accentPtr, false);
+
+        var data = new WindowCompositionAttributeData();
+        data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+        data.SizeOfData = accentStructSize;
+        data.Data = accentPtr;
+
+        SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+        Marshal.FreeHGlobal(accentPtr);
     }
 
-    private void Grid_MouseLeave_6(object sender, System.Windows.Input.MouseEventArgs e)
-    {
-        borderStartime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
-    }
-
-    private void Grid_MouseEnter_7(object sender, System.Windows.Input.MouseEventArgs e)
-    {
-        borderEndTime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
-    }
-
-    private void Grid_MouseLeave_7(object sender, System.Windows.Input.MouseEventArgs e)
-    {
-        borderEndTime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
-    }
+    ///////////////////////////////////////////////////////////////////////////////////////
 }

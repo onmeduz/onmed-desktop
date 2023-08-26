@@ -27,7 +27,6 @@
                 Margin="15">
                 <Border.Background>
                     <ImageBrush
-                        ImageSource="/Assets/Images/default_image.png"
                         x:Name="patientImage"
                         Stretch="Fill"/>
                 </Border.Background>

@@ -1,7 +1,9 @@
 ﻿using OnMed.Desktop.Component;
+using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Interfaces.Doctors;
 using OnMed.Integrated.Interfaces.Patients;
 using OnMed.Integrated.Security;
+using OnMed.Integrated.Services.Appoinments;
 using OnMed.Integrated.Services.Doctors;
 using OnMed.Integrated.Services.Patients;
 using System.Collections.Generic;
@@ -17,20 +19,29 @@ public partial class DashboardPage : Page
 {
     private readonly IDoctorService _service;
     private readonly IPatientService _patientService;
+    private readonly IAppointmentService _appointmentService;
     public DashboardPage()
     {
         InitializeComponent();
         this._service = new DoctorService();
         this._patientService = new PatientService();
-
+        this._appointmentService = new AppointmentService();
     }
 
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
-        for (int i = 0; i < 15; i++)
+        var users = await _appointmentService.GetAsync(1);
+        int number = 1;
+        foreach (var user in users)
         {
-            UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
-            wrpUsers.Children.Add(userControlForDashboard);
+            if (user.Status == 2)
+            {
+                UserControlForDashboard userControlForDashboard = new UserControlForDashboard();
+                userControlForDashboard.count = number;
+                userControlForDashboard.SetData(user);
+                wrpUsers.Children.Add(userControlForDashboard);
+                number++;
+            }
         }
 
         long Id = IdentitySingelton.GetInstance().HospitalBranchId;

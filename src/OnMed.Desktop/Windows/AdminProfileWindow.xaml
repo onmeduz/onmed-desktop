@@ -6,28 +6,32 @@
         xmlns:local="clr-namespace:OnMed.Desktop.Windows"
         mc:Ignorable="d"
         WindowStyle="None"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
         Title="DoctorCreateWindow" 
-        Height="500" 
-        Width="400">
+        Loaded="Window_Loaded"
+        >
     <Border
+        Width="400"
+        Height="500" 
         Margin="10"
         CornerRadius="20"
         Background="{DynamicResource FirstColor}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="220"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label
+                Name="lblStatus"
                 VerticalAlignment="Center"
-                    FontSize="25"
-                    Style="{DynamicResource NameLabel}"
-                    HorizontalAlignment="Center"
-                    Content="Admin"/>
+                FontSize="25"
+                Style="{DynamicResource NameLabel}"
+                HorizontalAlignment="Center"
+                Content="Admin"/>
             <Button 
                 Grid.Row="0"
                 x:Name="Close"     
@@ -36,7 +40,7 @@
                 Style="{DynamicResource ClosedButton}"/>
             <Border
                 Grid.Row="1"
-                Width="180"
+                Width="210"
                 CornerRadius="100">
                 <Border.Background>
                     <ImageBrush x:Name="adminProfileImage"
@@ -62,14 +66,9 @@
                     Style="{DynamicResource NameLabel}"
                     HorizontalAlignment="Center"/>
                 <Label
-                    FontSize="18"
-                    Margin="0 20 0 0"
-                    Style="{DynamicResource NameLabel}"
-                    HorizontalAlignment="Center"
-                    Content="Ish joyi"/>
-                <Label
+                    Margin="0 40 0 0"
                     Name="lbHospitalName"
-                    FontSize="20"
+                    FontSize="25"
                     Style="{DynamicResource NameLabel}"
                     HorizontalAlignment="Center"/>
 
