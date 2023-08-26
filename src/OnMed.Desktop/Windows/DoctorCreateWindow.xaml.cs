@@ -10,11 +10,14 @@ using OnMed.Integrated.Services.Doctors;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static OnMed.Desktop.Windows.BlurWindow.BlurEffect;
 
 namespace OnMed.Desktop.Windows;
 
@@ -73,11 +76,6 @@ public partial class DoctorCreateWindow : Window
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
         return openFileDialog;
-    }
-
-    private void btnRasm_Click(object sender, RoutedEventArgs e)
-    {
-
     }
 
     private void Border_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -190,6 +188,7 @@ public partial class DoctorCreateWindow : Window
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        EnableBlur();
         var categories = await _service.GetAllAsync();
         foreach (var category in categories)
         {
@@ -280,4 +279,33 @@ public partial class DoctorCreateWindow : Window
     {
         borderEndTime.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+
+    [DllImport("user32.dll")]
+    internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
+    internal void EnableBlur()
+    {
+        var windowHelper = new WindowInteropHelper(this);
+
+        var accent = new AccentPolicy();
+        accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND;
+
+        var accentStructSize = Marshal.SizeOf(accent);
+
+        var accentPtr = Marshal.AllocHGlobal(accentStructSize);
+        Marshal.StructureToPtr(accent, accentPtr, false);
+
+        var data = new WindowCompositionAttributeData();
+        data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY;
+        data.SizeOfData = accentStructSize;
+        data.Data = accentPtr;
+
+        SetWindowCompositionAttribute(windowHelper.Handle, ref data);
+
+        Marshal.FreeHGlobal(accentPtr);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////
 }
+

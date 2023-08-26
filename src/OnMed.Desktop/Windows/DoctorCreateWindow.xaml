@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnMed.Desktop.Windows"
         mc:Ignorable="d"
-       
+        WindowState="Maximized"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
+        Opacity="10"
         Title="DoctorCreateWindow" 
         Loaded="Window_Loaded"
         >
@@ -18,7 +19,7 @@
         Height="800" 
         Width="700"
         CornerRadius="20"
-        Background="{DynamicResource FirstColor}">
+        Background="{DynamicResource SecondColor}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -259,6 +260,101 @@
                     Grid.Column="1"
                     Orientation="Vertical"
                     Margin="15 15 0 0">
+
+                    <Label
+                        Margin="0 0 0 10"
+                        FontSize="16"
+                        Content="Tug'ilgan sanasi :"
+                        Foreground="{DynamicResource color}"/>
+                    <Border
+                        HorizontalAlignment="Left"
+                        Width="230">
+                        <DatePicker x:Name="tbBirthDay" Style="{DynamicResource FormDatePicker}"/>
+                    </Border>
+
+                    <Label
+                        FontSize="16"
+                        Content="Toifasi :"
+                        Margin="0 20 0 10"
+                        Style="{DynamicResource NameLabel}"/>
+                    <ComboBox
+                        x:Name="cbCategory"
+                        Width="230"
+                        HorizontalAlignment="Left">
+                    </ComboBox>
+                    <Label
+                        FontSize="16"
+                        Margin="0 20 0 10"
+                        Content="Ish kunlari :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <ComboBox
+                        x:Name="cbWeekdays"
+                        Width="230"
+                        HorizontalAlignment="Left">
+                        <ComboBoxItem>
+                            <CheckBox
+                                Content="Dushanba"
+                                x:Name="D"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="S"
+                                Content="Seshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="CH"
+                                Content="Chorshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="P"
+                                Content="Payshanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="J"
+                                Content="Juma"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="Sh"
+                                Content="Shanba"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox
+                                x:Name="Y"
+                                Content="Yakshanba"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <Label
+                        Margin="0 20 0 0 "
+                        FontSize="16"
+                        Content="Jinsi :"
+                        Style="{DynamicResource NameLabel}"/>
+                    <StackPanel
+                        Margin="0 10 "
+                        Orientation="Horizontal">
+                        <RadioButton
+                            x:Name="rbErkak"
+                            Click="rbErkak_Click"
+                            Margin="0 5"
+                            Foreground="{DynamicResource color}"
+                            Content="Erkak"/>
+                        <RadioButton
+                            x:Name="rbAyol"
+                            Click="rbErkak_Click"
+                            Margin="50 5"
+                            Foreground="{DynamicResource color}"
+                            Content="Ayol"/>
+
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    Margin="15 15 0 0">
                     <Label
                         FontSize="16"
                         Content="Yashash joyi :"
@@ -292,109 +388,6 @@
                             Background="{DynamicResource color}">
                         </Border>
                     </Grid>
-                    
-                    <Label
-                        FontSize="16"
-                        Content="Tug'ilgan sanasi :"
-                        Foreground="{DynamicResource color}"/>
-                    <Border
-                        HorizontalAlignment="Left"
-                        Width="230">
-                        <DatePicker x:Name="tbBirthDay" Style="{DynamicResource FormDatePicker}"/>
-                    </Border>
-                    <Label
-                        Margin="0 10 0 0 "
-                        FontSize="16"
-                        Content="Jinsi :"
-                        Style="{DynamicResource NameLabel}"/>
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <RadioButton
-                            x:Name="rbErkak"
-                            Click="rbErkak_Click"
-                            Margin="0 5"
-                            Foreground="{DynamicResource color}"
-                            Content="Erkak"/>
-                        <RadioButton
-                            x:Name="rbAyol"
-                            Click="rbErkak_Click"
-                            Margin="50 5"
-                            Foreground="{DynamicResource color}"
-                            Content="Ayol"/>
-                    </StackPanel>
-                    <Label
-                        FontSize="16"
-                        Content="Ish boshlanish vaqti:"
-                        Style="{DynamicResource NameLabel}"/>
-                    <Grid
-                        MouseEnter="Grid_MouseEnter_6"
-                        MouseLeave="Grid_MouseLeave_6"
-                        Margin="0 6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="0.5"/>
-                        </Grid.RowDefinitions>
-                        <TextBox
-                            x:Name="StarTime"
-                            Width="220"
-                            Grid.Row="0"
-                            Margin="5 0 0 0"
-                            FontSize="18"
-                            BorderThickness="0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Foreground="{DynamicResource color}"
-                            Background="Transparent">
-
-                        </TextBox>
-                        <Border
-                            Width="220"
-                            HorizontalAlignment="Left"
-                            x:Name="borderStartime"
-                            Grid.Row="1"
-                            Background="{DynamicResource color}">
-                        </Border>
-                    </Grid>
-                    <Label
-                        FontSize="16"
-                        Content="Ish tugash vaqti:"
-                        Style="{DynamicResource NameLabel}"/>
-                    <Grid
-                        MouseEnter="Grid_MouseEnter_7"
-                        MouseLeave="Grid_MouseLeave_7"
-                        Margin="0 6">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="0.5"/>
-                        </Grid.RowDefinitions>
-                        <TextBox
-                            x:Name="EndTime"
-                            Width="220"
-                            Grid.Row="0"
-                            Margin="5 0 0 0"
-                            FontSize="18"
-                            BorderThickness="0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Foreground="{DynamicResource color}"
-                            Background="Transparent" >
-
-                        </TextBox>
-                        <Border
-                            Width="220"
-                            HorizontalAlignment="Left"
-                            x:Name="borderEndTime"
-                            Grid.Row="1"
-                            Background="{DynamicResource color}">
-                        </Border>
-                    </Grid>
-                    
-                </StackPanel>
-
-                <StackPanel
-                    Grid.Column="0"
-                    Orientation="Vertical"
-                    Margin="15 15 0 0">
                     <Label
                         FontSize="16"
                         Content="Ilmiy darajasi :"
@@ -465,59 +458,70 @@
                     </Border>
                     <Label
                         FontSize="16"
-                        Content="Toifasi :"
-                        Margin="0 10 0 0"
+                        Content="Ish boshlanish vaqti:"
                         Style="{DynamicResource NameLabel}"/>
-                    <ComboBox
-                        x:Name="cbCategory"
-                        Width="230"
-                        HorizontalAlignment="Left">
-                    </ComboBox>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_6"
+                        MouseLeave="Grid_MouseLeave_6"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="StarTime"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent">
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderStartime"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                     <Label
                         FontSize="16"
-                        Margin="0 10 0 0"
-                        Content="Ish kunlari :"
+                        Content="Ish tugash vaqti:"
                         Style="{DynamicResource NameLabel}"/>
-                    <ComboBox
-                        x:Name="cbWeekdays"
-                        Width="230"
-                        HorizontalAlignment="Left">
-                        <ComboBoxItem>
-                            <CheckBox
-                                Content="Dushanba"
-                                x:Name="D"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="S"
-                                Content="Seshanba"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="CH"
-                                Content="Chorshanba"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="P"
-                                Content="Payshanba"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="J"
-                                Content="Juma"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="Sh"
-                                Content="Shanba"/>
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            <CheckBox
-                                x:Name="Y"
-                                Content="Yakshanba"/>
-                        </ComboBoxItem>
-                    </ComboBox>
+                    <Grid
+                        MouseEnter="Grid_MouseEnter_7"
+                        MouseLeave="Grid_MouseLeave_7"
+                        Margin="0 6">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="0.5"/>
+                        </Grid.RowDefinitions>
+                        <TextBox
+                            x:Name="EndTime"
+                            Width="220"
+                            Grid.Row="0"
+                            Margin="5 0 0 0"
+                            FontSize="18"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Foreground="{DynamicResource color}"
+                            Background="Transparent" >
+
+                        </TextBox>
+                        <Border
+                            Width="220"
+                            HorizontalAlignment="Left"
+                            x:Name="borderEndTime"
+                            Grid.Row="1"
+                            Background="{DynamicResource color}">
+                        </Border>
+                    </Grid>
                 </StackPanel>
             </Grid>
 

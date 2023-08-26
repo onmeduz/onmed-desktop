@@ -156,11 +156,10 @@ public partial class MainWindow : Window
     {
         AdminProfileWindow adminProfileWindow = new AdminProfileWindow();
 
-
         string imageUrl = BASE_URL + IdentitySingelton.GetInstance().ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
-
         adminProfileWindow.adminProfileImage.ImageSource = new BitmapImage(imageUri);
+
         adminProfileWindow.lbAdminName.Content = IdentitySingelton.GetInstance().Name;
         adminProfileWindow.lbAdminMIddleName.Content = IdentitySingelton.GetInstance().MiddleName;
         adminProfileWindow.AdminPhone.Content = IdentitySingelton.GetInstance().PhoneNumber;

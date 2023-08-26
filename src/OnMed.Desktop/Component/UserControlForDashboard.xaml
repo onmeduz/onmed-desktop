@@ -26,7 +26,6 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="lblNo"
                    Grid.Column="0"
-                   Content="1"
                    FontWeight="SemiBold"
                    FontSize="12"
                    HorizontalAlignment="Left"
@@ -35,25 +34,22 @@
                    Margin="5 0"/>
             <Label x:Name="lblName"
                    Grid.Column="1"
-                   Content="Erqo'ziyev Shodiyor"
                    FontWeight="SemiBold"
                    FontSize="12"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"
                    />
-            <Label x:Name="lblDateTime"
+            <Label x:Name="lblDate"
                    Grid.Column="2"
-                   Content="16 May 8:30"
                    FontWeight="SemiBold"
                    FontSize="12"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"/>
-            <Label x:Name="lblAge"
+            <Label x:Name="lblTime"
                    Grid.Column="3"
                    FontWeight="SemiBold"
-                   Content="30"
                    FontSize="12"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
@@ -61,7 +57,6 @@
                    />
             <Label x:Name="lblGender"
                    Grid.Column="4"
-                   Content="Erkak"
                    FontWeight="SemiBold"
                    FontSize="12"
                    VerticalAlignment="Bottom"
@@ -69,7 +64,6 @@
                    Foreground="{DynamicResource color}"/>
             <Label x:Name="lblDoctor"
                    Grid.Column="5"
-                   Content="Ali Valiyev"
                    FontWeight="SemiBold"
                    FontSize="12"
                    VerticalAlignment="Bottom"

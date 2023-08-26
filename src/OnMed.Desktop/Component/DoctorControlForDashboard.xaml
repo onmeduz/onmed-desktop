@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OnMed.Desktop.Component"
              mc:Ignorable="d" 
-             Height="55">
+             Height="70">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -18,8 +18,8 @@
             MouseEnter="Border_MouseEnter"
             MouseDown="Border_MouseDown"
             Grid.Column="0"
-            Height="40"
-            Width="40"
+            Height="50"
+            Width="50"
             CornerRadius="40"
             BorderBrush="#78B0E7"
             BorderThickness="2">
@@ -29,7 +29,6 @@
                     x:Name="doctorImageDashboard"
                     Stretch="UniformToFill"/>
             </Border.Background>
-
         </Border>
 
         <Grid
@@ -38,15 +37,14 @@
                 x:Name="lbFullName"
                 Content=""
                 Margin="0 8 0 0"
-                FontSize="10"
+                FontSize="14"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource color}"/>
-
             <Label
                 x:Name="lbCategory"
                 Content="Stamotolog"
-                Margin="0 22 10 0"
-                FontSize="9"
+                Margin="0 32 10 0"
+                FontSize="10"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource BorderColor}"/>
 

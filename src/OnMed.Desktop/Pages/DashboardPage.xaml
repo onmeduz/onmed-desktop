@@ -21,7 +21,7 @@
                     Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="280"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid
@@ -162,7 +162,6 @@
                                     Grid.Column="1">
                                     <Label
                                         x:Name="doctorCount"
-                                        Content=""
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>
@@ -216,7 +215,7 @@
                                     <Label
                                         Content="Foydalanuvchilar"
                                         FontWeight="SemiBold"
-                                        FontSize="14"
+                                        FontSize="15"
                                         Foreground="{DynamicResource BorderColor}"/>
                                 </StackPanel>
                             </Grid>
@@ -231,7 +230,7 @@
                     Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="280"/>
                     </Grid.ColumnDefinitions>
                     <Border
                             Grid.Column="0"
@@ -241,8 +240,8 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="38"/>
-                                <RowDefinition Height="21"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="24"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Label
@@ -251,10 +250,8 @@
                                     Foreground="{DynamicResource color}"
                                     FontWeight="SemiBold"
                                     FontSize="16"/>
-
                             <Grid
-                                    Grid.Row="1">
-
+                                Grid.Row="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="0.3"/>
@@ -286,7 +283,7 @@
                                             Foreground="{DynamicResource BorderColor}"
                                             HorizontalAlignment="Left"
                                             Style="{DynamicResource TitleLabel}"
-                                            Content="Ism va fameliya    "/>
+                                            Content="Ism va familiya    "/>
 
                                     <Label 
                                             Grid.Column="2"
@@ -294,14 +291,14 @@
                                             Foreground="{DynamicResource BorderColor}"
                                             HorizontalAlignment="Left"
                                             Style="{DynamicResource TitleLabel}"
-                                            Content="Uchrashuv vaqti"/>
+                                            Content="Uchrashuv kuni"/>
 
                                     <Label 
                                             Grid.Column="3"
                                             HorizontalAlignment="Left"
                                             Foreground="{DynamicResource BorderColor}"
                                             Style="{DynamicResource TitleLabel}"
-                                            Content="Yoshi"/>
+                                            Content="Soati"/>
 
                                     <Label 
                                             Grid.Column="4"

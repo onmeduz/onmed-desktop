@@ -1,5 +1,9 @@
 ﻿using OnMed.Desktop.Constans;
 using OnMed.Desktop.Pages;
+using OnMed.Desktop.Windows;
+using OnMed.Integrated.Interfaces.Doctors;
+using OnMed.Integrated.Security;
+using OnMed.Integrated.Services.Doctors;
 using OnMed.ViewModel.Doctors;
 using System;
 using System.Collections.Generic;
@@ -23,23 +27,28 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class DoctorControlForDashboard : UserControl
 {
+    public const string BASE_URL = "http://coursezone.uz/";
+    private readonly IDoctorService _service;
+    public long Id;
     public DoctorControlForDashboard()
     {
         InitializeComponent();
-    }
+        this._service = new DoctorService();
+    } 
 
     public void SetData(DoctorViewModel doctorViewModel)
     {
         string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
-
         doctorImageDashboard.ImageSource = new BitmapImage(imageUri);
+
         lbFullName.Content = doctorViewModel.ToString();
+        Id = doctorViewModel.Id;
     }
 
-    private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+    private async void Border_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        MessageBox.Show(lbFullName.Content.ToString(), lbCategory.Content.ToString());
+        GetByIdAsync(Id);
     }
 
     private void Border_MouseEnter(object sender, MouseEventArgs e)
@@ -50,5 +59,32 @@ public partial class DoctorControlForDashboard : UserControl
     private void Border_Image_MouseLeave(object sender, MouseEventArgs e)
     {
         Border_Image.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#78B0E7"));
+    }
+
+    public async void GetByIdAsync(long doctorId)
+    {
+        long id = IdentitySingelton.GetInstance().HospitalBranchId;
+
+        var doctors = await _service.GetAllAsync(id);
+
+        foreach (var doctor in doctors)
+        {
+            if (doctor.Id == doctorId)
+            {
+                AdminProfileWindow adminProfileWindow = new AdminProfileWindow();
+
+                string imageUrl = BASE_URL + doctor.ImagePath;
+                Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
+
+                adminProfileWindow.adminProfileImage.ImageSource = new BitmapImage(imageUri);
+                adminProfileWindow.lbAdminName.Content = doctor.ToString();
+                adminProfileWindow.lbAdminMIddleName.Content = doctor.MiddleName;
+                adminProfileWindow.AdminPhone.Content = doctor.PhoneNumber;
+                adminProfileWindow.lbHospitalName.Content = doctor.CategoryNames[0];
+                adminProfileWindow.lblStatus.Content = "Shifokor";
+                adminProfileWindow.ShowDialog();
+            }
+        }
+        
     }
 }
