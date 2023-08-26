@@ -2,7 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:lvcc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnMed.Desktop.Pages"
       mc:Ignorable="d" 
@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
 
                 <Grid
-                        Grid.Row="0">
+                    Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="260"/>
@@ -26,18 +26,58 @@
 
                     <Grid
                         Grid.Column="0">
-                        <Border
+                        <Border 
                             Margin="15 15 5 10"
-                            CornerRadius="10"
+                            CornerRadius="20"
                             Background="{DynamicResource FirstColor}">
-                            
+                            <lvcc:CartesianChart>
+                                <lvcc:CartesianChart.AxisX>
+                                    <lvcc:Axis x:Name="DateLabel"
+                                        Foreground="{DynamicResource FirstColor}"
+                                        FontSize="16"
+                                        ShowLabels="True"
+                                        Labels="10, 20, 30, 40">
+                                        <lvcc:Axis.Separator>
+                                            <lvcc:Separator StrokeThickness="0" Step="1"/>
+                                        </lvcc:Axis.Separator>
+                                    </lvcc:Axis>
+                                </lvcc:CartesianChart.AxisX>
+
+                                <lvcc:CartesianChart.AxisY>
+                                    <lvcc:Axis Foreground="{DynamicResource FirstColor}"
+                                        MinValue="0"
+                                        MaxValue="50"
+                                        ShowLabels="False">
+                                        <lvcc:Axis.Separator>
+                                            <lvcc:Separator StrokeThickness="0"/>
+                                        </lvcc:Axis.Separator>
+                                    </lvcc:Axis>
+                                </lvcc:CartesianChart.AxisY>
+
+                                <lvcc:CartesianChart.Series>
+                                    <lvcc:LineSeries x:Name="SetChart" 
+                                         Title="Count"
+                                         Fill="{DynamicResource FifthColor}"
+                                         StrokeThickness="4" PointGeometrySize="0" 
+                                         Values="10,20,10,20,10,20,10">
+                                        <lvcc:LineSeries.Stroke>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="Transparent" Offset="0"/>
+                                                <GradientStop Color="red" Offset="0.2"/>
+                                                <GradientStop Color="Transparent" Offset="2.5"/>
+                                            </LinearGradientBrush>
+                                        </lvcc:LineSeries.Stroke>
+                                    </lvcc:LineSeries>
+                                </lvcc:CartesianChart.Series>
+                            </lvcc:CartesianChart>
+
                         </Border>
 
                     </Grid>
 
                     <Grid
-                            Margin="0 10 5 0"
-                            Grid.Column="1">
+                        Margin="0 10 5 0"
+                        Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -75,7 +115,7 @@
                                     Grid.Column="1"
                                     >
                                     <Label
-                                        Content="300"
+                                        x:Name="lblPatient"
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>

@@ -1,16 +1,11 @@
-﻿using OnMed.Desktop.Component;
-using OnMed.Desktop.Constans;
+﻿using OnMed.Desktop.Constans;
 using OnMed.Desktop.Pages;
 using OnMed.Desktop.Themes;
 using OnMed.Desktop.Windows;
 using OnMed.Integrated.Interfaces.Login;
 using OnMed.Integrated.Security;
 using OnMed.Integrated.Services.Login;
-using OnMed.ViewModel.Admin;
-using OnMed.ViewModel.Categories;
-using OnMed.ViewModel.Doctors;
 using System;
-using System.Security.Principal;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -27,6 +22,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        rbDashboard.IsChecked = true;
         this._adminService = new AdminService();
     }
 
@@ -131,6 +127,8 @@ public partial class MainWindow : Window
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        DashboardPage dashboardPage = new DashboardPage();
+        PageNavigator.Content = dashboardPage;
         var admin = await _adminService.GetAdminProfile();
 
         var identity = IdentitySingelton.GetInstance();

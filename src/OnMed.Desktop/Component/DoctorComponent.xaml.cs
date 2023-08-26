@@ -7,6 +7,7 @@ using OnMed.ViewModel.Doctors;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -23,7 +24,10 @@ public partial class DoctorComponent : UserControl
     public long Id;
     private readonly List<string> stars = new List<string> {"Star1", "Star2", "Star3", "Star4", "Star5"};
 
-    private readonly IDoctorService _service;
+    public readonly IDoctorService _service;
+    public Func<Task> RefreshDelegate { get; set; }
+
+
     public DoctorComponent()
     {
         InitializeComponent();
@@ -37,6 +41,7 @@ public partial class DoctorComponent : UserControl
 
         DoctorsImage.ImageSource = new BitmapImage(imageUri);
         DoctorName.Content = doctorViewModel.ToString();
+        DoctorPersonality.Content = doctorViewModel.CategoryNames[0];
         Id = doctorViewModel.Id;
 
         int count = 3;
@@ -65,12 +70,13 @@ public partial class DoctorComponent : UserControl
         DoctorImage.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Transparent"));
     }
 
-    private void btnManege_Click(object sender, System.Windows.RoutedEventArgs e)
+    private async void btnManege_Click(object sender, System.Windows.RoutedEventArgs e)
     {
         DoctorUpdateWindow doctorUpdateWindow = new DoctorUpdateWindow();
         doctorUpdateWindow.DoctorName.Content = DoctorName.Content;
         doctorUpdateWindow.DoctorId = Id;
         doctorUpdateWindow.ShowDialog();
+        await RefreshDelegate(); 
     }
 
     private void DoctorImage_MouseDown(object sender, MouseButtonEventArgs e)
@@ -86,7 +92,10 @@ public partial class DoctorComponent : UserControl
         {
             var response = await _service.DeleteAsync(Id);
             if (response)
+            {
                 MessageBox.Show("Shifokor o'chirildi");
+                await RefreshDelegate();
+            }
             else
                 MessageBox.Show("Xatoliklar mavjud.");
         }

@@ -1,28 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using OnMed.Desktop.Pages;
+using OnMed.ViewModel.Appointments;
+using OnMed.ViewModel.Categories;
+using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace OnMed.Desktop.Component
+namespace OnMed.Desktop.Component;
+
+/// <summary>
+/// Interaction logic for PatientComponent.xaml
+/// </summary>
+public partial class PatientComponent : UserControl
 {
-    /// <summary>
-    /// Interaction logic for PatientComponent.xaml
-    /// </summary>
-    public partial class PatientComponent : UserControl
+    public const string BASE_URL = "http://coursezone.uz/";
+
+    public PatientComponent()
     {
-        public PatientComponent()
+        InitializeComponent();
+    }
+
+    public void SetData(AppointmentViewModel viewModel)
+    {
+        if (viewModel.UserImagePath != "")
         {
-            InitializeComponent();
+            string imageUrl = BASE_URL + viewModel.UserImagePath;
+            Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
+            patientImage.ImageSource = new BitmapImage(imageUri);
         }
+
+        patientName.Content = viewModel.UserFullName;
+        patientPhone.Content = viewModel.UserPhoneNumber;
+        doctorName.Content = viewModel.DoctorFullName;
+        if (viewModel.UserIsMale)
+            patientGender.Content = "Erkak";
+        else
+            patientGender.Content = "Ayol";
     }
 }

@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnMed.Desktop.Windows"
         mc:Ignorable="d"
+       
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
         Title="DoctorCreateWindow" 
         Loaded="Window_Loaded"
-        Height="800" 
-        Width="700">
+        >
     
     <Border
-        Margin="10"
+        Height="800" 
+        Width="700"
         CornerRadius="20"
         Background="{DynamicResource FirstColor}">
         <Grid>

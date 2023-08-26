@@ -15,27 +15,44 @@ public class DoctorService : IDoctorService
 {
     private readonly string BASE_URL = "http://coursezone.uz/api/";
 
-    public async Task<bool> CreateAsync(DoctorCreateDto createDto)
+    public async Task<bool> CreateAsync(DoctorCreateDto dto)
     {
-        using (var client = new HttpClient())
+        var token = IdentitySingelton.GetInstance().Token;
+        var client = new HttpClient();
+        var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "admin/doctor");
+        request.Headers.Add("Authorization", $"Bearer {token}");
+        var content = new MultipartFormDataContent();
+        content.Add(new StringContent(dto.FirstName), "FirstName");
+        content.Add(new StringContent(dto.LastName), "LastName");
+        content.Add(new StringContent(dto.MiddleName), "MiddleName");
+        content.Add(new StringContent(dto.BirthDay.ToString()), "BirthDay");
+        content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+        content.Add(new StringContent(dto.IsMale.ToString()), "IsMale");
+        content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
+        content.Add(new StringContent(dto.Region), "Region");
+        content.Add(new StringContent(dto.Password), "Password");
+        content.Add(new StringContent(dto.AppointmentMoney.ToString()), "AppointmentMoney");
+        content.Add(new StringContent(dto.Degree), "Degree");
+        content.Add(new StringContent(dto.HospitalBranchId.ToString()), "HospitalBranchId");
+        content.Add(new StringContent("true"), "IsActive");
+        foreach (var item in dto.WeekDay)
         {
-            var request = new Uri(BASE_URL + "admin/doctor");
-
-            //var content = new MultipartFormDataContent();
-
-            var json = JsonConvert.SerializeObject(createDto);
-            StringContent cont = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var token = IdentitySingelton.GetInstance().Token;
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-
-            var result = await client.PostAsync(request, cont);
-            var response = await result.Content.ReadAsStringAsync();
-
-            if (result.IsSuccessStatusCode)
-                return true;
-            return false;
+            content.Add(new StringContent($"{item}"), "WeekDay");
         }
+        content.Add(new StringContent(dto.StartTime), "StartTime");
+        content.Add(new StringContent(dto.EndTime), "EndTime");
+        foreach (var item in dto.CategoryIds)
+        {
+            content.Add(new StringContent($"{item}"), "CategoryIds");
+        }
+        request.Content = content;
+        var response = await client.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            var res = await response.Content.ReadAsStringAsync();
+            return true;
+        }
+        return false;
     }
 
     public async Task<bool> DeleteAsync(long id)
@@ -64,22 +81,30 @@ public class DoctorService : IDoctorService
 
     public async Task<bool> UpdateAsync(long id, DoctorUpdateDto dto)
     {
-        using (var client = new HttpClient())
+        var token = IdentitySingelton.GetInstance().Token;
+        var client = new HttpClient();
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + $"admin/doctor?doctorId={id}");
+        request.Headers.Add("Authorization", $"Bearer {token}");
+        var content = new MultipartFormDataContent();
+        content.Add(new StringContent(dto.FirstName), "FirstName");
+        content.Add(new StringContent(dto.LastName), "LastName");
+        content.Add(new StringContent(dto.MiddleName), "MiddleName");
+        content.Add(new StringContent(dto.BirthDay.ToString()), "BirthDay");
+        content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
+        content.Add(new StringContent(dto.IsMale.ToString()), "IsMale");
+        content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
+        content.Add(new StringContent(dto.Region), "Region");
+        content.Add(new StringContent(dto.Password), "Password");
+        content.Add(new StringContent(dto.AppointmentMoney.ToString()), "AppointmentMoney");
+        content.Add(new StringContent(dto.Degree), "Degree");
+        
+        request.Content = content;
+        var response = await client.SendAsync(request);
+        if (response.IsSuccessStatusCode)
         {
-            var request = new Uri(BASE_URL + $"admin/doctor?doctorId={id}");
-
-            var json = JsonConvert.SerializeObject(dto);
-            StringContent cont = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var token = IdentitySingelton.GetInstance().Token;
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-
-            var result = await client.PutAsync(request, cont);
-            var response = await result.Content.ReadAsStringAsync();
-
-            if (result.IsSuccessStatusCode)
-                return true;
-            return false;
+            var res = await response.Content.ReadAsStringAsync();
+            return true;
         }
+        return false;
     }
 }

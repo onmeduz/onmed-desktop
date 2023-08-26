@@ -52,7 +52,6 @@
                 <Label
                     x:Name="DoctorPersonality"
                     Margin="10 0 0 0"
-                    Content="Stamatolog"
                     Style="{DynamicResource TitleLabel}"/>
                 <StackPanel
                     Margin="15 10 15 0"

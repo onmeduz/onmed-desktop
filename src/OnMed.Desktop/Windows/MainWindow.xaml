@@ -96,7 +96,7 @@
                     FontWeight="Bold"
                     Foreground="{DynamicResource SixthColor}"/>
                 <StackPanel
-                    Margin="5 100 30 100"
+                    Margin="5 100 30 0"
                     Orientation="Vertical">
 
                     <RadioButton 
@@ -135,7 +135,7 @@
                             Click="rbTolov_Click"
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource tolov}"/>
-                    <Border 
+                    <!--<Border 
                         Height="0.5"
                         Margin="30 20 0 20"
                         Background="Gray">
@@ -145,7 +145,7 @@
                             Content="Eslatma"
                             Click="rbeslatma_Click"
                             Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource eslatma}"/>
+                            Tag="{DynamicResource eslatma}"/>-->
                 </StackPanel>
             </Grid>
             <Border
