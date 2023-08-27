@@ -29,6 +29,14 @@ namespace OnMed.Desktop
         
         private async void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (textboxParolText.Visibility == Visibility.Collapsed)
+            {
+                textboxParolText.Text = textboxParol.Password;
+            }
+            else
+            {
+                textboxParol.Password = textboxParolText.Text;
+            }
             int count = 0;
             if (textboxPhone.Text.Length > 0 && textboxPhone.Text.Length <= 13) { count++; }  
             if (textboxParol.Password.ToString().Length >= 8 && textboxParol.Password.ToString().Length <= 32) { count++; }

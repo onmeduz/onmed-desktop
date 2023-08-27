@@ -47,9 +47,11 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBox
+                        x:Name="tbSearch"
                         Margin="15 5 0 5"
                         Background="Transparent"
-                        Text=""
+                        TextChanged="TextBox_TextChanged"
+                        PreviewKeyDown="TextBox_PreviewKeyDown"
                         VerticalAlignment="Center"
                         FontSize="15"
                         BorderThickness="0"

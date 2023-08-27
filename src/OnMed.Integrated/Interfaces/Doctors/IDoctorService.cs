@@ -9,4 +9,5 @@ public interface IDoctorService
     public Task<bool> CreateAsync(DoctorCreateDto dto);
     public Task<bool> UpdateAsync(long id, DoctorUpdateDto updateDto);
     public Task<bool> DeleteAsync(long id);
+    public Task<List<DoctorViewModel>> SearchAsync(string search);
 }

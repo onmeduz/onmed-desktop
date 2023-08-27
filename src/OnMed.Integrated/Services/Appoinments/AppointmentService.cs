@@ -23,4 +23,18 @@ public class AppointmentService : IAppointmentService
         var users = JsonConvert.DeserializeObject<List<AppointmentViewModel>>(response);
         return users!;
     }
+    public async Task<List<AppointmentViewModel>> SearchAsync(string search)
+    {
+        var branchId = IdentitySingelton.GetInstance().HospitalBranchId;
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(BASE_URL + $"admin/user/search?branchId={branchId}&search={search}");
+
+        var token = IdentitySingelton.GetInstance().Token;
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+        var result = await client.GetAsync(client.BaseAddress);
+        string response = await result.Content.ReadAsStringAsync();
+        var users = JsonConvert.DeserializeObject<List<AppointmentViewModel>>(response);
+        return users!;
+    }
 }
