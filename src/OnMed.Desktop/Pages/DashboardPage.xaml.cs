@@ -9,6 +9,7 @@ using OnMed.Integrated.Services.Patients;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace OnMed.Desktop.Pages;
 
@@ -56,8 +57,7 @@ public partial class DashboardPage : Page
 
         lblUserCount.Content = count.ToString();
         lblPatient.Content = count.ToString();
-        doctorCount.Content = doctors.Count;
-        
+        doctorCount.Content = doctors.Count;  
     }
     public void SetDataChart(List<double> nums, List<string> strings)
     {

@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnMed.Desktop.Pages"
-      mc:Ignorable="d"
+      mc:Ignorable="d"      
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       Loaded="Page_Loaded">
 
     <Grid
@@ -164,8 +165,17 @@
                 HorizontalAlignment="Center"
                 Style="{DynamicResource TitleLabel}"/>
         </Grid>
-        
+        <fa:ImageAwesome 
+            x:Name="loader" 
+            Grid.Row="3" 
+            Visibility="Visible" 
+            Icon="Spinner" 
+            Spin="True" 
+            Height="50" 
+            Width="50" />
         <ScrollViewer
+            x:Name="scrolViver"
+            Visibility="Collapsed"
             Grid.Row="3">
             <StackPanel 
                 x:Name="wrpAppoinment">

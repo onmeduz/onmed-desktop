@@ -3,6 +3,7 @@ using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Services.Appoinments;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace OnMed.Desktop.Pages;
 
@@ -21,6 +22,8 @@ public partial class PatientPage : Page
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
         var patients = await _appointmentService.GetAsync(1);
+        loader.Visibility = Visibility.Collapsed;
+        scrolViver.Visibility = Visibility.Visible;
         foreach (var patient in patients)
         {
             if (patient.Status == 4)

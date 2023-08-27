@@ -3,6 +3,7 @@ using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Services.Appoinments;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace OnMed.Desktop.Pages;
 
@@ -47,6 +48,8 @@ public partial class AppointmentPage : Page
     public async void RefreshId(int id)
     {
         var users = await _appointmentService.GetAsync(id);
+        loader.Visibility = Visibility.Collapsed;
+        scrolViver.Visibility = Visibility.Visible;
         int count = 1;
         wrpAppoinment.Children.Clear();
         foreach (var user in users)
