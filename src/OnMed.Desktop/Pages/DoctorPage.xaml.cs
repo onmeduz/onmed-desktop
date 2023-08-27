@@ -39,6 +39,8 @@ public partial class DoctorPage : Page
 
         wrpDoctors.Children.Clear();
         var doctors = await _service.GetAllAsync(id);
+        loader.Visibility = Visibility.Collapsed;
+        scrolViver.Visibility = Visibility.Visible;
         foreach (var doctor in doctors)
         {
             DoctorComponent doctorComponent = new DoctorComponent();

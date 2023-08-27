@@ -204,6 +204,25 @@
                                     Foreground="Black"
                                     Background="Transparent">
                                 </PasswordBox>
+                                <TextBox 
+                                    x:Name="textboxParolText"
+                                    Grid.Column="0"
+                                    Visibility="Collapsed"
+                                    Margin="10 0"
+                                    FontSize="18"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Background="Transparent">
+                                </TextBox>
+                                <Border Grid.Column="1">
+                                    <Button x:Name="showPassword"
+                                            Click="showPassword_Click"
+                                            Style="{DynamicResource showPasswordButton}">
+
+                                    </Button>
+                                </Border>
                             </Grid>
                             <Border
                                 Grid.Row="1"
@@ -213,10 +232,21 @@
                             </Border>
                         </Grid>
                     </Border>
+                    
+                    <Label
+                        Name="lblForgotPassword"
+                        Margin="0 10 140 10"
+                        MouseDoubleClick="Label_MouseDoubleClick"
+                        MouseEnter="Label_MouseEnter"
+                        MouseLeave="Label_MouseLeave"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"
+                        Content="Parolni unutdingizmi ?"/>
 
                     <Button
                         x:Name="LoginBtn"
-                        Margin="0 70 0 0"
+                        Margin="0 50 0 0"
                         Height="35"
                         Width="300"
                         FontSize="18"
@@ -225,7 +255,6 @@
                         Style="{DynamicResource LoginButton}">
 
                     </Button>
-
                 </StackPanel>
             </Grid>
         </Grid>

@@ -19,15 +19,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.35*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.38*"/>
+                <ColumnDefinition Width="0.35*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label x:Name="lblNo"
                    Grid.Column="0"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Bottom"
                    Foreground="{DynamicResource color}"
@@ -35,7 +35,7 @@
             <Label x:Name="lblName"
                    Grid.Column="1"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"
@@ -43,14 +43,14 @@
             <Label x:Name="lblDate"
                    Grid.Column="2"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"/>
             <Label x:Name="lblTime"
                    Grid.Column="3"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"
@@ -58,14 +58,14 @@
             <Label x:Name="lblGender"
                    Grid.Column="4"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"/>
             <Label x:Name="lblDoctor"
                    Grid.Column="5"
                    FontWeight="SemiBold"
-                   FontSize="12"
+                   FontSize="13"
                    VerticalAlignment="Bottom"
                    HorizontalAlignment="Left"
                    Foreground="{DynamicResource color}"/>

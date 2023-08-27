@@ -1,4 +1,5 @@
-﻿using OnMed.Dtos.Login;
+﻿using OnMed.Desktop.Windows;
+using OnMed.Dtos.Login;
 using OnMed.Integrated.Interfaces.Login;
 using OnMed.Integrated.Services.Login;
 using System.Text.RegularExpressions;
@@ -84,6 +85,39 @@ namespace OnMed.Desktop
         private void Border_MouseLeave_1(object sender, MouseEventArgs e)
         {
             Parolborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#979797"));
+        }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblForgotPassword.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));
+        }
+
+        private void Label_MouseLeave(object sender, MouseEventArgs e)
+        {
+            lblForgotPassword.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Black"));
+        }
+
+        private void Label_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ForgotPasswordWindow forgotPasswordWindow = new ForgotPasswordWindow();
+            forgotPasswordWindow.ShowDialog();
+        }
+        private void showPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (textboxParolText.Visibility == Visibility.Collapsed)
+            {
+                showPassword.Style = (Style)FindResource("showPasswordCrosButton");
+                textboxParolText.Text = textboxParol.Password;
+                textboxParol.Visibility = Visibility.Collapsed;
+                textboxParolText.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                showPassword.Style = (Style)FindResource("showPasswordButton");
+                textboxParol.Password = textboxParolText.Text;
+                textboxParolText.Visibility = Visibility.Collapsed;
+                textboxParol.Visibility = Visibility.Visible;
+            }
         }
     }
 }
