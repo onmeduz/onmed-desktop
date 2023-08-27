@@ -107,4 +107,17 @@ public class DoctorService : IDoctorService
         }
         return false;
     }
+
+    public async Task<List<DoctorViewModel>> SearchAsync(string search)
+    {
+        var token = IdentitySingelton.GetInstance().Token;
+        var branchId = IdentitySingelton.GetInstance().HospitalBranchId;
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(BASE_URL + $"admin/doctor/search?branchId={branchId}&search={search}");
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+        var result = await client.GetAsync(client.BaseAddress);
+        var response = await result.Content.ReadAsStringAsync();
+        var doctor = JsonConvert.DeserializeObject<List<DoctorViewModel>>(response);
+        return doctor!;
+    }
 }

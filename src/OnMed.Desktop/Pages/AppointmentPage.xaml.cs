@@ -4,6 +4,7 @@ using OnMed.Integrated.Services.Appoinments;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace OnMed.Desktop.Pages;
 
@@ -59,6 +60,35 @@ public partial class AppointmentPage : Page
             appointmentComponent.SetData(user);
             wrpAppoinment.Children.Add(appointmentComponent);
             count++;
+        }
+    }
+
+    private async void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            string search = tbSearch.Text;
+            int count = 1;
+            wrpAppoinment.Children.Clear();
+            var users = await _appointmentService.SearchAsync(search);
+
+            foreach (var user in users)
+            {
+                AppointmentComponent appointmentComponent = new AppointmentComponent();
+                appointmentComponent.count = count;
+                appointmentComponent.SetData(user);
+                wrpAppoinment.Children.Add(appointmentComponent);
+                count++;
+            }
+        }
+    }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        TextBox textBox = (TextBox)sender;
+        if (string.IsNullOrEmpty(textBox.Text))
+        {
+            RefreshId(1);
         }
     }
 }
