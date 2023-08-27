@@ -63,7 +63,7 @@
                                         <lvcc:LineSeries.Stroke>
                                             <LinearGradientBrush>
                                                 <GradientStop Color="Transparent" Offset="0"/>
-                                                <GradientStop Color="red" Offset="0.2"/>
+                                                <GradientStop Color="#08D1E3" Offset="0.2"/>
                                                 <GradientStop Color="Transparent" Offset="2.5"/>
                                             </LinearGradientBrush>
                                         </lvcc:LineSeries.Stroke>
@@ -123,7 +123,7 @@
                                     <Label
                                         Content="Bemorlar"
                                         FontWeight="SemiBold"
-                                        FontSize="14"
+                                        FontSize="16"
                                         Foreground="{DynamicResource BorderColor}"/>
                                 </StackPanel>
 
@@ -169,7 +169,7 @@
                                     <Label
                                         Content="Shifokorlar"
                                         FontWeight="SemiBold"
-                                        FontSize="14"
+                                        FontSize="16"
                                         Foreground="{DynamicResource BorderColor}"/>
                                 </StackPanel>
                             </Grid>
@@ -215,7 +215,7 @@
                                     <Label
                                         Content="Foydalanuvchilar"
                                         FontWeight="SemiBold"
-                                        FontSize="15"
+                                        FontSize="16"
                                         Foreground="{DynamicResource BorderColor}"/>
                                 </StackPanel>
                             </Grid>
@@ -263,9 +263,9 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.35*"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="0.5*"/>
-                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.7*"/>
+                                        <ColumnDefinition Width="0.35*"/>
+                                        <ColumnDefinition Width="0.35*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
