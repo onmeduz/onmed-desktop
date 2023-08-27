@@ -22,6 +22,8 @@ public partial class CategoryPage : Page
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
         var category = await _service.GetAllAsync();
+        loader.Visibility = Visibility.Collapsed;
+        scrolViver.Visibility = Visibility.Visible;
         foreach (var item in category)
         {
             CategoryComponent categoryComponent = new CategoryComponent();
