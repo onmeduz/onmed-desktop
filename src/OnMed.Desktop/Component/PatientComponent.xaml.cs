@@ -23,13 +23,7 @@ public partial class PatientComponent : UserControl
     }
     public void SetData(AppointmentViewModel viewModel)
     {
-        if (viewModel.UserImagePath == "")
-        {
-            string imagePath = "C:\\Users\\Shodiyor\\OneDrive\\Desktop\\onmed-desktop\\src\\OnMed.Desktop\\Assets\\Images\\default_image.png";
-            Uri uri = new Uri(imagePath, UriKind.Absolute);
-            patientImage.ImageSource = new BitmapImage(uri);
-        }
-        else
+        if(!string.IsNullOrEmpty(viewModel.UserImagePath))
         {
             string imageUrl = BASE_URL + viewModel.UserImagePath;
             Uri imageUri = new Uri(imageUrl, UriKind.Absolute);

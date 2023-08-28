@@ -8,22 +8,32 @@
       Title="EnterPhoneNumber">
 
     <Grid>
+        <!--<Button
+            Click="Button_Click_1"
+            Margin="20 10 300 300"
+            Style="{DynamicResource BackButton}"/>-->
         <StackPanel
             Orientation="Vertical"
         >
             <Label 
-            Margin="0 30"
+            Margin="0 40"
             FontWeight="SemiBold"
             FontSize="20"
             HorizontalAlignment="Center"
             Content="Telefon raqamingizni kiriting"/>
+            <Label
+                x:Name="lblNotFoundPhone"
+                FontSize="14"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Content="Bunday raqamli admin mavjud emas"/>
             <Border
-            MouseEnter="Border_MouseEnter"
-            MouseLeave="Border_MouseLeave"
-            CornerRadius="5"
-            Margin="0 40"
-            Width="250"
-            Background="#F2F2F2">
+                MouseEnter="Border_MouseEnter"
+                MouseLeave="Border_MouseLeave"
+                CornerRadius="5"
+                Margin="0 20 0 40"
+                Width="250"
+                Background="#F2F2F2">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>

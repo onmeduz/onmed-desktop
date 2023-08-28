@@ -1,4 +1,6 @@
 ﻿using OnMed.Desktop.Windows;
+using OnMed.Integrated.Interfaces.ForgotPassword;
+using OnMed.Integrated.Services.ForgotPassword;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +24,22 @@ namespace OnMed.Desktop.Pages.ForgotPasswordPages
     /// </summary>
     public partial class EnterPhoneNumber : Page
     {
+        public Func<Task> exit { get; set; }
+        private readonly IVerificationCodeSendService _service;
         public EnterPhoneNumber()
         {
             InitializeComponent();
+            this._service = new VerificationCodeSendService();
         }
         public EnterPhoneNumber(ForgotPasswordWindow forgotPasswordWindow)
         {
             InitializeComponent();
+            this._service = new VerificationCodeSendService();
+        }
+        public EnterPhoneNumber(LoginWindow loginWindow)
+        {
+            InitializeComponent();
+            this._service = new VerificationCodeSendService();
         }
 
         private void textboxPhone_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -55,12 +66,21 @@ namespace OnMed.Desktop.Pages.ForgotPasswordPages
             Phoneborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#979797"));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            EnterVerificationCode enterVerificationCode = new EnterVerificationCode();
-
-            ForgotPasswordWindow window = GetWindow();
-            window.PageNavigator.Content = enterVerificationCode;
+            var response = await _service.PhoneNumberSendAsync(textboxPhone.Text);
+            if (response)
+            {
+                lblNotFoundPhone.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("White"));
+                EnterVerificationCode enterVerificationCode = new EnterVerificationCode();
+                enterVerificationCode.PhoneNumber = textboxPhone.Text;
+                ForgotPasswordWindow window = GetWindow();
+                window.PageNavigator.Content = enterVerificationCode;
+            }
+            else
+            {
+                lblNotFoundPhone.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+            }
         }
 
         public static ForgotPasswordWindow GetWindow()
@@ -80,6 +100,31 @@ namespace OnMed.Desktop.Pages.ForgotPasswordPages
                 }
             }
             return forgotPasswordWindow;
+        }
+        public static LoginWindow GetLoginWindow()
+        {
+            LoginWindow loginWindow = null;
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                Type type = typeof(LoginWindow);
+                if (window != null && window.DependencyObjectType.Name == type.Name)
+                {
+                    loginWindow = (LoginWindow)window;
+                    if (loginWindow != null)
+                    {
+                        break;
+                    }
+                }
+            }
+            return loginWindow;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
+            exit();
         }
     }
 }

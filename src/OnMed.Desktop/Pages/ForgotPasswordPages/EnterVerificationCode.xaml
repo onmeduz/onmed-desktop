@@ -8,20 +8,36 @@
       Title="EnterVerificationCode">
 
     <Grid>
+        <!--<Button
+            Click="Button_Click_1"
+            Margin="20 10 300 300"
+            Style="{DynamicResource BackButton}"/>-->
         <StackPanel
             Orientation="Vertical"
         >
             <Label 
-                Margin="0 30"
+                Margin="0 40 0 0" 
                 FontWeight="SemiBold"
                 FontSize="20"
                 HorizontalAlignment="Center"
-                Content="Telefon raqamingizga kod yubordik"/>
+                Content="Sizga kod yubordik"/>
+            <Label
+                x:Name="lblError"
+                Foreground="White"
+                FontSize="16"
+                HorizontalAlignment="Center"
+                Content="Tasdiqlash kodi xato"/>
+            <Label
+                x:Name="lblSecond"
+                FontWeight="SemiBold"
+                FontSize="20"
+                HorizontalAlignment="Center"
+                Content="60"/>
             <Border
                 MouseEnter="Border_MouseEnter"
                 MouseLeave="Border_MouseLeave"
                 CornerRadius="5"
-                Margin="0 40"
+                Margin="0 20 0 5"
                 Width="250"
                 Background="Transparent">
                 <Grid>
@@ -32,9 +48,10 @@
 
                     <TextBox
                         Grid.Row="0"
-                        x:Name="textboxPhone"
+                        x:Name="textboxCode"
                         MaxLength="5"
                         Width="230"
+                        TextAlignment="Center"
                         HorizontalAlignment="Center"
                         TextChanged="textboxPhone_TextChanged"
                         Grid.Column="1"
@@ -53,12 +70,23 @@
                     </Border>
                 </Grid>
             </Border>
+            <Label
+                FontSize="14"
+                FontWeight="SemiBold"
+                HorizontalAlignment="Center"
+                Content="Urinishlar soni :"/>
+            <Label
+                FontWeight="SemiBold"
+                x:Name="lblUrinishlarSoni"
+                FontSize="14"
+                Content="5"
+                HorizontalAlignment="Center"/>
 
             <Button
             Content="Yuborish"
             Width="250"
             Height="35"
-            Margin="0 40"
+            Margin="0 25"
             Click="Button_Click"
                 FontSize="18"
             Style="{DynamicResource LoginButton}"/>

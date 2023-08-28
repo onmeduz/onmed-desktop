@@ -17,7 +17,7 @@
             BorderBrush="Transparent"
             BorderThickness="1"
             CornerRadius="10"
-            Background="{DynamicResource FirstColor}">
+            Background="{DynamicResource SecondColor}">
             <StackPanel
                 Margin="5 0 5 5"
                 Orientation="Vertical">
