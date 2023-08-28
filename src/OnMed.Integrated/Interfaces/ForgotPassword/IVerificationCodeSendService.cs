@@ -2,5 +2,5 @@
 
 public interface IVerificationCodeSendService
 {
-    public Task<bool> PhoneNumber(string phoneNumber);
+    public Task<bool> PhoneNumberSendAsync(string phoneNumber);
 }

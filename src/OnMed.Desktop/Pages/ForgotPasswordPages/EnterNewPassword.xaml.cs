@@ -1,5 +1,9 @@
 ﻿using OnMed.Desktop.Windows;
+using OnMed.Dtos.ForgotPassword;
+using OnMed.Integrated.Interfaces.ForgotPassword;
+using OnMed.Integrated.Services.ForgotPassword;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,20 +15,35 @@ namespace OnMed.Desktop.Pages.ForgotPasswordPages;
 /// </summary>
 public partial class EnterNewPassword : Page
 {
+    public string PhoneNumber = string.Empty;
+
+    private readonly IPasswordUpdateService _service;
     public EnterNewPassword()
     {
         InitializeComponent();
+        this._service = new PasswordUpdateService();
     }
     public EnterNewPassword(ForgotPasswordWindow forgotPasswordWindow)
     {
         InitializeComponent();
+        this._service = new PasswordUpdateService();
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
+    private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        ForgotPasswordWindow window = GetWindow();
-        MessageBox.Show("Sizning parolingiz o'zgartirildi.");
-        window.Close();
+        UpdatePasswordDto dto = new UpdatePasswordDto();
+        dto.PhoneNumber = PhoneNumber;
+        dto.Password = textboxParol.Password;
+        bool res = await _service.UpdatePassword(dto);
+        if (res)
+        {
+            ForgotPasswordWindow window = GetWindow();
+            MessageBox.Show("Sizning parolingiz o'zgartirildi.");
+            window.Close();
+        }
+        else
+            MessageBox.Show("Parol o'zgartirilmadi.");
+
     }
     public static ForgotPasswordWindow GetWindow()
     {
@@ -71,5 +90,14 @@ public partial class EnterNewPassword : Page
     private void Border_MouseLeave_1(object sender, System.Windows.Input.MouseEventArgs e)
     {
         Parolborder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#979797"));
+    }
+
+    public static string Symbols { get; } = "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/";
+
+    private void Button_Click_1(object sender, RoutedEventArgs e)
+    {
+        EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
+        ForgotPasswordWindow forgotPasswordWindow = GetWindow();
+        forgotPasswordWindow.PageNavigator.Content = enterPhoneNumber;
     }
 }

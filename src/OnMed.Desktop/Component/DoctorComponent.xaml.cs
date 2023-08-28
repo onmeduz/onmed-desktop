@@ -22,6 +22,7 @@ namespace OnMed.Desktop.Component;
 public partial class DoctorComponent : UserControl
 {
     public long Id;
+    private DoctorViewModel _viewModel;
     private readonly List<string> stars = new List<string> {"Star1", "Star2", "Star3", "Star4", "Star5"};
 
     public readonly IDoctorService _service;
@@ -36,6 +37,7 @@ public partial class DoctorComponent : UserControl
 
     public void SetData(DoctorViewModel doctorViewModel)
     {
+        _viewModel = doctorViewModel;
         string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
 
@@ -74,6 +76,7 @@ public partial class DoctorComponent : UserControl
     {
         DoctorUpdateWindow doctorUpdateWindow = new DoctorUpdateWindow();
         doctorUpdateWindow.DoctorName.Content = DoctorName.Content;
+        doctorUpdateWindow.SetData(_viewModel);
         doctorUpdateWindow.DoctorId = Id;
         doctorUpdateWindow.ShowDialog();
         await RefreshDelegate(); 

@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media;
 using OnMed.Desktop.Pages.ForgotPasswordPages;
+using System.Threading.Tasks;
 
 namespace OnMed.Desktop.Windows;
 
@@ -48,10 +49,16 @@ public partial class ForgotPasswordWindow : Window
     {
         EnableBlur();
         EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
+        enterPhoneNumber.exit = Exit;
         PageNavigator.Content = enterPhoneNumber;
     }
     private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
         this.DragMove();
+    }
+
+    public async Task Exit()
+    {
+        await Task.Run(() => { this.Close(); });
     }
 }

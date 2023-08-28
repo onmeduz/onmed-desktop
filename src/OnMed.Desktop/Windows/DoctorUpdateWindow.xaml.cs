@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
+using OnMed.Desktop.Constans;
 using OnMed.Dtos.Doctors;
 using OnMed.Integrated.Interfaces.Categories;
 using OnMed.Integrated.Interfaces.Doctors;
 using OnMed.Integrated.Services;
 using OnMed.Integrated.Services.Doctors;
+using OnMed.ViewModel.Doctors;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -99,6 +101,25 @@ public partial class DoctorUpdateWindow : Window
         }
     }
 
+    public void SetData(DoctorViewModel doctorViewModel)
+    {
+        galary.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Transparent"));
+        string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
+        Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
+        ImageBrushDoctor.ImageSource = new BitmapImage(imageUri);
+        FirstName.Text = doctorViewModel.FirstName;
+        LastName.Text = doctorViewModel.LastName;
+        MiddleName.Text = doctorViewModel.MiddleName;
+        tbPhoneNumber.Text = doctorViewModel.PhoneNumber.Substring(4);
+        Region.Text = doctorViewModel.Region;
+        Degree.Text = doctorViewModel.Degree;
+        tbMoney.Text = doctorViewModel.AppointmentMoney.ToString();
+        if (doctorViewModel.IsMale)
+            rbErkak.IsChecked = true;
+        else
+            rbAyol.IsChecked = true;
+        tbBirthDay.Text = doctorViewModel.BirthDay.ToString();
+    }
     private void MoneyBorder_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
     {
         MoneyBorder.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#329DFF"));

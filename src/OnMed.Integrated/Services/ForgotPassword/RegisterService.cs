@@ -23,15 +23,13 @@ public class RegisterService : IRegisterService
             var content = new StringContent(JsonConvert.SerializeObject(dto), null, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent)!;
 
-            if (response.IsSuccessStatusCode && response.Content.ToString() == "true")
+            if (response.IsSuccessStatusCode && jsonResponse.result == true)
             {
                 var token = IdentitySingelton.GetInstance();
-
-                string responseContent = await response.Content.ReadAsStringAsync();
-                dynamic jsonResponse = JsonConvert.DeserializeObject(responseContent)!;
                 token.Token = jsonResponse.token.ToString();
-
                 return true;
             }
             return false;
