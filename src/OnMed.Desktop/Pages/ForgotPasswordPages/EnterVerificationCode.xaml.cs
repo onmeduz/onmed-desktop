@@ -78,37 +78,36 @@ public partial class EnterVerificationCode : Page
 
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-            count++;
+        count++;
+        VerifyRegisterDto dto = new VerifyRegisterDto();
+        try
+        {
+            dto.Code = int.Parse(textboxCode.Text);
+            dto.PhoneNumber = "+998" + PhoneNumber;
+        }
+        catch
+        {}
 
-            VerifyRegisterDto dto = new VerifyRegisterDto();
-            try
-            {
-                dto.Code = int.Parse(textboxCode.Text);
-                dto.PhoneNumber = "+998" + PhoneNumber;
-            }
-            catch
-            {}
-
-            var res = await _service.RegisterAsync(dto);
-            if (res)
-            {
-                EnterNewPassword enterNewPassword = new EnterNewPassword();
-                enterNewPassword.PhoneNumber = dto.PhoneNumber;
-                ForgotPasswordWindow window = GetWindow();
-                window.PageNavigator.Content = enterNewPassword;
-            }
-            else if (count == 5)
-            {
-                EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
-                ForgotPasswordWindow window = GetWindow();
-                window.PageNavigator.Content = enterPhoneNumber;
-            }
-            else
-            {
-                lblUrinishlarSoni.Content = (5 - count).ToString();
-                lblError.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
-                timer.Start();
-            }
+        var res = await _service.RegisterAsync(dto);
+        if (res)
+        {
+            EnterNewPassword enterNewPassword = new EnterNewPassword();
+            enterNewPassword.PhoneNumber = dto.PhoneNumber;
+            ForgotPasswordWindow window = GetWindow();
+            window.PageNavigator.Content = enterNewPassword;
+        }
+        else if (count == 5)
+        {
+            EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
+            ForgotPasswordWindow window = GetWindow();
+            window.PageNavigator.Content = enterPhoneNumber;
+        }
+        else
+        {
+            lblUrinishlarSoni.Content = (5 - count).ToString();
+            lblError.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Red"));
+            timer.Start();
+        }
     }
 
     private void Timer_Tick(object sender, EventArgs e)

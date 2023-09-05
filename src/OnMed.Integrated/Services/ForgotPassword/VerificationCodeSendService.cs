@@ -7,7 +7,7 @@ namespace OnMed.Integrated.Services.ForgotPassword;
 
 public class VerificationCodeSendService : IVerificationCodeSendService
 {
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
 
     public async Task<bool> PhoneNumberSendAsync(string phoneNumber)
     {

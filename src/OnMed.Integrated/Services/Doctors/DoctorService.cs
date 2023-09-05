@@ -13,7 +13,7 @@ namespace OnMed.Integrated.Services.Doctors;
 
 public class DoctorService : IDoctorService
 {
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
 
     public async Task<bool> CreateAsync(DoctorCreateDto dto)
     {

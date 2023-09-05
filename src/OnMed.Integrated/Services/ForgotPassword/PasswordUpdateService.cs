@@ -8,7 +8,7 @@ namespace OnMed.Integrated.Services.ForgotPassword;
 
 public class PasswordUpdateService : IPasswordUpdateService
 {
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
 
     public async Task<bool> UpdatePassword(UpdatePasswordDto dto)
     {

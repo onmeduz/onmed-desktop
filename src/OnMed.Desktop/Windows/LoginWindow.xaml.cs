@@ -38,8 +38,18 @@ namespace OnMed.Desktop
                 textboxParol.Password = textboxParolText.Text;
             }
             int count = 0;
-            if (textboxPhone.Text.Length > 0 && textboxPhone.Text.Length <= 13) { count++; }  
-            if (textboxParol.Password.ToString().Length >= 8 && textboxParol.Password.ToString().Length <= 32) { count++; }
+            if (textboxPhone.Text.Length <= 13)
+            {
+                count++;
+            }
+            else
+                MessageBox.Show("Telefon raqamingizni to'liq kiriting");
+            if (textboxParol.Password.ToString().Length >= 8 && textboxParol.Password.ToString().Length <= 32) 
+            { 
+                count++; 
+            }
+            else
+                MessageBox.Show("Parol 8 ta belgidan kam bolmasligi kerak");
             if (count == 2)
             {
                 LoginDto loginDto = new LoginDto()

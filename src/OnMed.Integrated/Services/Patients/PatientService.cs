@@ -7,7 +7,7 @@ namespace OnMed.Integrated.Services.Patients;
 
 public class PatientService : IPatientService
 {
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
 
     public async Task<long> GetCount(long id)
     {

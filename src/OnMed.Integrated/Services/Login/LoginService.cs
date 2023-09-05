@@ -7,7 +7,7 @@ namespace OnMed.Integrated.Services.Login;
 
 public class LoginService : ILoginService
 {
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
     public async Task<bool> Login(LoginDto loginDto)
     {
         using (var client = new HttpClient())

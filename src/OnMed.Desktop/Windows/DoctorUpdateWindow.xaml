@@ -236,6 +236,7 @@
                             x:Name="Password"
                             Width="220"
                             Grid.Row="0"
+                            Text="AAaa@@11"
                             Margin="5 0 0 0"
                             FontSize="18"
                             BorderThickness="0"
