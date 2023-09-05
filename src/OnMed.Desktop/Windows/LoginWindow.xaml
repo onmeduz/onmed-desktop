@@ -197,7 +197,6 @@
                                     Grid.Column="0"
                                     Margin="10 0"
                                     FontSize="18"
-                                    Password="AAaa@@11"
                                     BorderThickness="0"
                                     VerticalAlignment="Center"
                                     FontWeight="SemiBold"

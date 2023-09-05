@@ -15,7 +15,7 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class PatientComponent : UserControl
 {
-    public const string BASE_URL = "http://coursezone.uz/";
+    public const string BASE_URL = "https://localhost:7229/";
 
     public PatientComponent()
     {

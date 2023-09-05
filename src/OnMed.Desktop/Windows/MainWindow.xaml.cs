@@ -17,7 +17,7 @@ namespace OnMed.Desktop;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public const string BASE_URL = "http://coursezone.uz/";
+    public const string BASE_URL = "https://localhost:7229/";
     private readonly IAdminService _adminService;
     public MainWindow()
     {

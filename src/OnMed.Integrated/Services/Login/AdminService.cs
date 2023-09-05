@@ -9,7 +9,7 @@ namespace OnMed.Integrated.Services.Login;
 public class AdminService : IAdminService
 {
 
-    private readonly string BASE_URL = "http://coursezone.uz/api/";
+    private readonly string BASE_URL = "https://localhost:7229/api/";
 
     public async Task<AdminViewModel> GetAdminProfile()
     {
