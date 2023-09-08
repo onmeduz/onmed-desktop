@@ -141,6 +141,7 @@ public partial class MainWindow : Window
             identity.ImagePath = admin.ImagePath;
             identity.HospitalName = admin.HospitalNames[0];
             identity.PhoneNumber = admin.PhoneNumber;
+            identity.Region = admin.Region;
 
             string imageUrl = ContentConstans.BASE_URL + admin.ImagePath;
             Uri imageUri = new Uri(imageUrl, UriKind.Absolute);

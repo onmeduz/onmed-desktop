@@ -9,6 +9,7 @@ public class AdminViewModel
     public string MiddleName { get; set; } = string.Empty;
     public string ImagePath { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
+    public string Region { get; set; } = string.Empty;
     public List<string> HospitalNames { get; set; } = new List<string>();
     public string RegistrationDate { get; set; } = string.Empty;
 
