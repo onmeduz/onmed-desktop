@@ -71,7 +71,7 @@ public partial class DoctorControlForDashboard : UserControl
         {
             if (doctor.Id == doctorId)
             {
-                AdminProfileWindow adminProfileWindow = new AdminProfileWindow();
+                DoctorProfileWindow adminProfileWindow = new DoctorProfileWindow();
 
                 string imageUrl = BASE_URL + doctor.ImagePath;
                 Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
