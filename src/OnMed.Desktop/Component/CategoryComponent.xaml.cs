@@ -11,7 +11,7 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class CategoryComponent : UserControl
 {
-    public const string BASE_URL = "https://localhost:7229/";
+    public const string BASE_URL = "http://157.230.45.112:4040/";
     public CategoryComponent()
     {
         InitializeComponent();
