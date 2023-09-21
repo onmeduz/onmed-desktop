@@ -15,7 +15,7 @@ namespace OnMed.Desktop.Windows;
 /// </summary>
 public partial class AdminProfileWindow : Window
 {
-    public const string BASE_URL = "https://localhost:7229/";
+    public const string BASE_URL = "http://157.230.45.112:4040/";
 
     public AdminProfileWindow()
     {

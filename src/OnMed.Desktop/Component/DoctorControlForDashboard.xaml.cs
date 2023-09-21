@@ -27,7 +27,7 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class DoctorControlForDashboard : UserControl
 {
-    public const string BASE_URL = "https://localhost:7229/";
+    public const string BASE_URL = "http://157.230.45.112:4040/";
     private readonly IDoctorService _service;
     public long Id;
     public DoctorControlForDashboard()

@@ -6,13 +6,13 @@ namespace OnMed.Integrated.Services.Admin;
 
 public class AdminService : IAdminProfileService
 {
-    private readonly string BASE_URL = "https://localhost:7229/api/";
+    private readonly string BASE_URL = "http://157.230.45.112:4040/api/";
 
     public async Task<bool> UpdateAsync(long id, AdminUpdateDto dto)
     {
         var token = IdentitySingelton.GetInstance().Token;
-        var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "head/administrator");
+        var client = new HttpClient();      
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + $"head/administrator?administratorId={id}");
         request.Headers.Add("Authorization", $"Bearer {token}");
 
         var content = new MultipartFormDataContent();
