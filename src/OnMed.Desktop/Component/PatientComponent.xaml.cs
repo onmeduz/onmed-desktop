@@ -1,4 +1,5 @@
 ﻿using OnMed.Desktop.Pages;
+using OnMed.Dtos.Constants;
 using OnMed.ViewModel.Appointments;
 using OnMed.ViewModel.Categories;
 using System;
@@ -15,8 +16,6 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class PatientComponent : UserControl
 {
-    public const string BASE_URL = "http://157.230.45.112:4040/";
-
     public PatientComponent()
     {
         InitializeComponent();
@@ -25,7 +24,7 @@ public partial class PatientComponent : UserControl
     {
         if(!string.IsNullOrEmpty(viewModel.UserImagePath))
         {
-            string imageUrl = BASE_URL + viewModel.UserImagePath;
+            string imageUrl = BaseUrlConstants.BASE_URL + "/" + viewModel.UserImagePath;
             Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
             patientImage.ImageSource = new BitmapImage(imageUri);
         }

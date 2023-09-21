@@ -104,7 +104,7 @@ public partial class DoctorUpdateWindow : Window
     public void SetData(DoctorViewModel doctorViewModel)
     {
         galary.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("Transparent"));
-        string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
+        string imageUrl = ContentConstans.BASE_URL + "/" + doctorViewModel.ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
         ImageBrushDoctor.ImageSource = new BitmapImage(imageUri);
         FirstName.Text = doctorViewModel.FirstName;

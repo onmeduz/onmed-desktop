@@ -143,7 +143,10 @@ public partial class DoctorCreateWindow : Window
         doctorCreateDto.IsMale = isMail;
         doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
         doctorCreateDto.HospitalBranchId = IdentitySingelton.GetInstance().HospitalBranchId;
-        doctorCreateDto.Image = ImageBrushDoctor.ImageSource.ToString();
+        if (ImageBrushDoctor.ImageSource.ToString() is not null)
+        {
+            doctorCreateDto.Image = ImageBrushDoctor.ImageSource.ToString();
+        }
 
         WeekDays.Clear();
         if(D.IsChecked == true)

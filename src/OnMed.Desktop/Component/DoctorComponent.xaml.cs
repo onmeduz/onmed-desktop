@@ -38,7 +38,7 @@ public partial class DoctorComponent : UserControl
     public void SetData(DoctorViewModel doctorViewModel)
     {
         _viewModel = doctorViewModel;
-        string imageUrl = ContentConstans.BASE_URL + doctorViewModel.ImagePath;
+        string imageUrl = ContentConstans.BASE_URL + "/" + doctorViewModel.ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
 
         DoctorsImage.ImageSource = new BitmapImage(imageUri);
