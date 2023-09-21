@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnMed.Dtos.Constants;
 using OnMed.Dtos.ForgotPassword;
 using OnMed.Dtos.Login;
 using OnMed.Integrated.Interfaces.ForgotPassword;
@@ -8,7 +9,7 @@ namespace OnMed.Integrated.Services.ForgotPassword;
 
 public class PasswordUpdateService : IPasswordUpdateService
 {
-    private readonly string BASE_URL = "https://localhost:7229/api/";
+    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
 
     public async Task<bool> UpdatePassword(UpdatePasswordDto dto)
     {
@@ -27,7 +28,7 @@ public class PasswordUpdateService : IPasswordUpdateService
         //}
         var token = IdentitySingelton.GetInstance().Token;
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "admin/auth/reset/update");
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "/api/admin/auth/reset/update");
         request.Headers.Add("Authorization", $"Bearer {token}");
         var content = new MultipartFormDataContent();
         content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");

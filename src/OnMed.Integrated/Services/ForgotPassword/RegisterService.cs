@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnMed.Dtos.Constants;
 using OnMed.Dtos.ForgotPassword;
 using OnMed.Dtos.Login;
 using OnMed.Integrated.Interfaces.ForgotPassword;
@@ -13,13 +14,13 @@ namespace OnMed.Integrated.Services.ForgotPassword;
 
 public class RegisterService : IRegisterService
 {
-    private readonly string BASE_URL = "https://localhost:7229/api/";
+    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
 
     public async Task<bool> RegisterAsync(VerifyRegisterDto dto)
     {
         using (var client = new HttpClient())
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "admin/auth/reset/verify");
+            var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "/api/admin/auth/reset/verify");
             var content = new StringContent(JsonConvert.SerializeObject(dto), null, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);

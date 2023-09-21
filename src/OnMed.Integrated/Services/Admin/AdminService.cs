@@ -1,4 +1,5 @@
 ﻿using OnMed.Dtos.Admin;
+using OnMed.Dtos.Constants;
 using OnMed.Integrated.Interfaces.Admin;
 using OnMed.Integrated.Security;
 
@@ -6,13 +7,13 @@ namespace OnMed.Integrated.Services.Admin;
 
 public class AdminService : IAdminProfileService
 {
-    private readonly string BASE_URL = "https://localhost:7229/api/";
+    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
 
     public async Task<bool> UpdateAsync(long id, AdminUpdateDto dto)
     {
         var token = IdentitySingelton.GetInstance().Token;
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "head/administrator");
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + $"/api/admin/profile?adminId={id}");
         request.Headers.Add("Authorization", $"Bearer {token}");
 
         var content = new MultipartFormDataContent();
@@ -35,7 +36,7 @@ public class AdminService : IAdminProfileService
     {
         var token = IdentitySingelton.GetInstance().Token;
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "admin/profile/upload/image");
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + "/api/admin/profile/upload/image");
         request.Headers.Add("Authorization", $"Bearer {token}");
 
         var content = new MultipartFormDataContent();

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnMed.Dtos.Constants;
 using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Security;
 using OnMed.ViewModel.Appointments;
@@ -8,12 +9,12 @@ namespace OnMed.Integrated.Services.Appoinments;
 
 public class AppointmentService : IAppointmentService
 {
-    private readonly string BASE_URL = "https://localhost:7229/api/";
+    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
 
     public async Task<List<AppointmentViewModel>> GetAsync(int id)
     {
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + $"admin/user/patient?moment={id}");
+        client.BaseAddress = new Uri(BASE_URL + $"/api/admin/user/patient?moment={id}");
 
         var token = IdentitySingelton.GetInstance().Token;
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
@@ -27,7 +28,7 @@ public class AppointmentService : IAppointmentService
     {
         var branchId = IdentitySingelton.GetInstance().HospitalBranchId;
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + $"admin/user/search?branchId={branchId}&search={search}");
+        client.BaseAddress = new Uri(BASE_URL + $"/api/admin/user/search?branchId={branchId}&search={search}");
 
         var token = IdentitySingelton.GetInstance().Token;
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");

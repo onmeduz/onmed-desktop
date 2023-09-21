@@ -65,9 +65,8 @@ public partial class AdminProfileWindow : Window
         string imageUrl = BASE_URL + IdentitySingelton.GetInstance().ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
         adminUpdateWindow.adminProfileImage.ImageSource = new BitmapImage(imageUri);
-
         adminUpdateWindow.tbFirstName.Text = IdentitySingelton.GetInstance().Name;
-        adminUpdateWindow.tbLastName.Text = IdentitySingelton.GetInstance().MiddleName;
+        adminUpdateWindow.tbLastName.Text = IdentitySingelton.GetInstance().FirstName;
         adminUpdateWindow.tbMiddleName.Text = IdentitySingelton.GetInstance().MiddleName;
         adminUpdateWindow.tbRegion.Text = IdentitySingelton.GetInstance().Region;
 

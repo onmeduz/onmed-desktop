@@ -17,7 +17,6 @@ namespace OnMed.Desktop;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public const string BASE_URL = "https://localhost:7229/";
     private readonly IAdminService _adminService;
     public MainWindow()
     {
@@ -138,12 +137,13 @@ public partial class MainWindow : Window
             identity.AdminId = admin.AdminId;
             identity.MiddleName = admin.MiddleName;
             identity.Name = admin.ToString();
+            identity.FirstName = admin.FirstName;
             identity.ImagePath = admin.ImagePath;
             identity.HospitalName = admin.HospitalNames[0];
             identity.PhoneNumber = admin.PhoneNumber;
             identity.Region = admin.Region;
 
-            string imageUrl = ContentConstans.BASE_URL + admin.ImagePath;
+            string imageUrl = ContentConstans.BASE_URL + "/" + admin.ImagePath;
             Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
 
             AdminImage.ImageSource = new BitmapImage(imageUri);
@@ -157,7 +157,7 @@ public partial class MainWindow : Window
     {
         AdminProfileWindow adminProfileWindow = new AdminProfileWindow();
 
-        string imageUrl = BASE_URL + IdentitySingelton.GetInstance().ImagePath;
+        string imageUrl = ContentConstans.BASE_URL + "/" + IdentitySingelton.GetInstance().ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
         adminProfileWindow.adminProfileImage.ImageSource = new BitmapImage(imageUri);
 

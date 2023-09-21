@@ -1,4 +1,5 @@
-﻿using OnMed.ViewModel.Categories;
+﻿using OnMed.Dtos.Constants;
+using OnMed.ViewModel.Categories;
 using OnMed.ViewModel.Doctors;
 using System;
 using System.Windows.Controls;
@@ -11,14 +12,13 @@ namespace OnMed.Desktop.Component;
 /// </summary>
 public partial class CategoryComponent : UserControl
 {
-    public const string BASE_URL = "https://localhost:7229/";
     public CategoryComponent()
     {
         InitializeComponent();
     }
     public void SetData(CategoryViewModel categoryViewModel)
     {
-        string imageUrl = BASE_URL + categoryViewModel.ImagePath;
+        string imageUrl = BaseUrlConstants.BASE_URL + "/" + categoryViewModel.ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
 
         categoryImage.ImageSource = new BitmapImage(imageUri);
