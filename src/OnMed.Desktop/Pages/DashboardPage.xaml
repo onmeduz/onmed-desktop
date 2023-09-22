@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:lvcc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       xmlns:local="clr-namespace:OnMed.Desktop.Pages"
       mc:Ignorable="d" 
       Loaded="Page_Loaded"
@@ -89,45 +90,59 @@
                                 Margin="10 5 10 7"
                                 CornerRadius="10"
                                 Background="{DynamicResource FirstColor}">
-                            <Grid
+                            <StackPanel>
+                                <Grid x:Name="pCount"
+                                    Visibility="Visible"
                                     Margin="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Border
+                                    <Border
                                         Grid.Column="0"
                                         Height="60"
                                         Width="60"
                                         CornerRadius="50"
                                         Background="{DynamicResource FifthColor}">
-                                    <Path 
-                                        x:Name="patients"
-                                        Height="30"
-                                        Stretch="Uniform"
-                                        Fill="#00D0E3"
-                                        Data="{DynamicResource bemor}"/>
-                                </Border>
+                                        <Path 
+                                             x:Name="patients"
+                                             Height="30"
+                                             Stretch="Uniform"
+                                             Fill="#00D0E3"
+                                             Data="{DynamicResource bemor}"/>
+                                    </Border>
 
-                                <StackPanel
-                                    Margin="10"
-                                    Grid.Column="1"
-                                    >
-                                    <Label
-                                        x:Name="lblPatient"
-                                        Foreground="{DynamicResource color}"
-                                        FontWeight="Bold"
-                                        FontSize="30"/>
-
-                                    <Label
-                                        Content="Bemorlar"
-                                        FontWeight="SemiBold"
-                                        FontSize="16"
-                                        Foreground="{DynamicResource BorderColor}"/>
-                                </StackPanel>
-
-                            </Grid>
+                                    <StackPanel
+                                        Margin="10"
+                                        Grid.Column="1"
+                                        >
+                                        <Label
+                                            x:Name="lblPatient"
+                                            Visibility="Collapsed"
+                                            Foreground="{DynamicResource color}"
+                                            FontWeight="Bold"
+                                            FontSize="30"/>
+                                        <fa:ImageAwesome 
+                                            x:Name="loader" 
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Visibility="Visible" 
+                                            Icon="Spinner" 
+                                            Spin="True" 
+                                            Height="20" 
+                                            Width="50" />
+                                        <Label
+                                             Content="Bemorlar"
+                                             FontWeight="SemiBold"
+                                             FontSize="16"
+                                             Foreground="{DynamicResource BorderColor}"/>
+                                    </StackPanel>
+                                    
+                                </Grid>
+                                
+                            </StackPanel>
+                           
 
                         </Border>
 
@@ -162,9 +177,19 @@
                                     Grid.Column="1">
                                     <Label
                                         x:Name="doctorCount"
+                                        Visibility="Collapsed"
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>
+                                    <fa:ImageAwesome 
+                                        x:Name="dcLoader" 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Visibility="Visible" 
+                                        Icon="Spinner" 
+                                        Spin="True" 
+                                        Height="20" 
+                                        Width="50" />
 
                                     <Label
                                         Content="Shifokorlar"
@@ -208,9 +233,19 @@
                                     >
                                     <Label
                                         Name="lblUserCount"
+                                        Visibility="Collapsed"
                                         Foreground="{DynamicResource color}"
                                         FontWeight="Bold"
                                         FontSize="30"/>
+                                    <fa:ImageAwesome 
+                                        x:Name="uLoader" 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Visibility="Visible" 
+                                        Icon="Spinner" 
+                                        Spin="True" 
+                                        Height="20" 
+                                        Width="50" />
 
                                     <Label
                                         Content="Foydalanuvchilar"
@@ -329,7 +364,8 @@
                             <Grid
                                     Grid.Row="2"
                                     Margin="0 5 0 6">
-                                <ScrollViewer>
+                                <ScrollViewer x:Name="pScrol"
+                                              Visibility="Collapsed">
                                     <StackPanel
                                             x:Name="wrpUsers"
                                             Margin="10 0 10 0"
@@ -337,7 +373,15 @@
 
                                     </StackPanel>
                                 </ScrollViewer>
-
+                                <fa:ImageAwesome 
+                                    x:Name="pLoader"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Visibility="Visible" 
+                                    Icon="Spinner" 
+                                    Spin="True" 
+                                    Height="20" 
+                                    Width="50" />
                             </Grid>
 
                         </Grid>
@@ -366,7 +410,8 @@
                             <Grid
                                      Grid.Row="1"
                                      Margin="0 5 0 6">
-                                <ScrollViewer>
+                                <ScrollViewer x:Name="docSrol"
+                                    Visibility="Collapsed">
                                     <StackPanel
                                             x:Name="wrpDoctors"
                                             Margin="10 0 10 0"
@@ -374,7 +419,15 @@
 
                                     </StackPanel>
                                 </ScrollViewer>
-
+                                <fa:ImageAwesome 
+                                    x:Name="docLoader" 
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Visibility="Visible" 
+                                    Icon="Spinner" 
+                                    Spin="True" 
+                                    Height="20" 
+                                    Width="50" />
                             </Grid>
 
                         </Grid>

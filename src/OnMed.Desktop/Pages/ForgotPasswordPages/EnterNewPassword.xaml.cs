@@ -34,7 +34,9 @@ public partial class EnterNewPassword : Page
         UpdatePasswordDto dto = new UpdatePasswordDto();
         dto.PhoneNumber = PhoneNumber;
         dto.Password = textboxParol.Password;
+        loader.Visibility = Visibility.Visible;
         bool res = await _service.UpdatePassword(dto);
+        loader.Visibility = Visibility.Collapsed;
         if (res)
         {
             ForgotPasswordWindow window = GetWindow();

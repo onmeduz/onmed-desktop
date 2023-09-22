@@ -48,18 +48,28 @@ public partial class AppointmentPage : Page
 
     public async void RefreshId(int id)
     {
+        loader.Visibility = Visibility.Visible;
         var users = await _appointmentService.GetAsync(id);
         loader.Visibility = Visibility.Collapsed;
         scrolViver.Visibility = Visibility.Visible;
         int count = 1;
         wrpAppoinment.Children.Clear();
-        foreach (var user in users)
+        if(users.Count > 0)
         {
-            AppointmentComponent appointmentComponent = new AppointmentComponent();
-            appointmentComponent.count = count;
-            appointmentComponent.SetData(user);
-            wrpAppoinment.Children.Add(appointmentComponent);
-            count++;
+            foreach (var user in users)
+            {
+
+                AppointmentComponent appointmentComponent = new AppointmentComponent();
+                appointmentComponent.count = count;
+                appointmentComponent.SetData(user);
+                wrpAppoinment.Children.Add(appointmentComponent);
+                count++;
+            }
+        }
+        else
+        {
+            scrolViver.Visibility= Visibility.Collapsed;
+            emptyData.Visibility = Visibility.Visible;
         }
     }
 

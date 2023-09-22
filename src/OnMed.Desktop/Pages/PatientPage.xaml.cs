@@ -24,14 +24,25 @@ public partial class PatientPage : Page
         var patients = await _appointmentService.GetAsync(1);
         loader.Visibility = Visibility.Collapsed;
         scrolViver.Visibility = Visibility.Visible;
-        foreach (var patient in patients)
+        if(patients.Count > 0)
         {
-            if (patient.Status == 4)
+            foreach (var patient in patients)
             {
-                PatientComponent patientComponent = new PatientComponent();
-                patientComponent.SetData(patient);
-                wrpPatient.Children.Add(patientComponent);
+                if (patient.Status == 4)
+                {
+                    PatientComponent patientComponent = new PatientComponent();
+                    patientComponent.SetData(patient);
+                    wrpPatient.Children.Add(patientComponent);
+                }
             }
+            if (wrpPatient.Children.Count <= 0)
+            {
+                emptyData.Visibility = Visibility.Visible;
+            }
+        }
+        else
+        {
+            emptyData.Visibility = Visibility.Visible;
         }
     }
 }

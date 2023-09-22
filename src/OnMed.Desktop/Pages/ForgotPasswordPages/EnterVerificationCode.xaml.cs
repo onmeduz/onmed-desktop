@@ -4,13 +4,12 @@ using OnMed.Integrated.Interfaces.ForgotPassword;
 using OnMed.Integrated.Services.ForgotPassword;
 using System;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OnMed.Desktop.Pages.ForgotPasswordPages;
 
@@ -87,10 +86,12 @@ public partial class EnterVerificationCode : Page
         }
         catch
         {}
-
+        loader.Visibility = Visibility.Visible;
         var res = await _service.RegisterAsync(dto);
+        loader.Visibility = Visibility.Collapsed;
         if (res)
         {
+            check = false;
             EnterNewPassword enterNewPassword = new EnterNewPassword();
             enterNewPassword.PhoneNumber = dto.PhoneNumber;
             ForgotPasswordWindow window = GetWindow();
@@ -144,28 +145,51 @@ public partial class EnterVerificationCode : Page
     }
 
     CancellationTokenSource cts;
+    public bool check = true;
 
     public async Task Metod()
     {
+        int countt = count;
         for (int i = 60 - 1; i >= 0; i--)
         {
             try
             {
                 await Task.Delay(1000, cts.Token);
                 lblSecond.Content = i.ToString();
-                if (count == 5 || i==0)
+                if (countt == 5)
                 {
+                    check = false;
                     await Task.Delay(500);
-                    EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
-                    ForgotPasswordWindow window = GetWindow();
-                    window.PageNavigator.Content = enterPhoneNumber;
-                    cts.Cancel();
+                    try
+                    {
+                        EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
+                        ForgotPasswordWindow window = GetWindow();
+                        window.PageNavigator.Content = enterPhoneNumber;
+                        cts.Cancel();
+                    }
+                    catch (NullReferenceException)
+                    {
+                    }
+                    
                 }
             }
             catch (TaskCanceledException)
             {
                 break;
             }
+        }
+        try
+        {
+            if (check)
+            {
+                EnterPhoneNumber enterPhoneNumber = new EnterPhoneNumber();
+                ForgotPasswordWindow window = GetWindow();
+                window.PageNavigator.Content = enterPhoneNumber;
+                cts.Cancel();
+            }
+        }
+        catch (NullReferenceException)
+        {
         }
     }
     private async void Start()

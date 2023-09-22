@@ -41,6 +41,10 @@ public class AdminService : IAdminProfileService
 
         var content = new MultipartFormDataContent();
         
+        if(dto.Image.StartsWith(BaseUrlConstants.BASE_URL))
+        {
+            return true;
+        }
         content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
 
         request.Content = content;

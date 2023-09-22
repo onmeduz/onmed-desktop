@@ -14,10 +14,11 @@
                 <ResourceDictionary Source="/Styles/TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
                 <ResourceDictionary Source="/Themes/LightTheme.xaml"/>
-
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
 
+        
     </Application.Resources>
 </Application>

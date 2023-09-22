@@ -39,16 +39,26 @@ public partial class DoctorPage : Page
         var id = IdentitySingelton.GetInstance().HospitalBranchId;
 
         wrpDoctors.Children.Clear();
+        loader.Visibility = Visibility.Visible;
+        scrolViver.Visibility = Visibility.Collapsed;
         var doctors = await _service.GetAllAsync(id);
         loader.Visibility = Visibility.Collapsed;
         scrolViver.Visibility = Visibility.Visible;
-        foreach (var doctor in doctors)
+        if(doctors.Count > 0)
         {
-            DoctorComponent doctorComponent = new DoctorComponent();
-            doctorComponent.SetData(doctor);
-            doctorComponent.RefreshDelegate = RefreshAsync;
-            wrpDoctors.Children.Add(doctorComponent);
+            foreach (var doctor in doctors)
+            {
+                DoctorComponent doctorComponent = new DoctorComponent();
+                doctorComponent.SetData(doctor);
+                doctorComponent.RefreshDelegate = RefreshAsync;
+                wrpDoctors.Children.Add(doctorComponent);
+            }
         }
+        else
+        {
+            emptyData.Visibility = Visibility.Visible;
+        }
+        
     }
     private async void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
     {
@@ -62,12 +72,19 @@ public partial class DoctorPage : Page
             loader.Visibility = Visibility.Collapsed;
             scrolViver.Visibility = Visibility.Visible;
 
-            foreach (var doctor in doctors)
+            if (doctors.Count > 0)
             {
-                DoctorComponent doctorComponent = new DoctorComponent();
-                doctorComponent.SetData(doctor);
-                doctorComponent.RefreshDelegate = RefreshAsync;
-                wrpDoctors.Children.Add(doctorComponent);
+                foreach (var doctor in doctors)
+                {
+                    DoctorComponent doctorComponent = new DoctorComponent();
+                    doctorComponent.SetData(doctor);
+                    doctorComponent.RefreshDelegate = RefreshAsync;
+                    wrpDoctors.Children.Add(doctorComponent);
+                }
+            }
+            else
+            {
+                emptyData.Visibility = Visibility.Visible;
             }
         }
     }

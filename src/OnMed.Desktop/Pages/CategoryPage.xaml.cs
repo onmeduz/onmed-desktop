@@ -24,11 +24,18 @@ public partial class CategoryPage : Page
         var category = await _service.GetAllAsync();
         loader.Visibility = Visibility.Collapsed;
         scrolViver.Visibility = Visibility.Visible;
-        foreach (var item in category)
+        if (category.Count > 0)
         {
-            CategoryComponent categoryComponent = new CategoryComponent();
-            categoryComponent.SetData(item);
-            wrpCategory.Children.Add(categoryComponent);
+            foreach (var item in category)
+            {
+                CategoryComponent categoryComponent = new CategoryComponent();
+                categoryComponent.SetData(item);
+                wrpCategory.Children.Add(categoryComponent);
+            }
+        }
+        else
+        {
+            emptyData.Visibility = Visibility.Visible;
         }
     }
 }

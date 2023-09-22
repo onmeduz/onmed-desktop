@@ -128,6 +128,11 @@ public partial class MainWindow : Window
     {
         DashboardPage dashboardPage = new DashboardPage();
         PageNavigator.Content = dashboardPage;
+        updateAdmin();
+    }
+
+    public async void updateAdmin()
+    {
         var admin = await _adminService.GetAdminProfile();
 
         var identity = IdentitySingelton.GetInstance();
@@ -138,6 +143,7 @@ public partial class MainWindow : Window
             identity.MiddleName = admin.MiddleName;
             identity.Name = admin.ToString();
             identity.FirstName = admin.FirstName;
+            identity.LastName = admin.LastName;
             identity.ImagePath = admin.ImagePath;
             identity.HospitalName = admin.HospitalNames[0];
             identity.PhoneNumber = admin.PhoneNumber;
@@ -166,5 +172,6 @@ public partial class MainWindow : Window
         adminProfileWindow.AdminPhone.Content = IdentitySingelton.GetInstance().PhoneNumber;
         adminProfileWindow.lbHospitalName.Content = IdentitySingelton.GetInstance().HospitalName;
         adminProfileWindow.ShowDialog();
+        updateAdmin();
     }
 }

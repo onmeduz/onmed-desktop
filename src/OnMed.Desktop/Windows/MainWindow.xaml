@@ -129,12 +129,12 @@
                             Click="rbUchrashuv_Click"
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource uchrashuv}"/>
-                    <RadioButton 
+                    <!--<RadioButton 
                             x:Name="rbTolov"
                             Content="To'lov"
                             Click="rbTolov_Click"
                             Style="{DynamicResource MenuButton}" 
-                            Tag="{DynamicResource tolov}"/>
+                            Tag="{DynamicResource tolov}"/>-->
                     <!--<Border 
                         Height="0.5"
                         Margin="30 20 0 20"
