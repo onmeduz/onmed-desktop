@@ -83,13 +83,14 @@ public partial class AdminUpdateWindow : Window
         UploadImageDto uploadImageDto = new UploadImageDto();
         AdminUpdateDto adminUpdateDto = new AdminUpdateDto();
 
+//        if(uploadImageDto.Image == adminProfileImage.ImageSource.ToString())
         uploadImageDto.Image = adminProfileImage.ImageSource.ToString();
         var res = await _profileService.UploadImageAsync(uploadImageDto);
 
         adminUpdateDto.FirstName = tbFirstName.Text;
         adminUpdateDto.LastName = tbLastName.Text;
         adminUpdateDto.MiddleName = tbMiddleName.Text;
-        adminUpdateDto.Region = tbRegion.Text;
+        adminUpdateDto.Region = "Qo'qon";
 
         long Id = IdentitySingelton.GetInstance().AdminId;
         var response = await _profileService.UpdateAsync(Id, adminUpdateDto);

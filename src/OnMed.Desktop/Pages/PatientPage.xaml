@@ -26,5 +26,12 @@
                 x:Name="wrpPatient">
             </WrapPanel>
         </ScrollViewer>
+        <Label x:Name="emptyData"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Visibility="Collapsed"
+               Content="Xozircha malumotlar yo'q"
+               FontSize="18">
+        </Label>
     </Grid>
 </Page>

@@ -183,5 +183,13 @@
                 x:Name="wrpAppoinment">
             </StackPanel>
         </ScrollViewer>
+        <Label x:Name="emptyData"
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="Collapsed"
+            Content="Xozircha malumotlar yo'q"
+            FontSize="18">
+        </Label>
     </Grid>
 </Page>

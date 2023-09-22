@@ -2,11 +2,17 @@
 using OnMed.Dtos.Login;
 using OnMed.Integrated.Interfaces.Login;
 using OnMed.Integrated.Services.Login;
+using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Messages;
+using ToastNotifications.Position;
 
 namespace OnMed.Desktop
 {
@@ -21,6 +27,21 @@ namespace OnMed.Desktop
             InitializeComponent();
             this._service = new LoginService();
         }
+
+        Notifier notifier = new Notifier(cfg =>
+        {
+            cfg.PositionProvider = new WindowPositionProvider(
+                parentWindow: Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive),
+                corner: Corner.TopRight,
+                offsetX: 20,
+                offsetY: 20);
+
+            cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
+                notificationLifetime: TimeSpan.FromSeconds(5),
+                maximumNotificationCount: MaximumNotificationCount.FromCount(5));
+
+            cfg.Dispatcher = Application.Current.Dispatcher;
+        });
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -43,13 +64,13 @@ namespace OnMed.Desktop
                 count++;
             }
             else
-                MessageBox.Show("Telefon raqamingizni to'liq kiriting");
+                notifier.ShowInformation("Telefon raqamingizni to'liq kiriting");
             if (textboxParol.Password.ToString().Length >= 8 && textboxParol.Password.ToString().Length <= 32) 
             { 
                 count++; 
             }
             else
-                MessageBox.Show("Parol 8 ta belgidan kam bolmasligi kerak");
+                notifier.ShowInformation("Parol 8 ta belgidan kam bolmasligi kerak");
             if (count == 2)
             {
                 LoginDto loginDto = new LoginDto()
@@ -57,7 +78,10 @@ namespace OnMed.Desktop
                     PhoneNumber = (lbCodePhone.Content.ToString() + textboxPhone.Text),
                     Password = textboxParol.Password
                 };
+                stackPanel.Visibility = Visibility.Collapsed;
+                loader.Visibility = Visibility.Visible;
                 bool response = await _service.Login(loginDto);
+                loader.Visibility = Visibility.Collapsed;
                 if (response)
                 {
                     MainWindow mainWindow = new MainWindow();
@@ -66,7 +90,8 @@ namespace OnMed.Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Bunday admin mavjud emas");
+                    notifier.ShowInformation("Bunday admin mavjud emas");
+                    stackPanel.Visibility = Visibility.Visible;
                 }
             }
         }

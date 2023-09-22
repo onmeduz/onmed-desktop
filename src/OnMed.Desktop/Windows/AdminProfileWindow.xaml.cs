@@ -1,4 +1,5 @@
-﻿using OnMed.Integrated.Security;
+﻿using OnMed.Dtos.Constants;
+using OnMed.Integrated.Security;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -15,8 +16,6 @@ namespace OnMed.Desktop.Windows;
 /// </summary>
 public partial class AdminProfileWindow : Window
 {
-    public const string BASE_URL = "http://157.230.45.112:4040/";
-
     public AdminProfileWindow()
     {
         InitializeComponent();
@@ -62,13 +61,12 @@ public partial class AdminProfileWindow : Window
     {
         AdminUpdateWindow adminUpdateWindow = new AdminUpdateWindow();
 
-        string imageUrl = BASE_URL + IdentitySingelton.GetInstance().ImagePath;
+        string imageUrl = BaseUrlConstants.BASE_URL + "/" + IdentitySingelton.GetInstance().ImagePath;
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
         adminUpdateWindow.adminProfileImage.ImageSource = new BitmapImage(imageUri);
-        adminUpdateWindow.tbFirstName.Text = IdentitySingelton.GetInstance().Name;
-        adminUpdateWindow.tbLastName.Text = IdentitySingelton.GetInstance().FirstName;
+        adminUpdateWindow.tbFirstName.Text = IdentitySingelton.GetInstance().FirstName;
+        adminUpdateWindow.tbLastName.Text = IdentitySingelton.GetInstance().LastName;
         adminUpdateWindow.tbMiddleName.Text = IdentitySingelton.GetInstance().MiddleName;
-        adminUpdateWindow.tbRegion.Text = IdentitySingelton.GetInstance().Region;
 
         adminUpdateWindow.ShowDialog();
         this.Close();

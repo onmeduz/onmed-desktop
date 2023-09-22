@@ -32,6 +32,8 @@ public partial class DashboardPage : Page
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
         var users = await _appointmentService.GetAsync(1);
+        pScrol.Visibility = Visibility.Visible;
+        pLoader.Visibility = Visibility.Collapsed;
         int number = 1;
         foreach (var user in users)
         {
@@ -47,6 +49,8 @@ public partial class DashboardPage : Page
 
         long Id = IdentitySingelton.GetInstance().HospitalBranchId;
         var doctors = await _service.GetAllAsync(Id);
+        docSrol.Visibility = Visibility.Visible;
+        docLoader.Visibility = Visibility.Collapsed;
         foreach (var doctor in doctors) 
         {
             DoctorControlForDashboard doctorControlForDashboard = new DoctorControlForDashboard();
@@ -54,6 +58,12 @@ public partial class DashboardPage : Page
             wrpDoctors.Children.Add(doctorControlForDashboard);
         }
         long count = await _patientService.GetCount(Id);
+        loader.Visibility = Visibility.Collapsed;
+        dcLoader.Visibility = Visibility.Collapsed;
+        uLoader.Visibility = Visibility.Collapsed;
+        lblPatient.Visibility = Visibility.Visible;
+        doctorCount.Visibility = Visibility.Visible;
+        lblUserCount.Visibility = Visibility.Visible;
 
         lblUserCount.Content = count.ToString();
         lblPatient.Content = count.ToString();

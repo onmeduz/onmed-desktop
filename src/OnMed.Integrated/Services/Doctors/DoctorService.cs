@@ -88,7 +88,10 @@ public class DoctorService : IDoctorService
         content.Add(new StringContent(dto.BirthDay.ToString()), "BirthDay");
         content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
         content.Add(new StringContent(dto.IsMale.ToString()), "IsMale");
-        content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
+        if (!dto.Image.StartsWith(BaseUrlConstants.BASE_URL))
+        {
+            content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
+        }
         content.Add(new StringContent(dto.Region), "Region");
         content.Add(new StringContent(dto.Password), "Password");
         content.Add(new StringContent(dto.AppointmentMoney.ToString()), "AppointmentMoney");
