@@ -9,19 +9,20 @@ namespace OnMed.Integrated.Services.Doctors;
 
 public class DoctorService : IDoctorService
 {
-    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
+//    private readonly string BASE_URL = BaseUrlConstants.BASE_URL;
+    private readonly string BASE_URL = "http://143.198.197.190:4040";
 
     public async Task<bool> CreateAsync(DoctorCreateDto dto)
     {
         var token = IdentitySingelton.GetInstance().Token;
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "/api/admin/doctor");
+        var request = new HttpRequestMessage(HttpMethod.Post, BASE_URL + "/api/admin/doctors");
         request.Headers.Add("Authorization", $"Bearer {token}");
         var content = new MultipartFormDataContent();
         content.Add(new StringContent(dto.FirstName), "FirstName");
         content.Add(new StringContent(dto.LastName), "LastName");
         content.Add(new StringContent(dto.MiddleName), "MiddleName");
-        content.Add(new StringContent(dto.BirthDay.ToString()), "BirthDay");
+        content.Add(new StringContent(dto.BirthDay), "BirthDay");
         content.Add(new StringContent(dto.PhoneNumber), "PhoneNumber");
         content.Add(new StringContent(dto.IsMale.ToString()), "IsMale");
         content.Add(new StreamContent(File.OpenRead(dto.Image)), "Image", dto.Image);
@@ -68,7 +69,7 @@ public class DoctorService : IDoctorService
     {
 
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + $"/api/common/hospital/branch/doctors/{id}?page=1");
+        client.BaseAddress = new Uri(BASE_URL + $"/api/common/hospital/branches/doctors/{id}?page=1");
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync();
         var doctor = JsonConvert.DeserializeObject<List<DoctorViewModel>>(response);
@@ -79,7 +80,7 @@ public class DoctorService : IDoctorService
     {
         var token = IdentitySingelton.GetInstance().Token;
         var client = new HttpClient();
-        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + $"/api/admin/doctor?doctorId={id}");
+        var request = new HttpRequestMessage(HttpMethod.Put, BASE_URL + $"/api/admin/doctors?doctorId={id}");
         request.Headers.Add("Authorization", $"Bearer {token}");
         var content = new MultipartFormDataContent();
         content.Add(new StringContent(dto.FirstName), "FirstName");
@@ -112,7 +113,7 @@ public class DoctorService : IDoctorService
         var token = IdentitySingelton.GetInstance().Token;
         var branchId = IdentitySingelton.GetInstance().HospitalBranchId;
         HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(BASE_URL + $"/api/admin/doctor/search?branchId={branchId}&search={search}");
+        client.BaseAddress = new Uri(BASE_URL + $"/api/admin/doctors/search?branchId={branchId}&search={search}");
         client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
         var result = await client.GetAsync(client.BaseAddress);
         var response = await result.Content.ReadAsStringAsync();

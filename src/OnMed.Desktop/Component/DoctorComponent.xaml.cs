@@ -35,10 +35,18 @@ public partial class DoctorComponent : UserControl
         this._service = new DoctorService();
     }
 
-    public void SetData(DoctorViewModel doctorViewModel)
+    public void SetData(DoctorViewModel doctorViewModel, int n)
     {
+        string imageUrl = "";
         _viewModel = doctorViewModel;
-        string imageUrl = ContentConstans.BASE_URL + "/" + doctorViewModel.ImagePath;
+        if(n<4)
+        {
+             imageUrl = ContentConstans.BASE_URL + "/" + doctorViewModel.ImagePath;
+        }
+        else
+        {
+             imageUrl = "http://143.198.197.190:4040" + "/" + doctorViewModel.ImagePath;
+        }
         Uri imageUri = new Uri(imageUrl, UriKind.Absolute);
 
         DoctorsImage.ImageSource = new BitmapImage(imageUri);

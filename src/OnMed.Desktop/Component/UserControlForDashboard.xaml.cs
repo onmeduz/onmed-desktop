@@ -22,7 +22,7 @@ public partial class UserControlForDashboard : UserControl
         lblDoctor.Content = model.DoctorFullName;
         lblTime.Content = model.StartTime.Substring(0, 5);
 
-        if (model.UserIsMale == true)
+        if (model.UserIsMale == false)
             lblGender.Content = "Erkak";
         else
             lblGender.Content = "Ayol";

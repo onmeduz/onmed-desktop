@@ -97,8 +97,10 @@ public partial class MainWindow : Window
 
     private void rbTolov_Click(object sender, RoutedEventArgs e)
     {
-        PaymentPage paymentPage = new PaymentPage();
-        PageNavigator.Content = paymentPage;
+        //PaymentPage paymentPage = new PaymentPage();
+        //PageNavigator.Content = paymentPage;
+        Notificatoins notificatoins = new Notificatoins();
+        PageNavigator.Content = notificatoins;
     }
 
     private void rbeslatma_Click(object sender, RoutedEventArgs e)

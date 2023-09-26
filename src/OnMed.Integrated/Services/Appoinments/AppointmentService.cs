@@ -4,6 +4,7 @@ using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Security;
 using OnMed.ViewModel.Appointments;
 using OnMed.ViewModel.Categories;
+using OnMed.ViewModel.Hospitals;
 
 namespace OnMed.Integrated.Services.Appoinments;
 
@@ -36,6 +37,20 @@ public class AppointmentService : IAppointmentService
         var result = await client.GetAsync(client.BaseAddress);
         string response = await result.Content.ReadAsStringAsync();
         var users = JsonConvert.DeserializeObject<List<AppointmentViewModel>>(response);
+        return users!;
+    }
+
+    public async Task<List<ChartInfoViewModel>> DetChartInfo(long id)
+    {
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri("http://143.198.197.190:4040" + $"/api/admin/users/patient/last-week/{id}");
+
+        var token = IdentitySingelton.GetInstance().Token;
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+        var result = await client.GetAsync(client.BaseAddress);
+        string response = await result.Content.ReadAsStringAsync();
+        var users = JsonConvert.DeserializeObject<List<ChartInfoViewModel>>(response);
         return users!;
     }
 }
