@@ -46,12 +46,14 @@ public partial class DoctorPage : Page
         scrolViver.Visibility = Visibility.Visible;
         if(doctors.Count > 0)
         {
+            int i = 1;
             foreach (var doctor in doctors)
             {
                 DoctorComponent doctorComponent = new DoctorComponent();
-                doctorComponent.SetData(doctor);
+                doctorComponent.SetData(doctor, i);
                 doctorComponent.RefreshDelegate = RefreshAsync;
                 wrpDoctors.Children.Add(doctorComponent);
+                i++;
             }
         }
         else
@@ -74,12 +76,14 @@ public partial class DoctorPage : Page
 
             if (doctors.Count > 0)
             {
+                int i = 1;
                 foreach (var doctor in doctors)
                 {
                     DoctorComponent doctorComponent = new DoctorComponent();
-                    doctorComponent.SetData(doctor);
+                    doctorComponent.SetData(doctor, i);
                     doctorComponent.RefreshDelegate = RefreshAsync;
                     wrpDoctors.Children.Add(doctorComponent);
+                    i++;
                 }
             }
             else

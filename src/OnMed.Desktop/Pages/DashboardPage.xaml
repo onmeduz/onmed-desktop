@@ -27,17 +27,19 @@
 
                     <Grid
                         Grid.Column="0">
-                        <Border 
+                        <Border Visibility="Visible"
                             Margin="15 15 5 10"
                             CornerRadius="20"
                             Background="{DynamicResource FirstColor}">
+                            <Border Visibility="Visible"
+                            Margin="10">
                             <lvcc:CartesianChart>
                                 <lvcc:CartesianChart.AxisX>
                                     <lvcc:Axis x:Name="DateLabel"
-                                        Foreground="{DynamicResource FirstColor}"
+                                        Foreground="{DynamicResource BorderColor}"
                                         FontSize="16"
                                         ShowLabels="True"
-                                        Labels="10, 20, 30, 40">
+                                        Labels="0, 0, 0, 0, 0, 0, 0">
                                         <lvcc:Axis.Separator>
                                             <lvcc:Separator StrokeThickness="0" Step="1"/>
                                         </lvcc:Axis.Separator>
@@ -45,10 +47,10 @@
                                 </lvcc:CartesianChart.AxisX>
 
                                 <lvcc:CartesianChart.AxisY>
-                                    <lvcc:Axis Foreground="{DynamicResource FirstColor}"
+                                    <lvcc:Axis Foreground="{DynamicResource BorderColor}"
                                         MinValue="0"
                                         MaxValue="50"
-                                        ShowLabels="False">
+                                        ShowLabels="True">
                                         <lvcc:Axis.Separator>
                                             <lvcc:Separator StrokeThickness="0"/>
                                         </lvcc:Axis.Separator>
@@ -60,7 +62,7 @@
                                          Title="Count"
                                          Fill="{DynamicResource FifthColor}"
                                          StrokeThickness="4" PointGeometrySize="0" 
-                                         Values="10,20,10,20,10,20,10">
+                                         Values="0,0,0,0,0,0,0">
                                         <lvcc:LineSeries.Stroke>
                                             <LinearGradientBrush>
                                                 <GradientStop Color="Transparent" Offset="0"/>
@@ -73,6 +75,16 @@
                             </lvcc:CartesianChart>
 
                         </Border>
+                        </Border>
+                        <fa:ImageAwesome 
+                            x:Name="chartLoader" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Visibility="Visible" 
+                            Icon="Spinner" 
+                            Spin="True" 
+                            Height="50" 
+                            Width="50" />
 
                     </Grid>
 

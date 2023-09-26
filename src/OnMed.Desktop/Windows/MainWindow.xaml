@@ -131,7 +131,7 @@
                             Tag="{DynamicResource uchrashuv}"/>
                     <!--<RadioButton 
                             x:Name="rbTolov"
-                            Content="To'lov"
+                            Content="Bildirishnoma"
                             Click="rbTolov_Click"
                             Style="{DynamicResource MenuButton}" 
                             Tag="{DynamicResource tolov}"/>-->

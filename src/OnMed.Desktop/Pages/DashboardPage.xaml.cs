@@ -1,4 +1,5 @@
-﻿using OnMed.Desktop.Component;
+﻿using LiveCharts;
+using OnMed.Desktop.Component;
 using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Interfaces.Doctors;
 using OnMed.Integrated.Interfaces.Patients;
@@ -28,6 +29,18 @@ public partial class DashboardPage : Page
         this._patientService = new PatientService();
         this._appointmentService = new AppointmentService();
     }
+    public async void ChartInfo(long id)
+    {
+        var result = await _appointmentService.DetChartInfo(id);
+        var nums = new List<double>();
+        var date = new List<string>();
+        foreach (var item in result)
+        {
+            nums.Add(item.Count);
+            date.Add(item.Day.Substring(5));
+        }
+        SetDataChart(nums, date);
+    }
 
     private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
@@ -49,6 +62,8 @@ public partial class DashboardPage : Page
 
         long Id = IdentitySingelton.GetInstance().HospitalBranchId;
         var doctors = await _service.GetAllAsync(Id);
+        chartLoader.Visibility = Visibility.Visible;
+        ChartInfo(Id);
         docSrol.Visibility = Visibility.Visible;
         docLoader.Visibility = Visibility.Collapsed;
         foreach (var doctor in doctors) 
@@ -77,5 +92,6 @@ public partial class DashboardPage : Page
             SetChart.Values.Add(item);
         }
         DateLabel.Labels = strings.ToArray();
+        chartLoader.Visibility = Visibility.Collapsed;
     }
 }

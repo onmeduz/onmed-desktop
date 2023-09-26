@@ -1,6 +1,4 @@
 ﻿using Microsoft.Win32;
-using OnMed.Desktop.Constans;
-using OnMed.Desktop.Halpers;
 using OnMed.Dtos.Doctors;
 using OnMed.Integrated.Interfaces.Categories;
 using OnMed.Integrated.Interfaces.Doctors;
@@ -9,7 +7,6 @@ using OnMed.Integrated.Services;
 using OnMed.Integrated.Services.Doctors;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -139,7 +136,7 @@ public partial class DoctorCreateWindow : Window
         doctorCreateDto.Region = Region.Text;
         doctorCreateDto.StartTime = StarTime.Text;
         doctorCreateDto.EndTime = EndTime.Text;
-        doctorCreateDto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)));
+        doctorCreateDto.BirthDay = tbBirthDay.SelectedDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
         doctorCreateDto.IsMale = isMail;
         doctorCreateDto.AppointmentMoney = double.Parse(tbMoney.Text);
         doctorCreateDto.HospitalBranchId = IdentitySingelton.GetInstance().HospitalBranchId;

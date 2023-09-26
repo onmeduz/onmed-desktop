@@ -4,7 +4,7 @@
     <Style x:Key="TitleLabel"  TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{DynamicResource BorderColor}"/>
         <Setter Property="FontFamily" Value="Jetbrain Mono"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="SemiBold"/> 
     </Style>
 
