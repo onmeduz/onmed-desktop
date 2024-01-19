@@ -269,6 +269,7 @@
                     <Label
                         Margin="0 0 0 10"
                         FontSize="16"
+                        FontWeight="SemiBold"
                         Content="Tug'ilgan sanasi :"
                         Foreground="{DynamicResource color}"/>
                     <Border
@@ -288,12 +289,16 @@
                             x:Name="rbErkak"
                             Click="rbErkak_Click"
                             Margin="0 5"
+                            FontSize="15"
+                            FontWeight="SemiBold"
                             Foreground="{DynamicResource color}"
                             Content="Erkak"/>
                         <RadioButton
                             x:Name="rbAyol"
                             Click="rbErkak_Click"
                             Margin="50 5"
+                            FontSize="15"
+                            FontWeight="SemiBold"
                             Foreground="{DynamicResource color}"
                             Content="Ayol"/>
 

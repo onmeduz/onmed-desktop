@@ -35,10 +35,12 @@ public partial class PatientPage : Page
                     wrpPatient.Children.Add(patientComponent);
                 }
             }
-            if (wrpPatient.Children.Count <= 0)
+            if (wrpPatient.Children.Count == 0)
             {
                 emptyData.Visibility = Visibility.Visible;
             }
+            else 
+                emptyData.Visibility = Visibility.Collapsed;
         }
         else
         {

@@ -1,7 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using System.Windows;
-using System;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace OnMed.Desktop.Windows.BlurWindow;
 

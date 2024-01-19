@@ -154,7 +154,7 @@ public partial class DoctorUpdateWindow : Window
         dto.Password = Password.Text;
         dto.Degree = Degree.Text;
         dto.Region = Region.Text;
-        dto.BirthDay = DateOnly.FromDateTime(DateTime.Parse(tbBirthDay.SelectedDate.Value.ToString("dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture)));
+        dto.BirthDay = tbBirthDay.SelectedDate.Value.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
         dto.IsMale = isMail;
         dto.AppointmentMoney = double.Parse(tbMoney.Text);
         dto.Image = ImageBrushDoctor.ImageSource.ToString();

@@ -58,12 +58,12 @@ public partial class AppointmentPage : Page
         {
             foreach (var user in users)
             {
-
                 AppointmentComponent appointmentComponent = new AppointmentComponent();
                 appointmentComponent.count = count;
                 appointmentComponent.SetData(user);
                 wrpAppoinment.Children.Add(appointmentComponent);
                 count++;
+                emptyData.Visibility = Visibility.Collapsed;
             }
         }
         else

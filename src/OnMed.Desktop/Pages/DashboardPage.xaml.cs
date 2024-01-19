@@ -1,5 +1,4 @@
-﻿using LiveCharts;
-using OnMed.Desktop.Component;
+﻿using OnMed.Desktop.Component;
 using OnMed.Integrated.Interfaces.Appointments;
 using OnMed.Integrated.Interfaces.Doctors;
 using OnMed.Integrated.Interfaces.Patients;
@@ -10,7 +9,6 @@ using OnMed.Integrated.Services.Patients;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace OnMed.Desktop.Pages;
 

@@ -5,6 +5,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Untitled-4-removebg-preview.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,10 @@
 
   <ItemGroup>
     <Page Remove="Assets\Icons\Icons.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Untitled-4-removebg-preview.ico" />
   </ItemGroup>
 
   <ItemGroup>

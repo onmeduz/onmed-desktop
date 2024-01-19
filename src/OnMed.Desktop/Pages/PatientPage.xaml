@@ -16,8 +16,8 @@
             Visibility="Visible" 
             Icon="Spinner" 
             Spin="True" 
-            Height="50" 
-            Width="50" />
+            Height="40" 
+            Width="40" />
         <ScrollViewer
             x:Name="scrolViver"
             Visibility="Collapsed">

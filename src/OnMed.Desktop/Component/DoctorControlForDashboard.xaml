@@ -44,7 +44,7 @@
                 x:Name="lbCategory"
                 Content="Stamotolog"
                 Margin="0 32 10 0"
-                FontSize="11"
+                FontSize="13"
                 FontWeight="SemiBold"
                 Foreground="{DynamicResource BorderColor}"/>
 

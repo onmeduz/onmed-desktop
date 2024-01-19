@@ -32,6 +32,7 @@ public partial class DoctorControlForDashboard : UserControl
         doctorImageDashboard.ImageSource = new BitmapImage(imageUri);
 
         lbFullName.Content = doctorViewModel.ToString();
+        lbCategory.Content = doctorViewModel.CategoryNames[0];
         Id = doctorViewModel.Id;
     }
 
